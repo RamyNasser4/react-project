@@ -6,6 +6,7 @@ import Home from './Home';
 import Footer from './Footer';
 import Signin from './Signin';
 import Signup from './Signup';
+import ForgetPassword from './ForgetPassword';
 export default function App() {
   return (
     <BrowserRouter>
@@ -15,6 +16,7 @@ export default function App() {
           <Route exact path='/' Component={Home}></Route>
           <Route path='/Signin' Component={Signin}></Route>
           <Route path='/Signup' Component={Signup}></Route>
+          <Route path='/ForgetPassword' Component={ForgetPassword}></Route>
           <Route path='/Featured'></Route>
         </Routes>
         <Footer></Footer>
