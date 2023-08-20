@@ -12,14 +12,15 @@ function AuthCard(props) {
                         <h3 className="font-[AwanZaman] font-medium text-2xl pb-8">{props.title}</h3>
                         <form className="flex flex-col items-start w-full">
                             {props.signin ? <><InputBox type="email" name="Email"></InputBox><InputBox type="password" name="Password"></InputBox></> : <><InputBox type="text" name="Full Name"></InputBox><InputBox type="email" name="Email"></InputBox><InputBox type="password" name="Password"></InputBox></>}
+                            <div className="flex flex-col sm:flex-row flex-wrap justify-between items-center w-full">
+                                <a className="font-[AwanZaman] font-semibold underline text-[#6C6B6C]" href="/ForgetPassword">Forgot Password?</a>
+                                <button type="submit" className="flex items-center text-xl font-[AwanZaman] text-white py-3 px-4 bg-black border-2 border-black">
+                                    <span className="font-semibold pr-1">{props.signin ? "Sign In" : "Sign Up"}</span>
+                                    <FontAwesomeIcon icon={faArrowRight} className="text-white text-lg" />
+                                </button>
+                            </div>
                         </form>
-                        <div className="flex flex-col sm:flex-row flex-wrap justify-between items-center w-full">
-                            <a className="font-[AwanZaman] font-semibold underline text-[#6C6B6C]" href="/ForgetPassword">Forgot Password?</a>
-                            <a className="flex items-center text-xl font-[AwanZaman] text-white py-3 px-4 bg-black border-2 border-black">
-                                <span className="font-semibold pr-1">{props.signin ? "Sign In" : "Sign Up"}</span>
-                                <FontAwesomeIcon icon={faArrowRight} className="text-white text-lg" />
-                            </a>
-                        </div>
+
                     </div>
                     <div className="flex md:flex-col justify-around md:justify-center items-center w-full md:w-32">
                         <div className="md:w-[0.1px] md:h-16 w-16 h-[0.1px] bg-[#E1E1E1]"></div>
