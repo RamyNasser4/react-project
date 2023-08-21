@@ -53,7 +53,7 @@ class Header extends Component {
                     <div className="w-[30%] flex justify-between items-center align-middle">
                         <a className="text-4xl mt- py-2 px-3 font-[AwanZaman]">Logo</a>
                         <a href="/" className="text-lg py-2 px-3 hover:bg-[#F5F5F5] duration-300 font-[AwanZaman] hidden sm:block">Home</a>
-                        <a className="text-lg py-2 px-3 hover:bg-[#F5F5F5] duration-300 font-[AwanZaman] hidden sm:block">Shop</a>
+                        <a href="/Shop" className="text-lg py-2 px-3 hover:bg-[#F5F5F5] duration-300 font-[AwanZaman] hidden sm:block">Shop</a>
                         <a className="text-lg py-2 px-3 hover:bg-[#F5F5F5] duration-300 font-[AwanZaman] hidden sm:block">Featured</a>
                         <a className="text-lg py-2 px-3 hover:bg-[#F5F5F5] duration-300 font-[AwanZaman] hidden sm:block">Recommended</a>
                     </div>

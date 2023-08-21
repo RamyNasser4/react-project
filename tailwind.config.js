@@ -13,8 +13,7 @@ module.exports = {
           },
       
           '100%' : {
-              height: 'fit-content',
-              padding:'1rem'
+              height: 'fit-content'
           }
       },
       displayup : {
@@ -27,13 +26,32 @@ module.exports = {
             height: '0em',
             padding: '0rem'
         }
+      },
+      heightopen : {
+        '0%' : {
+
+        },
+        '100%' : {
+          height : '5rem'
+        }
+      },
+      heightclose : {
+        '100%' : {
+          height : '5rem'
+        },
+        '0%' : {
+
+        }
       }
     },
     animation : {
+      heightopen : 'heightopen 0.6s forwards',
+      heightclose : 'heightclose 0.2s forwards',
       displaydown : 'displaydown 0.6s forwards',
       displayup: 'displayup 0.2s forwards'
     }
   },
   plugins: [],
+  
 }
 }
