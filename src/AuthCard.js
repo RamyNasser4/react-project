@@ -5,8 +5,8 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { faFacebookF, faGithub, faGoogle } from "@fortawesome/free-brands-svg-icons";
 function AuthCard(props) {
     return (
-        <div className="flex flex-col w-[4/5] md:w-[55%] border-[1px] border-solid border-[#c5c5c5]">
-            <div className="flex flex-col border-[1px] border-solid border-[#c5c5c5] p-10">
+        <div className="flex flex-col w-[4/5] md:w-[55%] ">
+            <div className="flex flex-col border-[0.1px] border-solid border-[#c5c5c5] p-10">
                 <div className="flex flex-col md:flex-row">
                     <div className="flex flex-wrap flex-col items-start w-full md:w-1/2">
                         <h3 className="font-[AwanZaman] font-medium text-2xl pb-8">{props.title}</h3>
@@ -43,7 +43,7 @@ function AuthCard(props) {
                     </div>
                 </div>
             </div>
-            <div className="flex justify-center bg-[#F2F2F2]">
+            <div className="flex justify-center bg-[#F2F2F2] border-x-[0.1px] border-b-[0.1px] border-solid border-[#c5c5c5]">
                 <div className="flex justify-between items-center p-4 w-full sm:w-1/3">
                     <span className="font-[AwanZaman] font-semibold text-[#4A4A4A]">{props.signin ? "Don't Have an account?" : "Already have an account?"}</span>
                     <a className="text-lg font-[AwanZaman] text-[#907F7D] py-1 px-4 bg-[#F2F2F2] border-[0.1px]" href={props.signin ? "/Signup" : "/Signin"}>{props.signin ? "Sign up" : "Sign in"}</a>
