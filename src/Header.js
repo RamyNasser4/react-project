@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBagShopping, faBars } from "@fortawesome/free-solid-svg-icons";
 import classNames from "classnames";
+import { Link, NavLink } from "react-router-dom";
 class Header extends Component {
     state = {
         Headeractive: false
@@ -52,25 +53,25 @@ class Header extends Component {
                 <div className="w-[100%] px-8 py-2 flex justify-between bg-white ">
                     <div className="w-[30%] flex justify-between items-center align-middle">
                         <a className="text-4xl mt- py-2 px-3 font-[AwanZaman]">Logo</a>
-                        <a href="/" className="text-lg py-2 px-3 hover:bg-[#F5F5F5] duration-300 font-[AwanZaman] hidden sm:block">Home</a>
-                        <a href="/Shop" className="text-lg py-2 px-3 hover:bg-[#F5F5F5] duration-300 font-[AwanZaman] hidden sm:block">Shop</a>
-                        <a href="/Featured" className="text-lg py-2 px-3 hover:bg-[#F5F5F5] duration-300 font-[AwanZaman] hidden sm:block">Featured</a>
-                        <a href="/Recommended" className="text-lg py-2 px-3 hover:bg-[#F5F5F5] duration-300 font-[AwanZaman] hidden sm:block">Recommended</a>
+                        <NavLink exact to="/" className="text-lg py-2 px-3 hover:bg-[#F5F5F5] duration-300 font-[AwanZaman] hidden sm:block">Home</NavLink>
+                        <NavLink to="/Shop" className="text-lg py-2 px-3 hover:bg-[#F5F5F5] duration-300 font-[AwanZaman] hidden sm:block">Shop</NavLink>
+                        <NavLink to="/Featured" className="text-lg py-2 px-3 hover:bg-[#F5F5F5] duration-300 font-[AwanZaman] hidden sm:block">Featured</NavLink>
+                        <NavLink to="/Recommended" className="text-lg py-2 px-3 hover:bg-[#F5F5F5] duration-300 font-[AwanZaman] hidden sm:block">Recommended</NavLink>
                     </div>
                     <div className=" lg:w-[20%] xl:w-[16%] 2xl:w-[13%] flex justify-between items-center">
                         <FontAwesomeIcon icon={faBagShopping} className="text-2xl" />
                         <FontAwesomeIcon icon={faBars} className="text-2xl lg:hidden px-4" onClick={this.onClickBar} />
-                        <a className="text-lg font-[AwanZaman] text-white py-1 px-4 bg-black border-2 border-black hidden lg:block" href="/Signup">Sign up</a>
-                        <a className="text-lg font-[AwanZaman] text-[#907F7D] py-1 px-4 bg-[#F2F2F2] border-2 hidden lg:block" href="/Signin">Sign in</a>
+                        <Link className="text-lg font-[AwanZaman] text-white py-1 px-4 bg-black border-2 border-black hidden lg:block" to="/Signup">Sign up</Link>
+                        <Link className="text-lg font-[AwanZaman] text-[#907F7D] py-1 px-4 bg-[#F2F2F2] border-2 hidden lg:block" to="/Signin">Sign in</Link>
                     </div>
                 </div>
                 <div className={this.state.Headeractive ? this.active : this.classes}>
-                    <a href="/" className={this.state.Headeractive ? this.navactive : this.navclasses}>Home</a>
-                    <a href="/Signin" className={this.state.Headeractive ? this.navactive : this.navclasses}>Sign in</a>
-                    <a href="/Signup" className={this.state.Headeractive ? this.navactive : this.navclasses}>Sign up</a>
-                    <a href="/Shop" className={this.state.Headeractive ? this.navactive : this.navclasses}>Shop</a>
-                    <a href="/Featured" className={this.state.Headeractive ? this.navactive : this.navclasses}>Featured</a>
-                    <a href="/Recommended" className={this.state.Headeractive ? this.navactive : this.navclasses}>Recommended</a>
+                    <NavLink to="/" className={this.state.Headeractive ? this.navactive : this.navclasses}>Home</NavLink>
+                    <NavLink to="/Signin" className={this.state.Headeractive ? this.navactive : this.navclasses}>Sign in</NavLink>
+                    <NavLink to="/Signup" className={this.state.Headeractive ? this.navactive : this.navclasses}>Sign up</NavLink>
+                    <NavLink to="/Shop" className={this.state.Headeractive ? this.navactive : this.navclasses}>Shop</NavLink>
+                    <NavLink to="/Featured" className={this.state.Headeractive ? this.navactive : this.navclasses}>Featured</NavLink>
+                    <NavLink to="/Recommended" className={this.state.Headeractive ? this.navactive : this.navclasses}>Recommended</NavLink>
                 </div>
             </div>
 

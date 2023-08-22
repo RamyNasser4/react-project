@@ -1,11 +1,12 @@
 import React from "react";
 import ProductCard from "./ProductCard";
+import { Link } from "react-router-dom";
 function ProductsView(props) {
     return (
         <div className="w-full px-14 py-10 mt-20">
             {props.Featured || props.Recommended ? null :<div className="flex justify-between w-full items-center mb-8">
                 <h1 className="font-[MaiseeMedium] text-3xl max-w-[50%] text-left">{props.section}</h1>
-                <a className="font-[TyfoonSans] text-lg underline" href={props.link}>See all</a>
+                <Link className="font-[TyfoonSans] text-lg underline" to={props.link}>See all</Link>
             </div>}
             <div className="grid grid-cols-[repeat(auto-fit,minmax(20rem,1fr))] gap-8 w-full">
                 <ProductCard Name="Burnikk" desc="Bomb" imgsrc="https://firebasestorage.googleapis.com/v0/b/salinaka-ecommerce.appspot.com/o/products%2F7l3FMZqY8JdfssalDgx2?alt=media&token=be15689c-e12c-4829-9d78-32395ef1e3f7"></ProductCard>

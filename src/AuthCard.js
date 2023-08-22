@@ -3,6 +3,7 @@ import InputBox from "./InputBox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { faFacebookF, faGithub, faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { Link } from "react-router-dom";
 function AuthCard(props) {
     return (
         <div className="flex flex-col w-[4/5] md:w-[55%] ">
@@ -13,7 +14,7 @@ function AuthCard(props) {
                         <form className="flex flex-col items-start w-full">
                             {props.signin ? <><InputBox type="email" name="Email"></InputBox><InputBox type="password" name="Password"></InputBox></> : <><InputBox type="text" name="Full Name"></InputBox><InputBox type="email" name="Email"></InputBox><InputBox type="password" name="Password"></InputBox></>}
                             <div className="flex flex-col sm:flex-row flex-wrap justify-between items-center w-full">
-                                <a className="font-[AwanZaman] font-semibold underline text-[#6C6B6C]" href="/ForgetPassword">Forgot Password?</a>
+                                <Link className="font-[AwanZaman] font-semibold underline text-[#6C6B6C]" to="/ForgetPassword">Forgot Password?</Link>
                                 <button type="submit" className="flex items-center text-xl font-[AwanZaman] text-white py-3 px-4 bg-black hover:bg-[#2A2A2A] cursor-pointer duration-300 border-2 border-black">
                                     <span className="font-semibold pr-1">{props.signin ? "Sign In" : "Sign Up"}</span>
                                     <FontAwesomeIcon icon={faArrowRight} className="text-white text-lg" />
@@ -46,7 +47,7 @@ function AuthCard(props) {
             <div className="flex justify-center bg-[#F2F2F2] border-x-[0.1px] border-b-[0.1px] border-solid border-[#c5c5c5]">
                 <div className="flex justify-between items-center p-4 w-full sm:w-1/3">
                     <span className="font-[AwanZaman] font-semibold text-[#4A4A4A]">{props.signin ? "Don't Have an account?" : "Already have an account?"}</span>
-                    <a className="text-lg font-[AwanZaman] text-[#907F7D] py-1 px-4 bg-[#F2F2F2] hover:bg-[#E1E1E1] cursor-pointer duration-300 border-[0.1px]" href={props.signin ? "/Signup" : "/Signin"}>{props.signin ? "Sign up" : "Sign in"}</a>
+                    <Link className="text-lg font-[AwanZaman] text-[#907F7D] py-1 px-4 bg-[#F2F2F2] hover:bg-[#E1E1E1] cursor-pointer duration-300 border-[0.1px]" to={props.signin ? "/Signup" : "/Signin"}>{props.signin ? "Sign up" : "Sign in"}</Link>
                 </div>
             </div>
         </div>
