@@ -1,36 +1,42 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @font-face {
   font-family: AwanZaman;
   src: url(AwanZamanMedium.ttf);
 }
+
 @font-face {
   font-family: BrieRegular;
   src: url(BrieMediumRegular.ttf);
 }
+
 @font-face {
   font-family: MaiseeMedium;
   src: url("https://db.onlinewebfonts.com/t/9c9ee58219c80d19bb73165620d9319d.eot");
   src: url("https://db.onlinewebfonts.com/t/9c9ee58219c80d19bb73165620d9319d.eot?#iefix")format("embedded-opentype"),
-  url("https://db.onlinewebfonts.com/t/9c9ee58219c80d19bb73165620d9319d.woff2")format("woff2"),
-  url("https://db.onlinewebfonts.com/t/9c9ee58219c80d19bb73165620d9319d.woff")format("woff"),
-  url("https://db.onlinewebfonts.com/t/9c9ee58219c80d19bb73165620d9319d.ttf")format("truetype"),
-  url("https://db.onlinewebfonts.com/t/9c9ee58219c80d19bb73165620d9319d.svg#Maisee Medium W01 Regular")format("svg");
+    url("https://db.onlinewebfonts.com/t/9c9ee58219c80d19bb73165620d9319d.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/9c9ee58219c80d19bb73165620d9319d.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/9c9ee58219c80d19bb73165620d9319d.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/9c9ee58219c80d19bb73165620d9319d.svg#Maisee Medium W01 Regular")format("svg");
 }
+
 @font-face {
   font-family: TyfoonSans;
   src: url("https://db.onlinewebfonts.com/t/f0536ff78c45fc2ea3a0d1e160e25b66.eot");
   src: url("https://db.onlinewebfonts.com/t/f0536ff78c45fc2ea3a0d1e160e25b66.eot?#iefix")format("embedded-opentype"),
-  url("https://db.onlinewebfonts.com/t/f0536ff78c45fc2ea3a0d1e160e25b66.woff2")format("woff2"),
-  url("https://db.onlinewebfonts.com/t/f0536ff78c45fc2ea3a0d1e160e25b66.woff")format("woff"),
-  url("https://db.onlinewebfonts.com/t/f0536ff78c45fc2ea3a0d1e160e25b66.ttf")format("truetype"),
-  url("https://db.onlinewebfonts.com/t/f0536ff78c45fc2ea3a0d1e160e25b66.svg#TyfoonSans W00 ExtraBold")format("svg");
+    url("https://db.onlinewebfonts.com/t/f0536ff78c45fc2ea3a0d1e160e25b66.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/f0536ff78c45fc2ea3a0d1e160e25b66.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/f0536ff78c45fc2ea3a0d1e160e25b66.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/f0536ff78c45fc2ea3a0d1e160e25b66.svg#TyfoonSans W00 ExtraBold")format("svg");
 }
+
 @font-face {
   font-family: GlasgowItalic;
   src: url(GlasgowItalic.ttf);
 }
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -44,11 +50,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.active::after{
-  content: '';
+
+.active{
+  background-color: #F5F5F5;
+}
+@media (max-width:1280px) {
+  .active{
+    background-color: transparent;
+  }
+  .active::after{
     display: block;
+    content: '';
     height: 3px;
     width: 100%;
     border-radius: 5px;
     background: black;
+  }
 }
