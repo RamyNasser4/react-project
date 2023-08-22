@@ -22,7 +22,7 @@ class Header extends Component {
         'bg-white': true,
         'flex-col': true,
         'items-start': true,
-        'duration-500': true,
+        'duration-1000': true,
         'overflow-hidden' :true,
         'leading-none': true,
         'p-4' : true,
@@ -30,12 +30,12 @@ class Header extends Component {
         'flex': true,
     });
     navclasses = classNames({
-        'text-lg': true,
+        'text-xl': true,
          'font-[AwanZaman]' : true,
          'text-white': true
     });
     navactive = classNames({
-        'text-lg': true,
+        'text-xl': true,
          'font-[AwanZaman]' : true
     });
     onClickBar = () => {
@@ -54,21 +54,23 @@ class Header extends Component {
                         <a className="text-4xl mt- py-2 px-3 font-[AwanZaman]">Logo</a>
                         <a href="/" className="text-lg py-2 px-3 hover:bg-[#F5F5F5] duration-300 font-[AwanZaman] hidden sm:block">Home</a>
                         <a href="/Shop" className="text-lg py-2 px-3 hover:bg-[#F5F5F5] duration-300 font-[AwanZaman] hidden sm:block">Shop</a>
-                        <a className="text-lg py-2 px-3 hover:bg-[#F5F5F5] duration-300 font-[AwanZaman] hidden sm:block">Featured</a>
-                        <a className="text-lg py-2 px-3 hover:bg-[#F5F5F5] duration-300 font-[AwanZaman] hidden sm:block">Recommended</a>
+                        <a href="/Featured" className="text-lg py-2 px-3 hover:bg-[#F5F5F5] duration-300 font-[AwanZaman] hidden sm:block">Featured</a>
+                        <a href="/Recommended" className="text-lg py-2 px-3 hover:bg-[#F5F5F5] duration-300 font-[AwanZaman] hidden sm:block">Recommended</a>
                     </div>
-                    <div className="w-[13%] flex justify-between items-center">
+                    <div className=" lg:w-[20%] xl:w-[16%] 2xl:w-[13%] flex justify-between items-center">
                         <FontAwesomeIcon icon={faBagShopping} className="text-2xl" />
-                        <FontAwesomeIcon icon={faBars} className="text-2xl sm:hidden px-4" onClick={this.onClickBar} />
-                        <a className="text-lg font-[AwanZaman] text-white py-1 px-4 bg-black border-2 border-black hidden sm:block" href="/Signup">Sign up</a>
-                        <a className="text-lg font-[AwanZaman] text-[#907F7D] py-1 px-4 bg-[#F2F2F2] border-2 hidden sm:block" href="/Signin">Sign in</a>
+                        <FontAwesomeIcon icon={faBars} className="text-2xl lg:hidden px-4" onClick={this.onClickBar} />
+                        <a className="text-lg font-[AwanZaman] text-white py-1 px-4 bg-black border-2 border-black hidden lg:block" href="/Signup">Sign up</a>
+                        <a className="text-lg font-[AwanZaman] text-[#907F7D] py-1 px-4 bg-[#F2F2F2] border-2 hidden lg:block" href="/Signin">Sign in</a>
                     </div>
                 </div>
                 <div className={this.state.Headeractive ? this.active : this.classes}>
                     <a href="/" className={this.state.Headeractive ? this.navactive : this.navclasses}>Home</a>
-                    <a className={this.state.Headeractive ? this.navactive : this.navclasses}>Shop</a>
-                    <a className={this.state.Headeractive ? this.navactive : this.navclasses}>Featured</a>
-                    <a className={this.state.Headeractive ? this.navactive : this.navclasses}>Recommended</a>
+                    <a href="/Signin" className={this.state.Headeractive ? this.navactive : this.navclasses}>Sign in</a>
+                    <a href="/Signup" className={this.state.Headeractive ? this.navactive : this.navclasses}>Sign up</a>
+                    <a href="/Shop" className={this.state.Headeractive ? this.navactive : this.navclasses}>Shop</a>
+                    <a href="/Featured" className={this.state.Headeractive ? this.navactive : this.navclasses}>Featured</a>
+                    <a href="/Recommended" className={this.state.Headeractive ? this.navactive : this.navclasses}>Recommended</a>
                 </div>
             </div>
 

@@ -9,6 +9,7 @@ import Signup from './Signup';
 import ForgetPassword from './ForgetPassword';
 import Shop from './Shop';
 import Featured from './Featured';
+import Recommended from './Recommended';
 export default function App() {
   return (
     <BrowserRouter>
@@ -21,6 +22,7 @@ export default function App() {
           <Route path='/ForgetPassword' Component={ForgetPassword}></Route>
           <Route path='/Shop' Component={Shop}></Route>
           <Route path='/Featured' Component={Featured}></Route>
+          <Route path='/Recommended' Component={Recommended}></Route>
         </Routes>
         <Footer></Footer>
       </div>

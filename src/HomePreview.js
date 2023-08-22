@@ -9,7 +9,7 @@ function HomePreview() {
                     <strong>See</strong> everything with <strong>Clarity</strong>
                 </h1>
                 <p className="font-[AwanZaman] text-xl text-[#4A4A4A] text-left overflow-clip max-h-40">Buying eyewear should leave you happy and good-looking, with money in your pocket. Glasses, sunglasses, and contacts—we’ve got your eyes covered.</p>
-                <a className="py-3 px-4 bg-black font-bold font-[AwanZaman] text-xl">
+                <a href="/Shop" className="py-3 px-4 bg-black hover:bg-[#1E1E1E] font-bold font-[AwanZaman] text-xl">
                     <span className="pr-2 text-white">Shop Now</span>
                     <FontAwesomeIcon icon={faArrowRight} className="text-white" />
                 </a>
