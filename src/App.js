@@ -10,6 +10,7 @@ import ForgetPassword from './ForgetPassword';
 import Shop from './Shop';
 import Featured from './Featured';
 import Recommended from './Recommended';
+import ProductDetails from './ProductDetails';
 export default function App() {
   return (
     <BrowserRouter>
@@ -23,6 +24,7 @@ export default function App() {
           <Route path='/Shop' Component={Shop}></Route>
           <Route path='/Featured' Component={Featured}></Route>
           <Route path='/Recommended' Component={Recommended}></Route>
+          <Route path='/Product' Component={ProductDetails}></Route>
         </Routes>
         <Footer></Footer>
       </div>
