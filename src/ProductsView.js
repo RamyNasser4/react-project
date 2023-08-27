@@ -5,7 +5,7 @@ import axios from "axios";
 function ProductsView(props) {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        if (props.section == "Recommended Products") {
+        if (props.section == "Recommended Products" || props.Recommended) {
             axios.get("http://127.0.0.1:8000/api/products/recommended").then(res => {
                 setProducts(res.data);
             })
@@ -22,7 +22,9 @@ function ProductsView(props) {
                 <Link className="font-[TyfoonSans] text-lg underline" to={props.link}>See all</Link>
             </div>}
             <div className="grid grid-cols-[repeat(auto-fit,minmax(20rem,1fr))] gap-8 w-full">
-                {products.slice(0,6).map((item) => {
+                {props.Featured || props.Recommended ? products.map((item) => {
+                    return <ProductCard Name={item.name} desc={item.collection_name} price={`$${item.price}`} imgsrc={item.image} key={item.id}></ProductCard>
+                }) : products.slice(0,6).map((item) => {
                     return <ProductCard Name={item.name} desc={item.collection_name} price={`$${item.price}`} imgsrc={item.image} key={item.id}></ProductCard>
                 })}
             </div>
