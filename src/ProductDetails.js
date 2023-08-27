@@ -13,15 +13,15 @@ function ProductDetails() {
                     <FontAwesomeIcon icon={faArrowLeft} />
                     <span className="font-[AwanZaman] text-2xl pl-2">Back to Shop</span>
                 </Link>
-                <div className="flex border-[0.1px] border-solid border-[#c5c5c5]">
-                    <div className="flex flex-col w-[160px] border-r-[0.1px] border-solid border-[#c5c5c5]">
+                <div className="flex border-[0.1px] border-solid border-[#c5c5c5] flex-wrap">
+                    <div className="flex w-full lg:flex-col lg:w-[160px] border-b-[0.1px] lg:border-r-[0.1px] border-solid border-[#c5c5c5]">
                         <ProductModel imgsrc="https://firebasestorage.googleapis.com/v0/b/salinaka-ecommerce.appspot.com/o/products%2F7l3FMZqY8JdfssalDgx2?alt=media&token=be15689c-e12c-4829-9d78-32395ef1e3f7"></ProductModel>
                         <ProductModel imgsrc="https://firebasestorage.googleapis.com/v0/b/salinaka-ecommerce.appspot.com/o/products%2F7l3FMZqY8JdfssalDgx2?alt=media&token=be15689c-e12c-4829-9d78-32395ef1e3f7"></ProductModel>
                     </div>
-                    <div className="flex justify-center items-center bg-[#F8F8F8]">
+                    <div className="flex justify-center items-center w-full lg:w-auto bg-[#F8F8F8]">
                         <img className="box-content" src="https://firebasestorage.googleapis.com/v0/b/salinaka-ecommerce.appspot.com/o/products%2F7l3FMZqY8JdfssalDgx2?alt=media&token=be15689c-e12c-4829-9d78-32395ef1e3f7"></img>
                     </div>
-                    <div className="flex flex-col py-5 px-8 items-start w-2/5">
+                    <div className="flex  flex-col py-5 px-8 items-start w-full lg:w-2/5">
                         <br></br>
                         <h6 className="font-[AwanZaman] font-semibold text-base text-[#818181]">Bomb</h6>
                         <h1 className="font-[MaiseeMedium] text-4xl mb-4">Burnikk</h1>

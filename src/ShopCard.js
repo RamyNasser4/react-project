@@ -12,6 +12,7 @@ class ShopCard extends Component {
             'scale-[0.6]': false
         }),
         normalimgcontainer: classNames({
+            'overflow-y-hidden' : true,
             'duration-500' : true,
             'transition-[height]' : true,
             'bg-[#F1F1F1]': true,
@@ -43,6 +44,7 @@ class ShopCard extends Component {
                 'scale-[0.55]': true
             }),
             normalimgcontainer: classNames({
+                'overflow-y-hidden' : true,
                 'duration-500' : true,
                 'transition-[height]' : true,
                 'bg-[#F1F1F1]': true,
@@ -81,6 +83,7 @@ class ShopCard extends Component {
                 'scale-[0.6]': false
             }),
             normalimgcontainer: classNames({
+                'overflow-y-hidden' : true,
                 'duration-500' : true,
                 'h-24' : true,
                 'transition-[height]' : true,
