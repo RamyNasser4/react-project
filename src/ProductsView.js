@@ -23,9 +23,9 @@ function ProductsView(props) {
             </div>}
             <div className="grid grid-cols-[repeat(auto-fit,minmax(20rem,1fr))] gap-8 w-full">
                 {props.Featured || props.Recommended ? products.map((item) => {
-                    return <ProductCard Name={item.name} desc={item.collection_name} price={`$${item.price}`} imgsrc={item.image} key={item.id}></ProductCard>
+                    return <ProductCard Name={item.name} desc={item.collection_name} price={`$${item.price}`} imgsrc={item.image} key={item.id} id={item.id}></ProductCard>
                 }) : products.slice(0,6).map((item) => {
-                    return <ProductCard Name={item.name} desc={item.collection_name} price={`$${item.price}`} imgsrc={item.image} key={item.id}></ProductCard>
+                    return <ProductCard Name={item.name} desc={item.collection_name} price={`$${item.price}`} imgsrc={item.image} key={item.id} id={item.id}></ProductCard>
                 })}
             </div>
         </div>

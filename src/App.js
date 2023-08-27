@@ -24,7 +24,7 @@ export default function App() {
           <Route path='/Shop' Component={Shop}></Route>
           <Route path='/Featured' Component={Featured}></Route>
           <Route path='/Recommended' Component={Recommended}></Route>
-          <Route path='/Product' Component={ProductDetails}></Route>
+          <Route path='/Product/:id' Component={ProductDetails}></Route>
         </Routes>
         <Footer></Footer>
       </div>

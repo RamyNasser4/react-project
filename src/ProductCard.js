@@ -30,7 +30,7 @@ class ProductCard extends Component{
     render(){
         return(
             <>
-            <Link to="/Product" className="w-fit border-2" onMouseEnter={this.HandleHoverin} onMouseLeave={this.HandleHoverout}>
+            <Link to={`/Product/${this.props.id}`} className="w-fit border-2" onMouseEnter={this.HandleHoverin} onMouseLeave={this.HandleHoverout}>
                 <div className="bg-[#F1F1F1] w-fit">
                     <img src={this.props.imgsrc} className={this.state.classes}></img>
                 </div>
