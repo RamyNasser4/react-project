@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 class ShopCard extends Component {
     constructor(props) {
         super(props);
@@ -122,14 +123,14 @@ class ShopCard extends Component {
         return (
             <>
                 <a className="w-fit border-[0.1px] h-60 flex flex-col overflow-y-hidden duration-1000" onMouseEnter={this.HandleHoverin} onMouseLeave={this.HandleHoverout}>
-                    <div className={this.state.normalimgcontainer}>
+                    <Link to={`/Product/${this.props.id}`} className={this.state.normalimgcontainer}>
                         <img className={this.state.normalimg} src={this.props.imgsrc}></img>
-                    </div>
-                    <div className="flex justify-around items-center flex-col p-3 grow">
+                    </Link>
+                    <Link to={`/Product/${this.props.id}`} className="flex justify-around items-center flex-col p-3 grow">
                         <div className="font-[MaiseeMedium] text-xs font-semibold">{this.props.Name}</div>
                         <div className="font-[GlasgowItalic] text-[#BCBCBC] text-xs font-semibold mb-6">{this.props.desc}</div>
                         <div className="font-[MaiseeMedium] text-sm font-semibold">{this.props.price}</div>
-                    </div>
+                    </Link>
                     <div className={this.state.normalbutton}>
                         Add to basket
                     </div>
