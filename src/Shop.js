@@ -12,7 +12,8 @@ function Shop(){
         return (
             <div className="grid gap-3 grid-cols-[repeat(auto-fit,minmax(160px,1fr))] py-[15vh] px-28">
                 {products.map((item) => {
-                    return <ShopCard Name={item.name} desc={item.collection_name} price={`$${item.price}`} imgsrc={item.image} key={item.id} id={item.id}></ShopCard>
+                    const imgs = item.image.split(",");
+                    return <ShopCard Name={item.name} desc={item.collection_name} price={`$${item.price}`} imgsrc={imgs[0]} key={item.id} id={item.id}></ShopCard>
                 })}
             </div>
         );
