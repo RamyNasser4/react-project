@@ -11,23 +11,27 @@ import axios from "axios";
 function ProductDetails() {
     const [product, setProduct] = useState([]);
     const [productImages, setProductImages] = useState([]);
+    const [productColors,setProductColors] = useState([]);
     const dispatch = useDispatch();
     const Image = useSelector(state => state.Image.selectedImage);
+    const Color = useSelector(state =>state.Color.selectedColor);
+    const ColorHex = useSelector(state => state.Color.selectedColorHex);
     let { id } = useParams();
 
     useEffect(() => {
         const getPics = async () => {
             try {
                 await axios.get(`http://127.0.0.1:8000/api/products/${id}`).then(res => {
-                    setProduct(res.data);
-                    setProductImages(res.data.image.split(","));
-                    dispatch(updateImage(res.data.image.split(",")[0]));
+                    setProduct(res.data.product);
+                    setProductImages(res.data.product.image.split(","));
+                    setProductColors(res.data.colors);
+                    dispatch(updateImage(res.data.product.image.split(",")[0]));
                 })
             } catch (err) {
             }
         }
         getPics();
-    }, [id]);
+    }, [id,dispatch]);
 
     return (
         <div className="flex flex-col justify-center items-center pt-16 sm:px-24">
@@ -43,7 +47,7 @@ function ProductDetails() {
                         })}
                     </div>
                     <div className="relative flex justify-center items-center w-full lg:w-auto bg-[#F8F8F8]">
-                        {/* selectedColor ?  */<input type="color" /* value="red" */ className="hidden absolute top-0 left-0 w-full h-full mix-blend-hue" disabled></input>/*  : null */}
+                        {Color!=="" ? <input type="color" value={`${ColorHex}`} className="absolute top-0 left-0 w-full h-full mix-blend-hue" disabled></input> : null}
                         <img className="box-content" src={Image}></img>
                     </div>
                     <div className="flex  flex-col py-5 px-8 items-start w-full lg:w-2/5">
@@ -60,14 +64,10 @@ function ProductDetails() {
                                 <option>42mm</option>
                             </select>
                             <label htmlFor="color" className="font-[AwanZaman] font-semibold text-sm text-[#818181] tracking-wider">Choose Color</label>
-                            <div className="flex justify-between w-2/3 my-4 relative">
-                                <ColorOption></ColorOption>
-                                <ColorOption></ColorOption>
-                                <ColorOption></ColorOption>
-                                <ColorOption></ColorOption>
-                                <ColorOption></ColorOption>
-                                <ColorOption></ColorOption>
-                                <ColorOption></ColorOption>
+                            <div className="flex justify-between w-3/4 my-4 relative">
+                                {productColors.map((item,pos) =>{
+                                    return <ColorOption key={pos} pos={pos} isClicked={Color===pos ? true : false} color={item.color_hex}></ColorOption>
+                                })}
                             </div>
                             <h1 className="font-[MaiseeMedium] text-4xl my-5">${product.price}</h1>
                             <Link className="text-lg font-[AwanZaman] text-white py-1 px-4 bg-black border-2 border-black hidden lg:block mb-3" to="">Add to Basket</Link>
