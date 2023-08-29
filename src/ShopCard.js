@@ -1,6 +1,8 @@
 import classNames from "classnames";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 class ShopCard extends Component {
     constructor(props) {
         super(props);
@@ -16,11 +18,12 @@ class ShopCard extends Component {
             'overflow-y-hidden' : true,
             'duration-500' : true,
             'transition-[height]' : true,
+            'overflow-x-hidden' : true,
             'bg-[#F1F1F1]': true,
             'flex': true,
             'justify-center': true,
             'items-center': true,
-            'w-fit': true,
+            'w-full': true,
             'h-24' : true
         }),
         normalbutton: classNames({
@@ -34,7 +37,8 @@ class ShopCard extends Component {
             'justify-center': true,
             'items-center': true
         }),
-        buttoncontent : null
+        buttoncontent : null,
+        isPicLoaded : false
     }
     HandleHoverin = () =>{
         this.setState({
@@ -48,11 +52,12 @@ class ShopCard extends Component {
                 'overflow-y-hidden' : true,
                 'duration-500' : true,
                 'transition-[height]' : true,
+                'overflow-x-hidden' : true,
                 'bg-[#F1F1F1]': true,
                 'flex': true,
                 'justify-center': true,
                 'items-center': true,
-                'w-fit': true,
+                'w-full': true,
                 'h-[4.5rem]' : true
                 /* 'animate-[heightopen_0.6s_ease-in-out_forwards]' : true */
                 
@@ -86,13 +91,14 @@ class ShopCard extends Component {
             normalimgcontainer: classNames({
                 'overflow-y-hidden' : true,
                 'duration-500' : true,
+                'overflow-x-hidden' : true,
                 'h-24' : true,
                 'transition-[height]' : true,
                 'bg-[#F1F1F1]': true,
                 'flex': true,
                 'justify-center': true,
                 'items-center': true,
-                'w-fit': true
+                'w-full': true
             }),
             normalbutton: classNames({
                 'translate-y-6' : true,
@@ -112,19 +118,17 @@ class ShopCard extends Component {
             })
         }, 50);
     }
-    shouldComponentUpdate(nextProps,nextState){
-        if(nextState.normalimg === this.state.normalimg){
-            return false;
-        }else{
-            return true;
-        }
+    HandleLoad = () =>{
+        this.setState({isPicLoaded : true});
+        console.log(this.state);
     }
     render() {
         return (
             <>
-                <a className="w-fit border-[0.1px] h-60 flex flex-col overflow-y-hidden duration-1000" onMouseEnter={this.HandleHoverin} onMouseLeave={this.HandleHoverout}>
+                <a className="w-full border-[0.1px] h-60 flex flex-col overflow-y-hidden duration-1000" onMouseEnter={this.HandleHoverin} onMouseLeave={this.HandleHoverout}>
                     <Link to={`/Product/${this.props.id}`} className={this.state.normalimgcontainer}>
-                        <img className={this.state.normalimg} src={this.props.imgsrc}></img>
+                        {this.state.isPicLoaded ? null : <FontAwesomeIcon icon={faSpinner} spin />}
+                        <img onLoad={this.HandleLoad} className={this.state.normalimg} src={this.props.imgsrc}></img>
                     </Link>
                     <Link to={`/Product/${this.props.id}`} className="flex justify-around items-center flex-col p-3 grow">
                         <div className="font-[MaiseeMedium] text-xs font-semibold">{this.props.Name}</div>
