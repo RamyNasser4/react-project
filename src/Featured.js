@@ -1,7 +1,11 @@
 import React from "react";
 import ShopPreview from "./ShopPreview";
 import ProductsView from "./ProductsView";
+import { useDispatch } from "react-redux";
+import { closeBasket } from "./Redux/BasketSlice";
 function Featured() {
+    const dispatch = useDispatch();
+    dispatch(closeBasket(false));
     window.scrollTo({
         top: 0
     });

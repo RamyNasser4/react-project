@@ -8,8 +8,11 @@ export const BasketSlice = createSlice({
     reducers : {
         controlBasket : (state) =>{
             state.visible = !state.visible;
+        },
+        closeBasket : (state,action) =>{
+            state.visible = action.payload
         }
     }
 });
-export const {controlBasket} = BasketSlice.actions;
+export const {controlBasket,closeBasket} = BasketSlice.actions;
 export default BasketSlice.reducer;
