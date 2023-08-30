@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ProductsView from "./ProductsView";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faSpinner} from "@fortawesome/free-solid-svg-icons";
@@ -10,6 +10,7 @@ import { updateImage } from "./Redux/ImageSlice";
 import axios from "axios";
 import { updateColor } from "./Redux/ColorSlice";
 function ProductDetails() {
+    const refProduct = useRef();
     const [product, setProduct] = useState([]);
     const [Loaded,setLoaded] = useState(false);
     const [productImages, setProductImages] = useState([]);
@@ -22,6 +23,10 @@ function ProductDetails() {
     let { id } = useParams();
 
     useEffect(() => {
+        window.scrollTo({
+            top: refProduct.current.offsetTop,
+            behavior: "smooth",
+           });
         const getPics = async () => {
             try {
                 await axios.get(`http://127.0.0.1:8000/api/products/${id}`).then(res => {
@@ -43,7 +48,7 @@ function ProductDetails() {
         console.log(isPicLoaded);
     }
     return (
-        <div className="flex flex-col justify-center items-center pt-16 sm:px-24">
+        <div ref={refProduct} className="flex flex-col justify-center items-center pt-16 sm:px-24">
             <div className="flex flex-col w-full px-14 py-10">
                 <Link to="/Shop" className="self-start p-5">
                     <FontAwesomeIcon icon={faArrowLeft} />
@@ -55,7 +60,7 @@ function ProductDetails() {
                             return <ProductModel imgsrc={item}></ProductModel>
                         })}
                     </div>
-                    <div className="relative flex justify-center min-w-[450px] min-h-[570px] items-center w-full lg:w-auto bg-[#F8F8F8]">
+                    <div className="relative flex justify-center min-w-[450px] min-h-[570px] max-w-[500px] max-h-[600px] items-center w-full lg:w-auto bg-[#F8F8F8]">
                         {Color!=="" ? <input type="color" value={`${ColorHex}`} className="absolute top-0 left-0 w-full h-full mix-blend-hue" disabled></input> : null}
                         {isPicLoaded ? null : <FontAwesomeIcon className="text-3xl" icon={faSpinner} spin />}
                         <img onLoad={HandleLoad} className="box-content" src={Image}></img>

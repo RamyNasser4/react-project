@@ -4,7 +4,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 function HomePreview() {
     return (
-        <div className="flex bg-[#F3F3F3] w-full h-[30rem] sm:h-[25rem]">
+        <div data-id id="View" className="flex bg-[#F3F3F3] w-full h-[30rem] sm:h-[25rem]">
             <div className="flex flex-col justify-between items-start p-10 md:w-1/2">
                 <h1 className="font-[AwanZaman] text-6xl min-w-[20rem] w-1/2 text-left mt-8">
                     <strong>See</strong> everything with <strong>Clarity</strong>
