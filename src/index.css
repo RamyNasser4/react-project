@@ -1,15 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer utilities {
+    @variants responsive {
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      .no-scrollbar::-webkit-scrollbar {
+          display: none;
+      }
 
+      /* Hide scrollbar for IE, Edge and Firefox */
+      .no-scrollbar {
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
+      }
+    }
+  }
 @font-face {
   font-family: AwanZaman;
-  src: url(AwanZamanMedium.ttf);
+  src: url(fonts/AwanZamanMedium.ttf);
 }
 
 @font-face {
   font-family: BrieRegular;
-  src: url(BrieMediumRegular.ttf);
+  src: url(fonts/BrieMediumRegular.ttf);
 }
 
 @font-face {
@@ -34,9 +47,20 @@
 
 @font-face {
   font-family: GlasgowItalic;
-  src: url(GlasgowItalic.ttf);
+  src: url(fonts/GlasgowItalic.ttf);
 }
-
+@font-face {
+  font-family: 'FallingSkyRegular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Falling Sky Regular'), url(fonts/FallingSky.woff) format('woff');
+  }
+  @font-face {
+    font-family: 'FallingSkyRegular';
+    font-style: normal;
+    font-weight: 500;
+    src: local('Falling Sky Regular'), url(fonts/FallingSkyMed.woff) format('woff');
+    }
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

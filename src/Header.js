@@ -3,7 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBagShopping, faBars } from "@fortawesome/free-solid-svg-icons";
 import classNames from "classnames";
 import { Link, NavLink } from "react-router-dom";
+import { connect } from 'react-redux';
+import { controlBasket } from "./Redux/BasketSlice";
 class Header extends Component {
+    constructor(props){
+        super(props);
+    }
     state = {
         Headeractive: false
     }
@@ -45,7 +50,10 @@ class Header extends Component {
         } else {
             this.setState({ Headeractive: true });
         }
-        
+    }
+    onClickBag = () =>{
+        const { dispatch } = this.props;                
+        dispatch(controlBasket());
     }
     render() {
         return (
@@ -59,7 +67,7 @@ class Header extends Component {
                         <NavLink to="/Recommended" className="text-lg py-2 px-3 hover:bg-[#F5F5F5] duration-300 font-[AwanZaman] hidden sm:block">Recommended</NavLink>
                     </div>
                     <div className=" lg:w-[20%] xl:w-[16%] 2xl:w-[13%] flex justify-between items-center">
-                        <FontAwesomeIcon icon={faBagShopping} className="text-2xl" />
+                        <FontAwesomeIcon icon={faBagShopping} onClick={this.onClickBag} className="text-2xl" />
                         <FontAwesomeIcon icon={faBars} className="text-2xl lg:hidden px-4" onClick={this.onClickBar} />
                         <Link className="text-lg font-[AwanZaman] text-white py-1 px-4 bg-black border-2 border-black hidden lg:block" to="/Signup">Sign up</Link>
                         <Link className="text-lg font-[AwanZaman] text-[#907F7D] py-1 px-4 bg-[#F2F2F2] border-2 hidden lg:block" to="/Signin">Sign in</Link>
@@ -79,4 +87,4 @@ class Header extends Component {
     }
 
 }
-export default Header;
+export default connect()(Header);

@@ -11,11 +11,13 @@ import Shop from './Shop';
 import Featured from './Featured';
 import Recommended from './Recommended';
 import ProductDetails from './ProductDetails';
+import Basket from './Basket';
 export default function App() {
   return (
     <BrowserRouter>
       <div className='App'>
         <Header></Header>
+        <Basket></Basket>
         <Routes>
           <Route exact path='/' Component={Home}></Route>
           <Route path='/Signin' Component={Signin}></Route>

@@ -11,7 +11,7 @@ function ColorOption(props) {
     return (
         <div className="relative mx-3 flex justify-center items-center">
             <input type="radio" onClick={() => handleClick()} className="relative cursor-pointer opacity-0 w-8 h-8 bg-black z-20"></input>
-            <span className={`absolute cursor-pointer top-0 left-0 w-8 h-8 bg-[${props.color}] rounded-full`}></span>
+            <span style={{backgroundColor : props.color}} className={'absolute cursor-pointer top-0 left-0 w-8 h-8 rounded-full'}></span>
             <FontAwesomeIcon className={`absolute ${props.isClicked ? null : 'hidden'} top-1/5 left-1/5 z-10 text-white`} icon={faCheck}></FontAwesomeIcon>
         </div>
     );
