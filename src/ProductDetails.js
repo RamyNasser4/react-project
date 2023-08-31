@@ -73,11 +73,11 @@ function ProductDetails() {
                         <hr className="w-full my-5" />
                         <form className="flex flex-col w-full items-start">
                             <label htmlFor="lens" className="font-[AwanZaman] font-semibold text-sm text-[#818181] tracking-wider mb-4">Lens Width and Frame Size</label>
-                            <select id="lens" className="w-full px-3 py-2 border-[0.1px] border-solid border-[#c5c5c5] rounded-md mb-4">
-                                <option>28mm</option>
-                                <option>36mm</option>
-                                <option>42mm</option>
-                            </select>
+                            {/* <select id="lens" className="w-full px-3 py-2 focus:border-blue-500 focus: border-[0.1px] border-solid border-[#c5c5c5] rounded-md mb-4">
+                                <option className="hidden">28mm</option>
+                                <option className="hidden">36mm</option>
+                                <option className="hidden">42mm</option>
+                            </select> */}
                             {productColors.length !==0 ? <label htmlFor="color" className="font-[AwanZaman] font-semibold text-sm text-[#818181] tracking-wider">Choose Color</label> : null}
                             <div className="flex w-3/4 my-4 relative">
                                 {productColors.map((item,pos) =>{

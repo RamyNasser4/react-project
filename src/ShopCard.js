@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { connect } from 'react-redux';
+import { addtoBasket } from "./Redux/BasketSlice";
 class ShopCard extends Component {
     constructor(props) {
         super(props);
@@ -29,6 +31,7 @@ class ShopCard extends Component {
         normalbutton: classNames({
             'translate-y-6' : true,
             'duration-100': true,
+            'cursor-pointer' : true,
             'font-[AwanZaman]': true,
             'font-semibold': true,
             'text-white': true,
@@ -65,6 +68,7 @@ class ShopCard extends Component {
             normalbutton: classNames({
                 'duration-200': true,
                 'font-[AwanZaman]': true,
+                'cursor-pointer' : true,
                 'font-semibold': true,
                 'text-white': true,
                 'bg-black': true,
@@ -102,6 +106,7 @@ class ShopCard extends Component {
             }),
             normalbutton: classNames({
                 'translate-y-6' : true,
+                'cursor-pointer' : true,
                 'duration-100': true,
                 'font-[AwanZaman]': true,
                 'font-semibold': true,
@@ -120,12 +125,15 @@ class ShopCard extends Component {
     }
     HandleLoad = () =>{
         this.setState({isPicLoaded : true});
-        console.log(this.state);
+    }
+    HandleAdd = () =>{
+        const { dispatch } = this.props;
+        dispatch(addtoBasket({image : this.props.imgsrc,name: this.props.Name,quantity : 1,size: "28mm",color : this.props.color,price: this.props.price}))
     }
     render() {
         return (
             <>
-                <a className="w-full border-[0.1px] h-60 flex flex-col overflow-y-hidden duration-1000" onMouseEnter={this.HandleHoverin} onMouseLeave={this.HandleHoverout}>
+                <div className="w-full border-[0.1px] h-60 flex flex-col overflow-y-hidden duration-1000" onMouseEnter={this.HandleHoverin} onMouseLeave={this.HandleHoverout}>
                     <Link to={`/Product/${this.props.id}`} className={this.state.normalimgcontainer}>
                         {this.state.isPicLoaded ? null : <FontAwesomeIcon icon={faSpinner} spin />}
                         <img onLoad={this.HandleLoad} className={this.state.normalimg} src={this.props.imgsrc}></img>
@@ -133,15 +141,15 @@ class ShopCard extends Component {
                     <Link to={`/Product/${this.props.id}`} className="flex justify-around items-center flex-col p-3 grow">
                         <div className="font-[MaiseeMedium] text-xs font-semibold">{this.props.Name}</div>
                         <div className="font-[GlasgowItalic] text-[#BCBCBC] text-xs font-semibold mb-6">{this.props.desc}</div>
-                        <div className="font-[MaiseeMedium] text-sm font-semibold">{this.props.price}</div>
+                        <div className="font-[MaiseeMedium] text-sm font-semibold">${this.props.price}</div>
                     </Link>
-                    <div className={this.state.normalbutton}>
+                    <div onClick={this.HandleAdd} className={this.state.normalbutton}>
                         Add to basket
                     </div>
-                </a>
+                </div>
             </>
         );
     }
 
 }
-export default ShopCard;
+export default connect()(ShopCard);

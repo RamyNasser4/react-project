@@ -12,8 +12,7 @@ function Shop() {
     dispatch(closeBasket(false));
     useEffect(() => {
         axios.get("http://127.0.0.1:8000/api/products").then(res => {
-            setProducts(res.data);
-            console.log(products);
+            setProducts(res.data.products);
             setLoaded(true);
         });
     }, []);
@@ -21,7 +20,7 @@ function Shop() {
         <div className="grid gap-3 min-h-[calc(100vh-72px)] grid-cols-[repeat(auto-fit,minmax(160px,1fr))] py-[15vh] px-28">
             {Loaded ? products.map((item) => {
                 const imgs = item.image.split(",");
-                return <ShopCard Name={item.name} desc={item.collection_name} price={`$${item.price}`} imgsrc={imgs[0]} key={item.id} id={item.id}></ShopCard>
+                return <ShopCard Name={item.name} desc={item.collection_name} price={item.price} imgsrc={imgs[0]} key={item.id} id={item.id} color={item.colors[0] ? item.colors[0].color_hex : ""}></ShopCard>
             }) : <div className="w-full h-full flex justify-center items-center"><FontAwesomeIcon className="text-4xl" icon={faSpinner} spin /></div>}
         </div>
     );
