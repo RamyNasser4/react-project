@@ -9,6 +9,8 @@ import {useDispatch, useSelector}  from 'react-redux';
 import { updateImage } from "./Redux/ImageSlice";
 import axios from "axios";
 import { updateColor } from "./Redux/ColorSlice";
+import Dropdown from "./Dropdown";
+import { addtoBasket } from "./Redux/BasketSlice";
 function ProductDetails() {
     const refProduct = useRef();
     const [product, setProduct] = useState([]);
@@ -20,6 +22,7 @@ function ProductDetails() {
     const Image = useSelector(state => state.Image.selectedImage);
     const Color = useSelector(state =>state.Color.selectedColor);
     const ColorHex = useSelector(state => state.Color.selectedColorHex);
+    const Size = useSelector(state =>state.Size.selectedSize);
     let { id } = useParams();
 
     useEffect(() => {
@@ -42,10 +45,13 @@ function ProductDetails() {
             }
         }
         getPics();
-    }, [id,dispatch]);
+    }, [id]);
     const HandleLoad = () =>{
         setIsPicLoaded(true);
         console.log(isPicLoaded);
+    }
+    const HandleAdd = () =>{
+        dispatch(addtoBasket({image : Image,name: product.name,quantity : 1,size: Size,color : ColorHex,price: product.price}))
     }
     return (
         <div ref={refProduct} className="flex flex-col justify-center items-center pt-16 sm:px-24">
@@ -71,13 +77,9 @@ function ProductDetails() {
                         <h1 className="font-[MaiseeMedium] text-4xl mb-4">{product.name}</h1>
                         <p className="text-left font-[AwanZaman] font-semibold text-[#4A4A4A] mt-2">{product.details}</p>
                         <hr className="w-full my-5" />
-                        <form className="flex flex-col w-full items-start">
+                        <div className="flex flex-col w-full items-start">
                             <label htmlFor="lens" className="font-[AwanZaman] font-semibold text-sm text-[#818181] tracking-wider mb-4">Lens Width and Frame Size</label>
-                            {/* <select id="lens" className="w-full px-3 py-2 focus:border-blue-500 focus: border-[0.1px] border-solid border-[#c5c5c5] rounded-md mb-4">
-                                <option className="hidden">28mm</option>
-                                <option className="hidden">36mm</option>
-                                <option className="hidden">42mm</option>
-                            </select> */}
+                            <Dropdown></Dropdown>
                             {productColors.length !==0 ? <label htmlFor="color" className="font-[AwanZaman] font-semibold text-sm text-[#818181] tracking-wider">Choose Color</label> : null}
                             <div className="flex w-3/4 my-4 relative">
                                 {productColors.map((item,pos) =>{
@@ -85,8 +87,8 @@ function ProductDetails() {
                                 })}
                             </div>
                             <h1 className="font-[MaiseeMedium] text-4xl my-5">${product.price}</h1>
-                            <Link className="text-lg font-[AwanZaman] text-white py-1 px-4 bg-black border-2 border-black hidden lg:block mb-3" to="">Add to Basket</Link>
-                        </form>
+                            <button onClick={HandleAdd} className="text-sm font-[FallingSkyRegular] text-white py-[0.7rem] px-4 bg-black border-2 border-black hidden lg:block mb-3">Add to Basket</button>
+                        </div>
                     </div></> :<div className="flex min-h-[570px] w-full justify-center items-center"><FontAwesomeIcon className="text-4xl" icon={faSpinner} spin /></div> }
                 </div>
             </div>
