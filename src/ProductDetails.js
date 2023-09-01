@@ -23,6 +23,7 @@ function ProductDetails() {
     const Color = useSelector(state =>state.Color.selectedColor);
     const ColorHex = useSelector(state => state.Color.selectedColorHex);
     const Size = useSelector(state =>state.Size.selectedSize);
+    const Basket = useSelector(state =>state.Basket.products);
     let { id } = useParams();
 
     useEffect(() => {
@@ -51,7 +52,19 @@ function ProductDetails() {
         console.log(isPicLoaded);
     }
     const HandleAdd = () =>{
-        dispatch(addtoBasket({image : Image,name: product.name,quantity : 1,size: Size,color : ColorHex,price: product.price}))
+        var Exists = false;
+        Basket.every(element => {
+            if(element.image == Image){
+                Exists = true;
+                if(element.size!=Size || element.color!=ColorHex){
+                    dispatch(addtoBasket({image : Image,name: product.name,quantity : 1,size: Size,color : ColorHex,price: product.price}));
+                }
+                return false;
+            }
+        });
+        if(!Exists){
+            dispatch(addtoBasket({image : Image,name: product.name,quantity : 1,size: Size,color : ColorHex,price: product.price}));
+        }
     }
     return (
         <div ref={refProduct} className="flex flex-col justify-center items-center pt-16 sm:px-24">

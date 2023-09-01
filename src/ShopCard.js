@@ -3,35 +3,38 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { addtoBasket } from "./Redux/BasketSlice";
+const mapStateToProps = state => ({
+    Basket: state.Basket.products
+});
 class ShopCard extends Component {
     constructor(props) {
         super(props);
     }
     state = {
         normalimg: classNames({
-            'duration-500' : true,
-            'ease-in-out' : true,
+            'duration-500': true,
+            'ease-in-out': true,
             'scale-[0.8]': true,
             'scale-[0.6]': false
         }),
         normalimgcontainer: classNames({
-            'overflow-y-hidden' : true,
-            'duration-500' : true,
-            'transition-[height]' : true,
-            'overflow-x-hidden' : true,
+            'overflow-y-hidden': true,
+            'duration-500': true,
+            'transition-[height]': true,
+            'overflow-x-hidden': true,
             'bg-[#F1F1F1]': true,
             'flex': true,
             'justify-center': true,
             'items-center': true,
             'w-full': true,
-            'h-24' : true
+            'h-24': true
         }),
         normalbutton: classNames({
-            'translate-y-6' : true,
+            'translate-y-6': true,
             'duration-100': true,
-            'cursor-pointer' : true,
+            'cursor-pointer': true,
             'font-[AwanZaman]': true,
             'font-semibold': true,
             'text-white': true,
@@ -40,64 +43,64 @@ class ShopCard extends Component {
             'justify-center': true,
             'items-center': true
         }),
-        buttoncontent : null,
-        isPicLoaded : false
+        buttoncontent: null,
+        isPicLoaded: false
     }
-    HandleHoverin = () =>{
+    HandleHoverin = () => {
         this.setState({
             normalimg: classNames({
-                'duration-500' : true,
-                'ease-in-out' : true,
+                'duration-500': true,
+                'ease-in-out': true,
                 'scale-75': false,
                 'scale-[0.55]': true
             }),
             normalimgcontainer: classNames({
-                'overflow-y-hidden' : true,
-                'duration-500' : true,
-                'transition-[height]' : true,
-                'overflow-x-hidden' : true,
+                'overflow-y-hidden': true,
+                'duration-500': true,
+                'transition-[height]': true,
+                'overflow-x-hidden': true,
                 'bg-[#F1F1F1]': true,
                 'flex': true,
                 'justify-center': true,
                 'items-center': true,
                 'w-full': true,
-                'h-[4.5rem]' : true
+                'h-[4.5rem]': true
                 /* 'animate-[heightopen_0.6s_ease-in-out_forwards]' : true */
-                
+
             }),
             normalbutton: classNames({
                 'duration-200': true,
                 'font-[AwanZaman]': true,
-                'cursor-pointer' : true,
+                'cursor-pointer': true,
                 'font-semibold': true,
                 'text-white': true,
                 'bg-black': true,
                 'flex': true,
                 'justify-center': true,
                 'items-center': true,
-                'grow' : true
+                'grow': true
             }),
         });
         setTimeout(() => {
             this.setState({
-                buttoncontent :"Add to basket"
+                buttoncontent: "Add to basket"
             })
         }, 300);
     }
-    HandleHoverout = () =>{
+    HandleHoverout = () => {
         this.setState({
             normalimg: classNames({
-                'duration-500' : true,
-                'ease-in-out' : true,
+                'duration-500': true,
+                'ease-in-out': true,
                 'scale-[0.8]': true,
                 'scale-[0.6]': false
             }),
             normalimgcontainer: classNames({
-                'overflow-y-hidden' : true,
-                'duration-500' : true,
-                'overflow-x-hidden' : true,
-                'h-24' : true,
-                'transition-[height]' : true,
+                'overflow-y-hidden': true,
+                'duration-500': true,
+                'overflow-x-hidden': true,
+                'h-24': true,
+                'transition-[height]': true,
                 'bg-[#F1F1F1]': true,
                 'flex': true,
                 'justify-center': true,
@@ -105,8 +108,8 @@ class ShopCard extends Component {
                 'w-full': true
             }),
             normalbutton: classNames({
-                'translate-y-6' : true,
-                'cursor-pointer' : true,
+                'translate-y-6': true,
+                'cursor-pointer': true,
                 'duration-100': true,
                 'font-[AwanZaman]': true,
                 'font-semibold': true,
@@ -119,16 +122,30 @@ class ShopCard extends Component {
         });
         setTimeout(() => {
             this.setState({
-                buttoncontent :null
+                buttoncontent: null
             })
         }, 50);
     }
-    HandleLoad = () =>{
-        this.setState({isPicLoaded : true});
+    HandleLoad = () => {
+        this.setState({ isPicLoaded: true });
     }
-    HandleAdd = () =>{
+    HandleAdd = () => {
         const { dispatch } = this.props;
-        dispatch(addtoBasket({image : this.props.imgsrc,name: this.props.Name,quantity : 1,size: "28mm",color : this.props.color,price: this.props.price}))
+        var Exists = false;
+        this.props.Basket.every(element => {
+            if (element.image == this.props.imgsrc) {
+                Exists = true;
+                if (element.size != "28 mm" || element.color != this.props.color) {
+                    console.log("ana el awl");
+                    dispatch(addtoBasket({ image: this.props.imgsrc, name: this.props.Name, quantity: 1, size: "28 mm", color: this.props.color, price: this.props.price }))
+                }
+                return false;
+            }
+        });
+        if (!Exists) {
+            console.log("ana el tany");
+            dispatch(addtoBasket({ image: this.props.imgsrc, name: this.props.Name, quantity: 1, size: "28 mm", color: this.props.color, price: this.props.price }))
+        }
     }
     render() {
         return (
@@ -152,4 +169,4 @@ class ShopCard extends Component {
     }
 
 }
-export default connect()(ShopCard);
+export default connect(mapStateToProps)(ShopCard);
