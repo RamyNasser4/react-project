@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { connect, useSelector } from 'react-redux';
 import { addtoBasket } from "./Redux/BasketSlice";
+import { toggleAlert } from "./Redux/AlertSlice";
 const mapStateToProps = state => ({
     Basket: state.Basket.products
 });
@@ -144,7 +145,9 @@ class ShopCard extends Component {
         });
         if (!Exists) {
             console.log("ana el tany");
-            dispatch(addtoBasket({ image: this.props.imgsrc, name: this.props.Name, quantity: 1, size: "28 mm", color: this.props.color, price: this.props.price }))
+            dispatch(addtoBasket({ image: this.props.imgsrc, name: this.props.Name, quantity: 1, size: "28 mm", color: this.props.color, price: this.props.price }));
+            dispatch(toggleAlert());
+            setTimeout(() => {dispatch(toggleAlert())},2000);
         }
     }
     render() {

@@ -1,18 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import InputBox from "./InputBox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { faFacebookF, faGithub, faGoogle } from "@fortawesome/free-brands-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useSelector } from "react-redux";
+import Cookies from "js-cookie";
 function AuthCard(props) {
+    const navigate = useNavigate();
+    const Uname = useSelector(state => state.Signup.name);
+    const Uemail = useSelector(state => state.Signup.email);
+    const Upassword = useSelector(state => state.Signup.password);
+    const Iemail = useSelector(state => state.Signin.email);
+    const Ipassword = useSelector(state => state.Signin.password);
+    const csrf = () => axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie');
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        await csrf();
+        if (!props.signin) {
+            try {
+                await axios.post("http://127.0.0.1:8000/api/signup", { name: Uname, email: Uemail, password: Upassword }).then(res => {
+                    Cookies.set("access_token", res.data.token);
+                    navigate('/');
+                });
+            } catch (err) {
+                console.log(err);
+            }
+        }else{
+            try {
+                await axios.post("http://127.0.0.1:8000/api/signin", {email: Iemail, password: Ipassword }).then(res => {
+                    Cookies.set("access_token", res.data.token);
+                    navigate('/');
+                });
+            } catch (err) {
+                console.log(err);
+            }
+        }
+    }
     return (
         <div className="flex flex-col w-[4/5] md:w-[55%] ">
             <div className="flex flex-col border-[0.1px] border-solid border-[#c5c5c5] p-10">
                 <div className="flex flex-col md:flex-row">
                     <div className="flex flex-wrap flex-col items-start w-full md:w-1/2">
                         <h3 className="font-[AwanZaman] font-medium text-2xl pb-8">{props.title}</h3>
-                        <form className="flex flex-col items-start w-full">
-                            {props.signin ? <><InputBox type="email" name="Email"></InputBox><InputBox type="password" name="Password"></InputBox></> : <><InputBox type="text" name="Full Name"></InputBox><InputBox type="email" name="Email"></InputBox><InputBox type="password" name="Password"></InputBox></>}
+                        <form onSubmit={onSubmit} className="flex flex-col items-start w-full">
+                            {props.signin ? <><InputBox type="email" signin={true} name="Email"></InputBox><InputBox type="password" signin={true} name="Password"></InputBox></> : <><InputBox type="text" signup={true} name="Full Name"></InputBox><InputBox type="email" signup={true} name="Email"></InputBox><InputBox type="password" signup={true} name="Password"></InputBox></>}
                             <div className="flex flex-col sm:flex-row flex-wrap justify-between items-center w-full">
                                 <Link className="font-[AwanZaman] font-semibold underline text-[#6C6B6C]" to="/ForgetPassword">Forgot Password?</Link>
                                 <button type="submit" className="flex items-center text-xl font-[AwanZaman] text-white py-3 px-4 bg-black hover:bg-[#2A2A2A] cursor-pointer duration-300 border-2 border-black">

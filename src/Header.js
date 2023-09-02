@@ -69,8 +69,8 @@ class Header extends Component {
                     <div className=" lg:w-[20%] xl:w-[16%] 2xl:w-[13%] flex justify-between items-center">
                         <FontAwesomeIcon icon={faBagShopping} onClick={this.onClickBag} className="text-2xl" />
                         <FontAwesomeIcon icon={faBars} className="text-2xl lg:hidden px-4" onClick={this.onClickBar} />
-                        <Link className="text-lg font-[AwanZaman] text-white py-1 px-4 bg-black border-2 border-black hidden lg:block" to="/Signup">Sign up</Link>
-                        <Link className="text-lg font-[AwanZaman] text-[#907F7D] py-1 px-4 bg-[#F2F2F2] border-2 hidden lg:block" to="/Signin">Sign in</Link>
+                        <Link className="text-lg font-[AwanZaman] text-white py-1 px-4 bg-black border-2 border-black hidden lg:block cursor-pointer" to="/Signup">Sign up</Link>
+                        <Link className="text-lg font-[AwanZaman] text-[#907F7D] py-1 px-4 bg-[#F2F2F2] border-2 hidden lg:block cursor-pointer" to="/Signin">Sign in</Link>
                     </div>
                 </div>
                 <div className={this.state.Headeractive ? this.active : this.classes}>

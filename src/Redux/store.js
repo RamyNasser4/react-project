@@ -3,13 +3,19 @@ import ImageSlice from './ImageSlice';
 import ColorSlice from './ColorSlice';
 import BasketSlice from './BasketSlice';
 import SizeSlice from './SizeSlice';
+import AlertSlice from './AlertSlice';
+import SignupSlice from './SignupSlice';
+import SigninSlice from './SigninSlice';
 
 const store = configureStore({
     reducer : {
+        Signup : SignupSlice,
+        Signin : SigninSlice,
         Image : ImageSlice,
         Color : ColorSlice,
         Size : SizeSlice,
-        Basket : BasketSlice
+        Basket : BasketSlice,
+        Alert : AlertSlice
     }
 })
 export default store;
