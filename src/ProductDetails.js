@@ -11,6 +11,7 @@ import axios from "axios";
 import { updateColor } from "./Redux/ColorSlice";
 import Dropdown from "./Dropdown";
 import { addtoBasket } from "./Redux/BasketSlice";
+import { toggleAlert } from "./Redux/AlertSlice";
 function ProductDetails() {
     const refProduct = useRef();
     const [product, setProduct] = useState([]);
@@ -64,6 +65,8 @@ function ProductDetails() {
         });
         if(!Exists){
             dispatch(addtoBasket({image : Image,name: product.name,quantity : 1,size: Size,color : ColorHex,price: product.price}));
+            dispatch(toggleAlert());
+            setTimeout(() => {dispatch(toggleAlert())},2000);
         }
     }
     return (

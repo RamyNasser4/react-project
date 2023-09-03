@@ -13,25 +13,32 @@ import Recommended from './Recommended';
 import ProductDetails from './ProductDetails';
 import Basket from './Basket';
 import Added from './Added';
+import { AuthProvider } from 'react-auth-kit';
 export default function App() {
   return (
-    <BrowserRouter>
-      <div className='App'>
-        <Header></Header>
-        <Basket></Basket>
-        <Added></Added>
-        <Routes>
-          <Route exact path='/' Component={Home}></Route>
-          <Route path='/Signin' Component={Signin}></Route>
-          <Route path='/Signup' Component={Signup}></Route>
-          <Route path='/ForgetPassword' Component={ForgetPassword}></Route>
-          <Route path='/Shop' Component={Shop}></Route>
-          <Route path='/Featured' Component={Featured}></Route>
-          <Route path='/Recommended' Component={Recommended}></Route>
-          <Route path='/Product/:id' Component={ProductDetails}></Route>
-        </Routes>
-        <Footer></Footer>
-      </div>
-    </BrowserRouter>
+    <AuthProvider
+     authType={"cookie"}
+     authName={"_auth"}
+     cookieSecure={false}
+     >
+      <BrowserRouter>
+        <div className='App'>
+          <Header></Header>
+          <Basket></Basket>
+          <Added></Added>
+          <Routes>
+            <Route exact path='/' Component={Home}></Route>
+            <Route path='/Signin' Component={Signin}></Route>
+            <Route path='/Signup' Component={Signup}></Route>
+            <Route path='/ForgetPassword' Component={ForgetPassword}></Route>
+            <Route path='/Shop' Component={Shop}></Route>
+            <Route path='/Featured' Component={Featured}></Route>
+            <Route path='/Recommended' Component={Recommended}></Route>
+            <Route path='/Product/:id' Component={ProductDetails}></Route>
+          </Routes>
+          <Footer></Footer>
+        </div>
+      </BrowserRouter>
+    </AuthProvider>
   )
 }

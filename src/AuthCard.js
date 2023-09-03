@@ -7,8 +7,10 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import Cookies from "js-cookie";
+import { useSignIn } from "react-auth-kit";
 function AuthCard(props) {
     const navigate = useNavigate();
+    const signIn = useSignIn();
     const [invalid,setInvalid] = useState(false);
     const Uname = useSelector(state => state.Signup.name);
     const Uemail = useSelector(state => state.Signup.email);
@@ -24,8 +26,13 @@ function AuthCard(props) {
         if (!props.signin && valid) {
             try {
                 await axios.post("http://127.0.0.1:8000/api/signup", { name: Uname, email: Uemail, password: Upassword }).then(res => {
-                    Cookies.set("access_token", res.data.token);
-                    navigate('/signin');
+                    signIn({
+                        token : res.data.token,
+                        expiresIn : 1440,
+                        tokenType : "Bearer",
+                        authState : {name : res.data.user.name,email : res.data.user.email}
+                    })
+                    navigate('/');
                 });
             } catch (err) {
                 console.log(err);
@@ -33,9 +40,14 @@ function AuthCard(props) {
         }else if(Ivalid){
             try {
                 await axios.post("http://127.0.0.1:8000/api/signin", {email: Iemail, password: Ipassword }).then(res => {
-                    Cookies.set("access_token", res.data.token);
                     console.log(res);
                     if(res.data.message!= "Bad Credentials"){
+                        signIn({
+                            token : res.data.token,
+                            expiresIn : 1440,
+                            tokenType : "Bearer",
+                            authState : {name : res.data.user.name,email : res.data.user.email}
+                        })
                         navigate('/');
                     }else{
                         setInvalid(true);
