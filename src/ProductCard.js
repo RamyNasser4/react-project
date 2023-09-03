@@ -32,7 +32,6 @@ class ProductCard extends Component{
     }
     HandleLoad = () =>{
         this.setState({isPicLoaded : true});
-        console.log(this.state);
     }
     render(){
         return(

@@ -9,29 +9,37 @@ import { useSelector } from "react-redux";
 import Cookies from "js-cookie";
 function AuthCard(props) {
     const navigate = useNavigate();
+    const [invalid,setInvalid] = useState(false);
     const Uname = useSelector(state => state.Signup.name);
     const Uemail = useSelector(state => state.Signup.email);
     const Upassword = useSelector(state => state.Signup.password);
     const Iemail = useSelector(state => state.Signin.email);
     const Ipassword = useSelector(state => state.Signin.password);
+    const valid = useSelector(state => state.Signup.valid);
+    const Ivalid = useSelector(state => state.Signin.valid);
     const csrf = () => axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie');
     const onSubmit = async (e) => {
         e.preventDefault();
         await csrf();
-        if (!props.signin) {
+        if (!props.signin && valid) {
             try {
                 await axios.post("http://127.0.0.1:8000/api/signup", { name: Uname, email: Uemail, password: Upassword }).then(res => {
                     Cookies.set("access_token", res.data.token);
-                    navigate('/');
+                    navigate('/signin');
                 });
             } catch (err) {
                 console.log(err);
             }
-        }else{
+        }else if(Ivalid){
             try {
                 await axios.post("http://127.0.0.1:8000/api/signin", {email: Iemail, password: Ipassword }).then(res => {
                     Cookies.set("access_token", res.data.token);
-                    navigate('/');
+                    console.log(res);
+                    if(res.data.message!= "Bad Credentials"){
+                        navigate('/');
+                    }else{
+                        setInvalid(true);
+                    }
                 });
             } catch (err) {
                 console.log(err);
@@ -40,6 +48,7 @@ function AuthCard(props) {
     }
     return (
         <div className="flex flex-col w-[4/5] md:w-[55%] ">
+            {invalid ? <div className="flex justify-center items-center py-4 mb-4 border-[#F73036] border-[0.1px] font-[AwanZaman] font-semibold text-lg w-full bg-[#FEF2F2] text-[#F73036]">Incorrect email or password</div> : null}
             <div className="flex flex-col border-[0.1px] border-solid border-[#c5c5c5] p-10">
                 <div className="flex flex-col md:flex-row">
                     <div className="flex flex-wrap flex-col items-start w-full md:w-1/2">

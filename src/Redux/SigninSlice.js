@@ -4,7 +4,8 @@ export const SigninSlice = createSlice({
     name : 'Signin',
     initialState : {
         email : "",
-        password : ""
+        password : "",
+        valid : false
     },
     reducers : {
         IupdateEmail : (state,action) =>{
@@ -12,8 +13,11 @@ export const SigninSlice = createSlice({
         },
         IupdatePassword : (state,action) => {
             state.password = action.payload;
-        }
+        },
+        IupdateValid : (state,action) =>{
+            state.valid = action.payload;
+        }  
     }
 })
-export const {IupdateEmail,IupdatePassword} = SigninSlice.actions;
+export const {IupdateEmail,IupdatePassword,IupdateValid} = SigninSlice.actions;
 export default SigninSlice.reducer;

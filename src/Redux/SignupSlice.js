@@ -6,6 +6,7 @@ export const SignupSlice = createSlice({
         name : "",
         email : "",
         password : "",
+        valid : false
     },
     reducers : {
         updateName : (state,action) => {
@@ -16,8 +17,11 @@ export const SignupSlice = createSlice({
         },
         updatePassword : (state,action) => {
             state.password = action.payload;
+        },
+        updateValid : (state,action) =>{
+            state.valid = action.payload;
         }  
     }
 });
-export const {updateName,updateEmail,updatePassword} = SignupSlice.actions;
+export const {updateName,updateEmail,updatePassword,updateValid} = SignupSlice.actions;
 export default SignupSlice.reducer;
