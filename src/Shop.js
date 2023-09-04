@@ -4,12 +4,13 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
-import { closeBasket } from "./Redux/BasketSlice";
+import { closeBasket, updateClickable } from "./Redux/BasketSlice";
 function Shop() {
     const [Loaded, setLoaded] = useState(false);
     const [products, setProducts] = useState([]);
     const dispatch = useDispatch();
     dispatch(closeBasket(false));
+    dispatch(updateClickable(true));
     useEffect(() => {
         axios.get("http://127.0.0.1:8000/api/products").then(res => {
             setProducts(res.data.products);

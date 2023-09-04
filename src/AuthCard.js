@@ -5,11 +5,13 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { faFacebookF, faGithub, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Cookies from "js-cookie";
 import { useSignIn } from "react-auth-kit";
+import { updateAuth } from "./Redux/AuthSlice";
 function AuthCard(props) {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const signIn = useSignIn();
     const [invalid,setInvalid] = useState(false);
     const Uname = useSelector(state => state.Signup.name);
@@ -31,7 +33,8 @@ function AuthCard(props) {
                         expiresIn : 1440,
                         tokenType : "Bearer",
                         authState : {name : res.data.user.name,email : res.data.user.email}
-                    })
+                    });
+                    dispatch(updateAuth());
                     navigate('/');
                 });
             } catch (err) {
@@ -46,8 +49,9 @@ function AuthCard(props) {
                             token : res.data.token,
                             expiresIn : 1440,
                             tokenType : "Bearer",
-                            authState : {name : res.data.user.name,email : res.data.user.email}
-                        })
+                            authState : {name : res.data.user.name,email : res.data.user.email,id : res.data.user.id}
+                        });
+                        dispatch(updateAuth());
                         navigate('/');
                     }else{
                         setInvalid(true);

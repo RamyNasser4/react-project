@@ -13,7 +13,8 @@ import Recommended from './Recommended';
 import ProductDetails from './ProductDetails';
 import Basket from './Basket';
 import Added from './Added';
-import { AuthProvider } from 'react-auth-kit';
+import { AuthProvider, RequireAuth } from 'react-auth-kit';
+import Profile from './Profile';
 export default function App() {
   return (
     <AuthProvider
@@ -35,6 +36,7 @@ export default function App() {
             <Route path='/Featured' Component={Featured}></Route>
             <Route path='/Recommended' Component={Recommended}></Route>
             <Route path='/Product/:id' Component={ProductDetails}></Route>
+            <Route path='/user/:id' element={<RequireAuth loginPath='/Signin'><Profile></Profile></RequireAuth>}></Route>
           </Routes>
           <Footer></Footer>
         </div>

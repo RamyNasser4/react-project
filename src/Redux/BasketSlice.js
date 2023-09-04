@@ -5,7 +5,8 @@ export const BasketSlice = createSlice({
     initialState : {
         visible : false,
         products : [],
-        total : 0
+        total : 0,
+        clickable : true
     },
     reducers : {
         controlBasket : (state) =>{
@@ -33,9 +34,12 @@ export const BasketSlice = createSlice({
         DecQuantity : (state,action) =>{
             state.products[action.payload].quantity--;
             state.total -= +(state.products[action.payload].price);
+        },
+        updateClickable : (state,action) =>{
+            state.clickable = action.payload;
         }
 
     }
 });
-export const {controlBasket,closeBasket,addtoBasket,RemoveFromBasket,clearBasket,IncQuantity,DecQuantity} = BasketSlice.actions;
+export const {controlBasket,closeBasket,addtoBasket,RemoveFromBasket,clearBasket,IncQuantity,DecQuantity,updateClickable} = BasketSlice.actions;
 export default BasketSlice.reducer;

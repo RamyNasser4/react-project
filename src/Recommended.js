@@ -2,10 +2,11 @@ import React from "react";
 import ShopPreview from "./ShopPreview";
 import ProductsView from "./ProductsView";
 import { useDispatch } from "react-redux";
-import { closeBasket } from "./Redux/BasketSlice";
+import { closeBasket, updateClickable } from "./Redux/BasketSlice";
 function Recommended(){
     const dispatch = useDispatch();
     dispatch(closeBasket(false));
+    dispatch(updateClickable(true));
     window.scrollTo({
         top: 0
     });

@@ -1,19 +1,23 @@
-import { Fragment } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRightFromBracket, faUser } from '@fortawesome/free-solid-svg-icons'
 import Cookies from 'js-cookie'
-import { useSignOut } from 'react-auth-kit'
+import { useAuthUser, useSignOut } from 'react-auth-kit'
 import axios from './axios'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { updateAuth } from './Redux/AuthSlice'
+import { Link } from 'react-router-dom'
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
 export default function Example() {
-    const name = JSON.parse(Cookies.get("_auth_state")).name;
+    const dispatch = useDispatch();
+    const auth = useAuthUser();
     const signOut = useSignOut();
     const navigate = useNavigate();
     const onSubmit = async (e) => {
@@ -21,7 +25,7 @@ export default function Example() {
         const token = Cookies.get("_auth");
         console.log(token);
         try {
-            await axios.post("http://127.0.0.1:8000/api/signout",null, {
+            await axios.post("http://127.0.0.1:8000/api/signout", null, {
                 headers: {
                     "Access-Control-Allow-Origin": "*",
                     "Content-type": "Application/json",
@@ -31,7 +35,8 @@ export default function Example() {
             }).then(res => {
                 console.log(res.data);
                 signOut();
-                navigate('/');
+                dispatch(updateAuth());
+                navigate('/Signin');
             });
         } catch (error) {
             console.log(error);
@@ -42,7 +47,7 @@ export default function Example() {
             <div>
                 <Menu.Button className="inline-flex w-full justify-center items-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50">
                     <FontAwesomeIcon icon={faUser} />
-                    {name}
+                    {auth() ? auth().name : null}
                     <ChevronDownIcon className="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
                 </Menu.Button>
             </div>
@@ -60,15 +65,15 @@ export default function Example() {
                     <div className="py-1">
                         <Menu.Item>
                             {({ active }) => (
-                                <a
-                                    href="#"
+                                <Link
+                                    to={auth()? `/user/${auth().id}`:null}
                                     className={classNames(
                                         active ? 'bg-gray-100 text-gray-900 flex justify-between items-center w-full font-[FallingSkyRegular]' : 'text-gray-700',
                                         'px-4 py-2 text-sm flex justify-between items-center w-full font-[FallingSkyRegular]'
                                     )}
                                 >
                                     View Account <FontAwesomeIcon icon={faUser} />
-                                </a>
+                                </Link>
                             )}
                         </Menu.Item>
                         <form method="POST" onSubmit={onSubmit}>

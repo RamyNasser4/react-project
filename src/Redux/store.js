@@ -6,11 +6,13 @@ import SizeSlice from './SizeSlice';
 import AlertSlice from './AlertSlice';
 import SignupSlice from './SignupSlice';
 import SigninSlice from './SigninSlice';
+import AuthSlice from './AuthSlice';
 
 const store = configureStore({
     reducer : {
         Signup : SignupSlice,
         Signin : SigninSlice,
+        Auth : AuthSlice,
         Image : ImageSlice,
         Color : ColorSlice,
         Size : SizeSlice,
