@@ -26,6 +26,7 @@ export default function Example() {
         console.log(token);
         try {
             await axios.post("http://127.0.0.1:8000/api/signout", null, {
+                withCredentials : true,
                 headers: {
                     "Access-Control-Allow-Origin": "*",
                     "Content-type": "Application/json",
