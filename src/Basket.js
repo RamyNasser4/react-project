@@ -3,6 +3,7 @@ import CartCard from "./CartCard";
 import classNames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
 import { controlBasket,clearBasket } from "./Redux/BasketSlice";
+import { Link } from "react-router-dom";
 function Basket() {
     const dispatch = useDispatch();
     const basketState = useSelector(state => state.Basket.visible);
@@ -70,7 +71,7 @@ function Basket() {
                     <div className="text-lg font-semibold text-[#4A4A4A] font-[AwanZaman]">Subtotal Amount:</div>
                     <div className="text-3xl font-[FallingSkyRegular]">${Math.floor(total) == total ? total + ".00" : total.toFixed(2)}</div>
                 </div>
-                <button className="py-4 px-8 text-white bg-black hover:bg-[#1E1E1E] duration-300 font-medium font-[FallingSkyRegular] text-base">CHECK OUT</button>
+                <Link to="/checkout/step1" className="py-4 px-8 text-white bg-black hover:bg-[#1E1E1E] duration-300 font-medium font-[FallingSkyRegular] text-base">CHECK OUT</Link>
             </div>
         </div>
     );
