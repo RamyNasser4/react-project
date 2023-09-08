@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -67,7 +67,7 @@ export default function Example() {
                         <Menu.Item>
                             {({ active }) => (
                                 <Link
-                                    to={auth()? `/user/${auth().id}`:null}
+                                    to="/user"
                                     className={classNames(
                                         active ? 'bg-gray-100 text-gray-900 flex justify-between items-center w-full font-[FallingSkyRegular]' : 'text-gray-700',
                                         'px-4 py-2 text-sm flex justify-between items-center w-full font-[FallingSkyRegular]'
