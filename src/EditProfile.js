@@ -8,10 +8,13 @@ import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css'
 import { Link } from "react-router-dom";
 import { useAuthUser } from "react-auth-kit";
+import { useDispatch } from "react-redux";
+import { toggleAlert, updateContent } from "./Redux/AlertSlice";
 var InitialName, Initialemail, Initialaddress, Initialphone;
 function EditProfile() {
     const navigate = useNavigate();
     const auth = useAuthUser();
+    const dispatch = useDispatch();
     const [Loaded, setLoaded] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [profileImgUrl, setProfileImgUrl] = useState("");
@@ -101,7 +104,7 @@ function EditProfile() {
         }
     }
     const onSubmit = async () => {
-        if (name != InitialName || email != Initialemail || address != Initialaddress || phone != Initialphone || profileImgFile || coverImgFile || invalidName || invalidEmail) {
+        if (name != InitialName || email != Initialemail || address != Initialaddress || phone != Initialphone || profileImgFile || coverImgFile || !invalidName || !invalidEmail) {
             setIsSubmitting(true);
             const token = Cookies.get("_auth");
             try {
@@ -114,7 +117,10 @@ function EditProfile() {
                     }
                 }).then(res => {
                     console.log(res);
-                    navigate("/user")
+                    navigate("/user");
+                    dispatch(updateContent("Profile updated successfully"));
+                    dispatch(toggleAlert());
+                    setTimeout(() => { dispatch(toggleAlert()) }, 2000);
                 })
             } catch (err) {
                 console.log(err);
@@ -142,16 +148,16 @@ function EditProfile() {
                         <input type="file" accept="image/x-png,image/jpeg" onInput={(e) => { if (e.target.files.length) { setCoverImgUrl(URL.createObjectURL(e.target.files[0])); setCoverImgFile(e.target.files[0]); } }} id="cover" className="hidden"></input>
                     </div>
                     <label style={{ color: invalidName ? 'red' : '#7C7F7F' }} htmlFor="name" className="font-[AwanZaman] font-semibold pl-2 pb-2">*{invalidName ? "Full Name is required" : "Full Name"}</label>
-                    <input value={name} onChange={checkName} type="text" id="name" className="font-[AwanZaman] font-semibold border-[1px] border-solid border-[#c5c5c5] text-xl w-full py-2 px-4 mb-5 placeholder:font-semibold placeholder:text-[#9D9D9D]"></input>
+                    <input style={{borderColor : invalidName ? 'red' : null}} value={name} onChange={checkName} type="text" id="name" className="font-[AwanZaman] font-semibold border-[1px] border-solid border-[#c5c5c5] text-xl w-full py-2 px-4 mb-5 placeholder:font-semibold placeholder:text-[#9D9D9D]"></input>
                     <label style={{ color: invalidEmail ? 'red' : '#7C7F7F' }} htmlFor="email" className="font-[AwanZaman] font-semibold pl-2 pb-2">*{invalidEmail ? "Email is required" : "Email"}</label>
-                    <input value={email} onChange={checkEmail} type="email" id="email" className="font-[AwanZaman] font-semibold border-[1px] border-solid border-[#c5c5c5] text-xl w-full py-2 px-4 mb-5 placeholder:font-semibold placeholder:text-[#9D9D9D]"></input>
+                    <input style={{borderColor : invalidEmail ? 'red' : null}} value={email} onChange={checkEmail} type="email" id="email" className="font-[AwanZaman] font-semibold border-[1px] border-solid border-[#c5c5c5] text-xl w-full py-2 px-4 mb-5 placeholder:font-semibold placeholder:text-[#9D9D9D]"></input>
                     <label htmlFor="address" className="text-[#7C7F7F] font-[AwanZaman] font-semibold pl-2 pb-2">Address (Will be used for checkout)</label>
                     <input value={address} onChange={(e) => setAddress(e.target.value)} type="text" id="address" className="font-[AwanZaman] font-semibold border-[1px] border-solid border-[#c5c5c5] text-xl w-full py-2 px-4 mb-5 placeholder:font-semibold placeholder:text-[#9D9D9D]"></input>
                     <label htmlFor="phone" className="text-[#7C7F7F] font-[AwanZaman] font-semibold pl-2 pb-2">Phone number (Will be used for checkout)</label>
                     <PhoneInput onChange={(e) => setPhone(e)} containerStyle={{ display: "flex", width: "100%", marginBottom: "1.25rem" }} inputStyle={{ flexGrow: 1, height: "3rem", borderRadius: 0 }} className="w-full text-[#7C7F7F] font-[AwanZaman] font-semibold" country={"eg"} id="phone" value={phone} />
                     <div className="flex justify-between items-center w-full">
-                        <Link to="/user" className="text-lg font-[FallingSkyRegular] text-[#909190] py-4 px-4 bg-[#F2F2F2] border-[0.1px] border-[#c5c5c5] mb-3"><FontAwesomeIcon icon={faArrowLeft} className="pr-2"></FontAwesomeIcon>Back to Profile</Link>
-                        <button onClick={onSubmit} className="text-lg flex items-center font-[FallingSkyRegular] text-white py-4 px-4 bg-black border-[0.1px] border-black mb-3">{isSubmitting ? <FontAwesomeIcon className="text-2xl" icon={faSpinner} spin></FontAwesomeIcon> : <FontAwesomeIcon icon={faCheck} className="pr-2"></FontAwesomeIcon>}<span className="ml-2">Update Profile</span></button>
+                        <Link to="/user" className="text-lg font-[FallingSkyRegular] text-[#909190] py-4 px-4 bg-[#F2F2F2] border-[0.1px] border-[#c5c5c5] hover:bg-white duration-300 mb-3"><FontAwesomeIcon icon={faArrowLeft} className="pr-2"></FontAwesomeIcon>Back to Profile</Link>
+                        <button onClick={onSubmit} className="text-lg flex items-center font-[FallingSkyRegular] text-white py-4 px-4 bg-black border-[0.1px] hover:bg-[#2A2A2A] hover:border-[#2A2A2A] duration-300 border-black mb-3">{isSubmitting ? <FontAwesomeIcon className="text-2xl" icon={faSpinner} spin></FontAwesomeIcon> : <FontAwesomeIcon icon={faCheck} className="pr-2"></FontAwesomeIcon>}<span className="ml-2">Update Profile</span></button>
                     </div>
                 </>
                     : <div className="w-full h-[calc(75vh-20rem)] flex justify-center items-center"><FontAwesomeIcon className="text-3xl" icon={faSpinner} spin></FontAwesomeIcon></div>}

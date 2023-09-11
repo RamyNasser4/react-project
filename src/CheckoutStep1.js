@@ -1,13 +1,22 @@
 import React, { useState } from "react";
 import CheckoutBar from "./CheckoutBar";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CartCard from "./CartCard";
 import { faArrowRight, faStore } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useNavigationType } from "react-router-dom";
 import { useEffect } from "react";
 import classNames from "classnames";
+import { closeBasket, updateClickable } from "./Redux/BasketSlice";
 function CheckoutStep1(){
+    const dispatch = useDispatch();
+    dispatch(updateClickable(false));
+    const navigate = useNavigate();
+    const type = useNavigationType();
+    if(type=="POP"){
+        navigate("/");
+    }
+    dispatch(closeBasket());
     const products = useSelector(state => state.Basket.products);
     const total = useSelector(state => state.Basket.total);
     const [classes,setClasses] = useState(classNames({
@@ -53,8 +62,8 @@ function CheckoutStep1(){
                 </div>
             </div>
             <div className="flex justify-between w-[62%] my-4">
-                <Link to="/" className="text-lg font-[FallingSkyRegular] text-[#909190] py-4 px-4 bg-[#F2F2F2] border-[0.1px] border-[#c5c5c5] mb-3"><FontAwesomeIcon className="pr-2" icon={faStore} />Continue Shopping</Link>
-                <Link to="/checkout/step2" className="text-lg flex items-center font-[FallingSkyRegular] text-white py-4 px-4 bg-black border-[0.1px] border-black mb-3">Next Step<FontAwesomeIcon className="pl-2" icon={faArrowRight}></FontAwesomeIcon></Link>
+                <Link to="/" className="text-lg font-[FallingSkyRegular] text-[#909190] py-4 px-4 bg-[#F2F2F2] border-[0.1px] border-[#c5c5c5] hover:bg-white duration-300 mb-3"><FontAwesomeIcon className="pr-2" icon={faStore} />Continue Shopping</Link>
+                <Link to="/checkout/step2" className="text-lg flex items-center font-[FallingSkyRegular] text-white py-4 px-4 bg-black border-[0.1px] border-black hover:bg-[#2A2A2A] hover:border-[#2A2A2A] duration-300 mb-3">Next Step<FontAwesomeIcon className="pl-2" icon={faArrowRight}></FontAwesomeIcon></Link>
             </div>
         </div>
     );

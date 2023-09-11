@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const SizeSlice = createSlice({
     name : 'Size',
     initialState : {
-        selectedSize : "28mm"
+        selectedSize : "28 mm"
     },
     reducers : {
         updateSize : (state,action) =>{

@@ -71,7 +71,7 @@ function Basket() {
                     <div className="text-lg font-semibold text-[#4A4A4A] font-[AwanZaman]">Subtotal Amount:</div>
                     <div className="text-3xl font-[FallingSkyRegular]">${Math.floor(total) == total ? total + ".00" : total.toFixed(2)}</div>
                 </div>
-                <Link to="/checkout/step1" className="py-4 px-8 text-white bg-black hover:bg-[#1E1E1E] duration-300 font-medium font-[FallingSkyRegular] text-base">CHECK OUT</Link>
+                <Link onClick={total ? null : (e) => {e.preventDefault()}} to={total ? "/checkout/step1" : null } style={total ? null : {opacity : 0.7,cursor : "not-allowed"}} className="py-4 px-8 text-white bg-black hover:bg-[#1E1E1E] duration-300 font-medium font-[FallingSkyRegular] text-base">CHECK OUT</Link>
             </div>
         </div>
     );

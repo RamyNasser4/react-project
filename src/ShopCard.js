@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { connect, useSelector } from 'react-redux';
 import { addtoBasket } from "./Redux/BasketSlice";
-import { toggleAlert } from "./Redux/AlertSlice";
+import { toggleAlert, updateContent } from "./Redux/AlertSlice";
 const mapStateToProps = state => ({
     Basket: state.Basket.products
 });
@@ -42,9 +42,11 @@ class ShopCard extends Component {
             'bg-black': true,
             'flex': true,
             'justify-center': true,
-            'items-center': true
+            'items-center': true,
+            'hover:bg-[#2A2A2A]' : true,
+            'duration-300' : true
         }),
-        buttoncontent: null,
+        /* buttoncontent: null, */
         isPicLoaded: false
     }
     HandleHoverin = () => {
@@ -66,8 +68,6 @@ class ShopCard extends Component {
                 'items-center': true,
                 'w-full': true,
                 'h-[4.5rem]': true
-                /* 'animate-[heightopen_0.6s_ease-in-out_forwards]' : true */
-
             }),
             normalbutton: classNames({
                 'duration-200': true,
@@ -79,14 +79,16 @@ class ShopCard extends Component {
                 'flex': true,
                 'justify-center': true,
                 'items-center': true,
-                'grow': true
+                'grow': true,
+                'hover:bg-[#2A2A2A]' : true,
+                'duration-300' : true
             }),
         });
-        setTimeout(() => {
+        /* setTimeout(() => {
             this.setState({
                 buttoncontent: "Add to basket"
             })
-        }, 300);
+        }, 300); */
     }
     HandleHoverout = () => {
         this.setState({
@@ -118,36 +120,42 @@ class ShopCard extends Component {
                 'bg-black': true,
                 'flex': true,
                 'justify-center': true,
-                'items-center': true
+                'items-center': true,
+                'hover:bg-[#2A2A2A]' : true,
+                'duration-300' : true
             }),
         });
-        setTimeout(() => {
+        /* setTimeout(() => {
             this.setState({
                 buttoncontent: null
             })
-        }, 50);
+        }, 50); */
     }
     HandleLoad = () => {
         this.setState({ isPicLoaded: true });
     }
+    HandleEvery = (element) =>{
+        if(element.name==this.props.Name){
+            
+        }
+    }
     HandleAdd = () => {
         const { dispatch } = this.props;
         var Exists = false;
-        this.props.Basket.every(element => {
-            if (element.image == this.props.imgsrc) {
-                Exists = true;
-                if (element.size != "28 mm" || element.color != this.props.color) {
-                    console.log("ana el awl");
-                    dispatch(addtoBasket({ image: this.props.imgsrc, name: this.props.Name, quantity: 1, size: "28 mm", color: this.props.color, price: this.props.price }))
+        this.props.Basket.every((element) => {
+            if (element.name == this.props.Name) {
+                if (element.size == "28 mm" && element.color == this.props.color) {
+                    Exists = true;
+                    return false;
                 }
-                return false;
             }
+            return true;
         });
         if (!Exists) {
-            console.log("ana el tany");
             dispatch(addtoBasket({ image: this.props.imgsrc, name: this.props.Name, quantity: 1, size: "28 mm", color: this.props.color, price: this.props.price }));
+            dispatch(updateContent("Item added to Basket"));
             dispatch(toggleAlert());
-            setTimeout(() => {dispatch(toggleAlert())},2000);
+            setTimeout(() => { dispatch(toggleAlert()) }, 2000);
         }
     }
     render() {

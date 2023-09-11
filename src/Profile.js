@@ -83,7 +83,7 @@ function Profile() {
                     <div className="flex justify-between items-center px-2 relative bottom-12 w-full">
                         <img onLoad={HandleLoad} className="box-content object-cover w-[100px] h-[100px] rounded-full border-2 border-white" src={profileImgUrl}></img>
                         {isPicLoaded ? null : <div className="w-[100px] h-[100px] absolute rounded-full flex justify-center items-center bg-[#F2F2F2]"><FontAwesomeIcon className="text-2xl" icon={faSpinner} spin></FontAwesomeIcon></div>}
-                        <Link to={`/user/edit`} className="text-sm font-[FallingSkyRegular] text-white py-[0.7rem] px-4 bg-black border-2 border-black mb-3">Edit Account</Link>
+                        <Link to={`/user/edit`} className="text-sm font-[FallingSkyRegular] text-white py-[0.7rem] px-4 bg-black border-2 border-black mb-3 hover:bg-[#2A2A2A] hover:border-[#2A2A2A] duration-300">Edit Account</Link>
                     </div>
                     <div className="flex flex-col items-start w-full px-5">
                         <div className="font-[AwanZaman] text-4xl my-4 text-[#1A1A1A]">{user.name}</div>

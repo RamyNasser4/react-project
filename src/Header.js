@@ -58,7 +58,7 @@ class Header extends Component {
     }
     onClickBag = () => {
         const { dispatch } = this.props;
-        if (window.location.pathname != "/Signin" && window.location.pathname != "/Signup") {
+        if (this.props.Clickable) {
             dispatch(controlBasket());
         }
     }
@@ -68,16 +68,16 @@ class Header extends Component {
                 <div className="w-[100%] px-8 py-2 flex justify-between bg-white ">
                     <div className="w-[30%] flex justify-between items-center align-middle">
                         <a className="text-4xl mt- py-2 px-3 font-[AwanZaman]">Logo</a>
-                        <NavLink exact to="/" className="text-lg py-2 px-3 hover:bg-[#F5F5F5] duration-300 font-[AwanZaman] hidden sm:block">Home</NavLink>
-                        <NavLink to="/Shop" className="text-lg py-2 px-3 hover:bg-[#F5F5F5] duration-300 font-[AwanZaman] hidden sm:block">Shop</NavLink>
-                        <NavLink to="/Featured" className="text-lg py-2 px-3 hover:bg-[#F5F5F5] duration-300 font-[AwanZaman] hidden sm:block">Featured</NavLink>
-                        <NavLink to="/Recommended" className="text-lg py-2 px-3 hover:bg-[#F5F5F5] duration-300 font-[AwanZaman] hidden sm:block">Recommended</NavLink>
+                        <NavLink exact to="/" className="text-lg py-2 px-3 hover:bg-[#F5F5F5] text-[#848484] duration-300 font-[AwanZaman] font-semibold hidden sm:block">Home</NavLink>
+                        <NavLink to="/Shop" className="text-lg py-2 px-3 hover:bg-[#F5F5F5] text-[#848484] duration-300 font-[AwanZaman] font-semibold hidden sm:block">Shop</NavLink>
+                        <NavLink to="/Featured" className="text-lg py-2 px-3 hover:bg-[#F5F5F5] text-[#848484] duration-300 font-[AwanZaman] font-semibold hidden sm:block">Featured</NavLink>
+                        <NavLink to="/Recommended" className="text-lg py-2 px-3 hover:bg-[#F5F5F5] text-[#848484] duration-300 font-[AwanZaman] font-semibold hidden sm:block">Recommended</NavLink>
                     </div>
                     <div className=" lg:w-[20%] xl:w-[16%] 2xl:w-[13%] flex justify-between items-center">
                         <FontAwesomeIcon style={!this.props.Clickable ? { cursor: "not-allowed" } : { cursor: "pointer" }} icon={faBagShopping} onClick={this.onClickBag} className="text-2xl py-2 px-3 duration-300 hover:bg-[#F5F5F5]" />
                         <FontAwesomeIcon icon={faBars} className="text-2xl lg:hidden px-4" onClick={this.onClickBar} />
-                        {this.props.Auth ? <ProfileDropdown></ProfileDropdown> : <><Link className="text-lg font-[AwanZaman] text-white py-1 px-4 bg-black border-2 border-black hidden lg:block cursor-pointer" to="/Signup">Sign up</Link>
-                            <Link className="text-lg font-[AwanZaman] text-[#907F7D] py-1 px-4 bg-[#F2F2F2] border-2 hidden lg:block cursor-pointer" to="/Signin">Sign in</Link></>}
+                        {this.props.Auth ? <ProfileDropdown></ProfileDropdown> : <><Link className="text-lg font-[AwanZaman] text-white py-1 px-4 bg-black border-2 border-black hidden lg:block hover:bg-[#2A2A2A] duration-300 cursor-pointer" to="/Signup">Sign up</Link>
+                            <Link className="text-lg font-[AwanZaman] text-[#907F7D] py-1 px-4 bg-[#F2F2F2] border-2 hidden hover:bg-white duration-300 lg:block cursor-pointer" to="/Signin">Sign in</Link></>}
                     </div>
                 </div>
                 <div className={this.state.Headeractive ? this.active : this.classes}>

@@ -3,6 +3,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 function Added(){
     const state = useSelector(state => state.Alert.visible);
+    const content = useSelector(state => state.Alert.alertcontent);
     const hidden = classNames({
         'flex' : true,
         'px-3' : true,
@@ -47,7 +48,7 @@ function Added(){
     })
     return(
         <div className={state ? shown : hidden}>
-            Item added to Basket
+            {content}
         </div>
     );
 }
