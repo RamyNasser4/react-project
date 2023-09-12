@@ -132,11 +132,11 @@ function EditProfile() {
     }
     return (
         <div className="flex flex-col justify-center items-center w-full py-40 lg:px-24">
-            <div className="flex flex-col items-start w-[85%] xl:w-2/5" style={isSubmitting ? { filter: "opacity(0.5)" } : null}>
+            <div className="flex flex-col items-start w-[85%] xl:w-1/2 2xl:w-2/5" style={isSubmitting ? { filter: "opacity(0.5)" } : null}>
                 <div className="font-[FallingSkyRegular] text-xl font-normal self-center py-4">Edit Account Details</div>
                 {Loaded ? <>
                     <img style={{opacity: isPicLoaded ? null : 0}} onLoad={HandleLoad} className="h-40 w-full" src={coverImgUrl}></img>
-                    {isPicLoaded ? null : <div className="h-40 w-[85vw] lg:w-[calc(85vw-11rem)] xl:w-[calc((100vw-12rem)*0.4)] absolute top-[calc(13.75rem)] flex justify-center items-center bg-[#F2F2F2]"><FontAwesomeIcon className="text-3xl" icon={faSpinner} spin></FontAwesomeIcon></div>}
+                    {isPicLoaded ? null : <div className="h-40 w-[85vw] lg:w-[calc(85vw-11rem)] xl:w-[calc((100vw-12rem)*0.5)] 2xl:w-[calc((100vw-12rem)*0.4)] absolute top-[calc(13.75rem)] flex justify-center items-center bg-[#F2F2F2]"><FontAwesomeIcon className="text-3xl" icon={faSpinner} spin></FontAwesomeIcon></div>}
                     <div className="flex justify-between items-center px-2 relative bottom-12 w-full">
                         <div className="flex">
                             <img style={{opacity: isPicLoaded ? null : 0}} onLoad={HandleLoad} className="box-content object-cover w-[100px] h-[100px] rounded-full border-2 border-white" src={profileImgUrl}></img>

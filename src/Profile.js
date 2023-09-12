@@ -70,16 +70,16 @@ function Profile() {
     }
     return (
         <div className="flex flex-col justify-center items-center py-40 lg:px-24">
-            {Loaded ? <> <div className="flex w-[85%] 2xl:w-1/2 bg-[#F2F2F2] border-[0.1px] border-[#c5c5c5]" >
+            {Loaded ? <> <div className="flex w-[85%] lg:w-3/5 2xl:w-1/2 bg-[#F2F2F2] border-[0.1px] border-[#c5c5c5]" >
                 <div className="flex relative bottom-[-2px]">
                     <div onClick={() => { setActive("Account") }} style={active == "Account" ? { color: "#4A4A4A", backgroundColor: "white", borderBottom: "1px solid white" } : null} className="font-[AwanZaman] font-semibold text-[#818381] border-b-transparent border-b-[1px] border-b-solid hover:bg-[#F9F9F9] duration-300 cursor-pointer ml-8 text-xl px-3 py-4">Account</div>
                     <div onClick={() => { setActive("My Wish List") }} style={active == "My Wish List" ? { color: "#4A4A4A", backgroundColor: "white", borderBottom: "1px white" } : null} className="font-[AwanZaman] font-semibold text-[#818381] hover:bg-[#F9F9F9] duration-300 cursor-pointer text-xl px-3 py-4">My Wish List</div>
                     <div onClick={() => { setActive("My Orders") }} style={active == "My Orders" ? { color: "#4A4A4A", backgroundColor: "white", borderBottom: "1px white" } : null} className="font-[AwanZaman] font-semibold text-[#818381] hover:bg-[#F9F9F9] duration-300 cursor-pointer text-xl px-3 py-4">My Orders</div>
                 </div>
             </div>
-                {active == "Account" ? <div className="flex border-[0.1px] border-[#c5c5c5] flex-col p-4 bg-white w-[85%] 2xl:w-1/2 items-start pb-20">
+                {active == "Account" ? <div className="flex border-[0.1px] border-[#c5c5c5] flex-col p-4 bg-white w-[85%] lg:w-3/5 2xl:w-1/2 items-start pb-20">
                     <img style={{opacity: isPicLoaded ? null : 0}} onLoad={HandleLoad} className="h-40 w-full" src={coverImgUrl}></img>
-                    {isPicLoaded ? null : <div className="h-40 w-[calc(85vw-2rem)] lg:w-[calc(((100vw-12rem)*0.85)-2.8rem)] 2xl:w-[calc(((100vw-12rem)*0.5)-2.5rem)] absolute top-[calc(14.75rem+4px)] flex justify-center items-center bg-[#F2F2F2]"><FontAwesomeIcon className="text-3xl" icon={faSpinner} spin></FontAwesomeIcon></div>}
+                    {isPicLoaded ? null : <div className="h-40 w-[calc(85vw-2rem)] lg:w-[calc(((100vw-12rem)*0.85)-2.8rem)] xl:w-[calc(((100vw-12rem)*0.6)-2.8rem)] 2xl:w-[calc(((100vw-12rem)*0.5)-2.5rem)] absolute top-[calc(14.75rem+4px)] flex justify-center items-center bg-[#F2F2F2]"><FontAwesomeIcon className="text-3xl" icon={faSpinner} spin></FontAwesomeIcon></div>}
                     <div className="flex justify-between items-center px-2 relative bottom-12 w-full">
                         <img style={{opacity: isPicLoaded ? null : 0}} onLoad={HandleLoad} className="box-content object-cover w-[100px] h-[100px] rounded-full border-2 border-white" src={profileImgUrl}></img>
                         {isPicLoaded ? null : <div className="w-[100px] h-[100px] absolute rounded-full border-2 border-white flex justify-center items-center bg-[#F2F2F2]"><FontAwesomeIcon className="text-2xl" icon={faSpinner} spin></FontAwesomeIcon></div>}
@@ -96,14 +96,14 @@ function Profile() {
                         <p className="font-[AwanZaman] text-lg text-[#6D6C6D]">Date Joined</p>
                         <p className="font-[FallingSkyRegular] text-base text-[#1A1A30] my-4">{user.created_at.split("T")[0]}</p>
                     </div>
-                </div> : active == "My Wish List" ? <div className="flex justify-center items-center border-[0.1px] border-[#c5c5c5] p-5 w-[85%] 2xl:w-1/2">
+                </div> : active == "My Wish List" ? <div className="flex justify-center items-center border-[0.1px] border-[#c5c5c5] p-5 w-[85%] lg:w-3/5 2xl:w-1/2">
                     <div className="flex justify-center items-center w-full h-full bg-[#F2F2F2] min-h-[calc(80vh-2.5rem)]">
                         <div className="flex flex-col ">
                             <div className="font-[AwanZaman] font-semibold mb-6 text-2xl">My Wish List</div>
                             <div className="font-[AwanZaman] font-semibold text-[#818181]">You don't have a wish list</div>
                         </div>
                     </div>
-                </div> : <div className="flex justify-center items-center border-[0.1px] border-[#c5c5c5] p-5 w-[85%] 2xl:w-1/2">
+                </div> : <div className="flex justify-center items-center border-[0.1px] border-[#c5c5c5] p-5 w-[85%] lg:w-3/5 2xl:w-1/2">
                     <div className="flex justify-center items-center w-full h-full bg-[#F2F2F2] min-h-[calc(80vh-2.5rem)]">
                         <div className="flex flex-col ">
                             <div className="font-[AwanZaman] font-semibold mb-6 text-2xl">My Orders</div>

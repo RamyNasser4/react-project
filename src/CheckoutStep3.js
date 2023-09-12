@@ -118,7 +118,7 @@ function CheckoutStep3() {
                 <CheckoutBar step={3}></CheckoutBar>
             </div>
             <div className="font-[FallingSkyRegular] text-xl">Payment</div>
-            <div className="flex flex-col w-[90%] lg:w-[55%] items-start">
+            <div className="flex flex-col w-[90%] xl:w-3/4 2xl:w-[55%] items-start">
                 <div className="p-4 font-[AwanZaman] font-semibold text-[#4A4A4A]">Payment option</div>
                 <div className="flex flex-col w-full items-start border-[0.1px] border-[#c5c5c5]">
                     <div onClick={() => {setIsClicked("CreditCard");setVisible(visibleClass);}} style={{opacity : isClicked=="CreditCard" ? 1 : null}} className="flex justify-between opacity-50 hover:opacity-100 duration-300 cursor-pointer px-4 py-8 w-full bg-[#F1F1F1] border-b-[0.1px] border-b-[#c5c5c5]">
@@ -173,13 +173,13 @@ function CheckoutStep3() {
                     </div>
                 </div>
             </div>
-            <div className="flex flex-col w-[90%] lg:w-1/2">
+            <div className="flex flex-col w-[90%] xl:w-3/4 2xl:w-1/2">
                 <div className="flex items-center self-end">
                     <span className="font-[AwanZaman] font-semibold text-[#4A4A4A] pr-4">Total:</span>
                     <div className="text-3xl font-[FallingSkyRegular] my-4">${Math.floor(total) == total ? total + ".00" : total.toFixed(2)}</div>
                 </div>
             </div>
-            <div className="flex justify-between w-[90%] lg:w-[52%] my-4">
+            <div className="flex justify-between w-[90%] xl:w-3/4 2xl:w-[52%] my-4">
                 <Link to="/checkout/step2" className="text-lg font-[FallingSkyRegular] text-[#909190] py-4 px-4 bg-[#F2F2F2] border-[0.1px] border-[#c5c5c5] hover:bg-white duration-300 mb-3"><FontAwesomeIcon className="pr-2" icon={faArrowLeft} />Go Back</Link>
                 <button className="text-lg flex items-center font-[FallingSkyRegular] text-white py-4 px-4 bg-black border-[0.1px] border-black hover:bg-[#2A2A2A] hover:border-[#2A2A2A] duration-300 mb-3"><FontAwesomeIcon className="pr-2" icon={faCheck}></FontAwesomeIcon>Confirm</button>
             </div>

@@ -19,6 +19,7 @@ import EditProfile from './EditProfile';
 import CheckoutStep1 from './CheckoutStep1';
 import CheckoutStep2 from './CheckoutStep2';
 import CheckoutStep3 from './CheckoutStep3';
+import Popup from './Popup';
 export default function App() {
   return (
     <AuthProvider
@@ -31,6 +32,7 @@ export default function App() {
           <Header></Header>
           <Basket></Basket>
           <Added></Added>
+          <Popup></Popup>
           <Routes>
             <Route exact path='/' Component={Home}></Route>
             <Route path='/Signin' Component={Signin}></Route>

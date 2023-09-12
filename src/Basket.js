@@ -4,11 +4,14 @@ import classNames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
 import { controlBasket,clearBasket } from "./Redux/BasketSlice";
 import { Link } from "react-router-dom";
+import { useAuthUser, useIsAuthenticated } from "react-auth-kit";
+import { togglePopup } from "./Redux/PopupSlice";
 function Basket() {
     const dispatch = useDispatch();
     const basketState = useSelector(state => state.Basket.visible);
     const products = useSelector(state =>state.Basket.products);
     const total = useSelector(state => state.Basket.total);
+    const auth = useIsAuthenticated();
     const baskethidden = classNames({
         'fixed' : true,
         'flex' : true,
@@ -71,7 +74,7 @@ function Basket() {
                     <div className="text-lg font-semibold text-[#4A4A4A] font-[AwanZaman]">Subtotal Amount:</div>
                     <div className="text-3xl font-[FallingSkyRegular]">${Math.floor(total) == total ? total + ".00" : total.toFixed(2)}</div>
                 </div>
-                <Link onClick={total ? null : (e) => {e.preventDefault()}} to={total ? "/checkout/step1" : null } style={total ? null : {opacity : 0.7,cursor : "not-allowed"}} className="py-4 px-8 text-white bg-black hover:bg-[#1E1E1E] duration-300 font-medium font-[FallingSkyRegular] text-base">CHECK OUT</Link>
+                <Link onClick={total ? auth() ? null :(e)=>{e.preventDefault();document.body.style.overflow = "hidden";dispatch(togglePopup())} : (e) => {e.preventDefault()}} to={total ? auth() ? "/checkout/step1" : null : null } style={total ? null : {opacity : 0.7,cursor : "not-allowed"}} className="py-4 px-8 text-white bg-black hover:bg-[#1E1E1E] duration-300 font-medium font-[FallingSkyRegular] text-base">CHECK OUT</Link>
             </div>
         </div>
     );

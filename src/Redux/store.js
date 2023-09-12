@@ -7,6 +7,7 @@ import AlertSlice from './AlertSlice';
 import SignupSlice from './SignupSlice';
 import SigninSlice from './SigninSlice';
 import AuthSlice from './AuthSlice';
+import PopupSlice from './PopupSlice';
 
 const store = configureStore({
     reducer : {
@@ -17,7 +18,8 @@ const store = configureStore({
         Color : ColorSlice,
         Size : SizeSlice,
         Basket : BasketSlice,
-        Alert : AlertSlice
+        Alert : AlertSlice,
+        Popup : PopupSlice
     }
 })
 export default store;

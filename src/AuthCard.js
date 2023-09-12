@@ -63,7 +63,7 @@ function AuthCard(props) {
         }
     }
     return (
-        <div className="flex flex-col w-[85%] md:w-[55%] ">
+        <div className="flex flex-col w-[85%] lg:w-4/5 xl:w-3/5 2xl:w-[55%] ">
             {invalid ? <div className="flex justify-center items-center py-4 mb-4 border-[#F73036] border-[0.1px] font-[AwanZaman] font-semibold text-lg w-full bg-[#FEF2F2] text-[#F73036]">Incorrect email or password</div> : null}
             <div className="flex flex-col border-[0.1px] border-solid border-[#c5c5c5] p-10">
                 <div className="flex flex-col lg:flex-row">

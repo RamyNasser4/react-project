@@ -130,7 +130,7 @@ function CheckoutStep2() {
                 <CheckoutBar step={2}></CheckoutBar>
             </div>
             <div className="font-[FallingSkyRegular] text-xl">Shipping Details</div>
-            <div className="flex flex-col justify-between items-start lg:grid grid-cols-2 gap-x-8 gap-y-4 w-[90%] lg:w-1/2 my-4">
+            <div className="flex flex-col justify-between items-start lg:grid grid-cols-2 gap-x-8 gap-y-4 w-[90%] xl:w-3/4 2xl:w-1/2 my-4">
                 <div className="flex flex-col items-start w-full lg:w-auto">
                     <label style={{ color: invalidName ? 'red' : '#7C7F7F' }} htmlFor="name" className="font-[AwanZaman] font-semibold pl-2 pb-2">*{invalidName ? "Full Name is required" : "Full Name"}</label>
                     <input placeholder="Enter your Full Name" style={{borderColor : invalidName ? 'red' : null}} value={name} onChange={checkName} type="text" id="name" className="font-[AwanZaman] font-semibold border-[1px] border-solid border-[#c5c5c5] text-xl w-full py-2 px-4 placeholder:font-semibold placeholder:text-[#9D9D9D]"></input>
@@ -148,16 +148,16 @@ function CheckoutStep2() {
                     <PhoneInput onChange={checkPhone} containerStyle={{ display: "flex", width: "100%" }} inputStyle={{ flexGrow: 1, height: "45.78px", borderRadius: 0,borderColor : invalidPhone ? 'red' : null }} className="w-full text-[#7C7F7F] font-[AwanZaman] font-semibold" country={"eg"} id="phone" value={phone} />
                 </div>
             </div>
-            <div className="flex flex-col w-[90%] lg:w-1/2">
+            <div className="flex flex-col w-[90%] xl:w-3/4 2xl:w-1/2">
 
             </div>
-            <div className="flex flex-col w-[90%] lg:w-1/2">
+            <div className="flex flex-col w-[90%] xl:w-3/4 2xl:w-1/2">
                 <div className="flex items-center self-end">
                     <span className="font-[AwanZaman] font-semibold text-[#4A4A4A] pr-4">Total:</span>
                     <div className="text-3xl font-[FallingSkyRegular] my-4">${Math.floor(total) == total ? total + ".00" : total.toFixed(2)}</div>
                 </div>
             </div>
-            <div className="flex justify-between w-[90%] lg:w-[52%] my-4">
+            <div className="flex justify-between w-[90%] xl:w-3/4 2xl:w-[52%] my-4">
                 <Link to="/checkout/step1" className="text-lg font-[FallingSkyRegular] text-[#909190] py-4 px-4 bg-[#F2F2F2] border-[0.1px] border-[#c5c5c5] hover:bg-white duration-300 mb-3"><FontAwesomeIcon className="pr-2" icon={faArrowLeft} />Go Back</Link>
                 <button onClick={HandleSubmit} className="text-lg flex items-center font-[FallingSkyRegular] text-white py-4 px-4 bg-black border-[0.1px] border-black hover:bg-[#2A2A2A] hover:border-[#2A2A2A] duration-300 mb-3">Next Step<FontAwesomeIcon className="pl-2" icon={faArrowRight}></FontAwesomeIcon></button>
             </div>
