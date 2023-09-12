@@ -29,7 +29,7 @@ function ProductsView(props) {
         }
     },[ViewRef.current])
     return (
-        <div data-id id="View" ref={ViewRef} className="w-full px-14 py-10 mt-20">
+        <div data-id id="View" ref={ViewRef} className="w-full px-7 md:px-14 py-10 mt-20">
             {props.Featured || props.Recommended ? null : <div className="flex justify-between w-full items-center mb-8">
                 <h1 className="font-[MaiseeMedium] text-3xl max-w-[50%] text-left">{props.section}</h1>
                 <Link className="font-[TyfoonSans] text-lg underline" to={props.link + "#View"}>See all</Link>

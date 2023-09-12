@@ -1,7 +1,7 @@
 import React from "react";
 function CheckoutBar(props) {
     return (
-        <div className="w-3/4 relative flex justify-center">
+        <div className="w-full lg:w-3/4 relative flex justify-center">
             <div className="flex justify-between w-full mb-4 items-center before:w-[75%] lg:before:w-[85%] before:left-[12.5%] lg:before:left-[7.5%] before:right-0 before:h-1 before:bg-[#ECECEC] before:absolute before:translate-y-[-1rem] before:-z-10">
                 <div className="flex flex-col justify-center items-center w-32">
                     <div style={props.step != 1 ? {color : "#FFFFFB",backgroundColor : "#C5C5C5"} : null} className="w-9 h-9 flex justify-center items-center rounded-full text-lg font-[FallingSkyRegular] text-white bg-black">1</div>

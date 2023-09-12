@@ -128,19 +128,19 @@ function EditProfile() {
         }
     }
     const HandleLoad = () => {
-        setIsPicLoaded(true);
+        /* setIsPicLoaded(true); */
     }
     return (
-        <div className="flex flex-col justify-center items-center w-full py-40 sm:px-24">
-            <div className="flex flex-col items-start w-2/5" style={isSubmitting ? { filter: "opacity(0.5)" } : null}>
+        <div className="flex flex-col justify-center items-center w-full py-40 lg:px-24">
+            <div className="flex flex-col items-start w-[85%] xl:w-2/5" style={isSubmitting ? { filter: "opacity(0.5)" } : null}>
                 <div className="font-[FallingSkyRegular] text-xl font-normal self-center py-4">Edit Account Details</div>
                 {Loaded ? <>
-                    <img onLoad={HandleLoad} className="h-40 w-full" src={coverImgUrl}></img>
-                    {isPicLoaded ? null : <div className="h-40 w-[40vw] sm:w-[calc((100vw-12rem)*0.4)] absolute top-[calc(13.75rem)] flex justify-center items-center bg-[#F2F2F2]"><FontAwesomeIcon className="text-3xl" icon={faSpinner} spin></FontAwesomeIcon></div>}
+                    <img style={{opacity: isPicLoaded ? null : 0}} onLoad={HandleLoad} className="h-40 w-full" src={coverImgUrl}></img>
+                    {isPicLoaded ? null : <div className="h-40 w-[85vw] lg:w-[calc(85vw-11rem)] xl:w-[calc((100vw-12rem)*0.4)] absolute top-[calc(13.75rem)] flex justify-center items-center bg-[#F2F2F2]"><FontAwesomeIcon className="text-3xl" icon={faSpinner} spin></FontAwesomeIcon></div>}
                     <div className="flex justify-between items-center px-2 relative bottom-12 w-full">
                         <div className="flex">
-                            <img onLoad={HandleLoad} className="box-content object-cover w-[100px] h-[100px] rounded-full border-2 border-white" src={profileImgUrl}></img>
-                            {isPicLoaded ? null : <div className="w-[100px] h-[100px] absolute rounded-full flex justify-center items-center bg-[#F2F2F2]"><FontAwesomeIcon className="text-2xl" icon={faSpinner} spin></FontAwesomeIcon></div>}
+                            <img style={{opacity: isPicLoaded ? null : 0}} onLoad={HandleLoad} className="box-content object-cover w-[100px] h-[100px] rounded-full border-2 border-white" src={profileImgUrl}></img>
+                            {isPicLoaded ? null : <div className="w-[100px] h-[100px] border-2 border-white absolute rounded-full flex justify-center items-center bg-[#F2F2F2]"><FontAwesomeIcon className="text-2xl" icon={faSpinner} spin></FontAwesomeIcon></div>}
                             <label htmlFor="profile"><FontAwesomeIcon icon={faPenToSquare} className="text-sm absolute bottom-0 left-20 rounded-full font-[FallingSkyRegular] text-white py-2 px-2 bg-black border-2 border-black "></FontAwesomeIcon></label>
                             <input type="file" accept="image/x-png,image/jpeg" onInput={(e) => { if (e.target.files.length) { setProfileImgUrl(URL.createObjectURL(e.target.files[0])); setProfileImgFile(e.target.files[0]); } }} id="profile" className="hidden"></input>
                         </div>
@@ -156,7 +156,7 @@ function EditProfile() {
                     <label htmlFor="phone" className="text-[#7C7F7F] font-[AwanZaman] font-semibold pl-2 pb-2">Phone number (Will be used for checkout)</label>
                     <PhoneInput onChange={(e) => setPhone(e)} containerStyle={{ display: "flex", width: "100%", marginBottom: "1.25rem" }} inputStyle={{ flexGrow: 1, height: "3rem", borderRadius: 0 }} className="w-full text-[#7C7F7F] font-[AwanZaman] font-semibold" country={"eg"} id="phone" value={phone} />
                     <div className="flex justify-between items-center w-full">
-                        <Link to="/user" className="text-lg font-[FallingSkyRegular] text-[#909190] py-4 px-4 bg-[#F2F2F2] border-[0.1px] border-[#c5c5c5] hover:bg-white duration-300 mb-3"><FontAwesomeIcon icon={faArrowLeft} className="pr-2"></FontAwesomeIcon>Back to Profile</Link>
+                        <Link to="/user" className="text-lg flex items-center font-[FallingSkyRegular] text-[#909190] py-4 px-4 bg-[#F2F2F2] border-[0.1px] border-[#c5c5c5] hover:bg-white duration-300 mb-3"><FontAwesomeIcon icon={faArrowLeft} className="pr-2"></FontAwesomeIcon>Back to Profile</Link>
                         <button onClick={onSubmit} className="text-lg flex items-center font-[FallingSkyRegular] text-white py-4 px-4 bg-black border-[0.1px] hover:bg-[#2A2A2A] hover:border-[#2A2A2A] duration-300 border-black mb-3">{isSubmitting ? <FontAwesomeIcon className="text-2xl" icon={faSpinner} spin></FontAwesomeIcon> : <FontAwesomeIcon icon={faCheck} className="pr-2"></FontAwesomeIcon>}<span className="ml-2">Update Profile</span></button>
                     </div>
                 </>

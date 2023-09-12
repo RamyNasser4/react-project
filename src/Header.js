@@ -81,12 +81,12 @@ class Header extends Component {
                     </div>
                 </div>
                 <div className={this.state.Headeractive ? this.active : this.classes}>
-                    <NavLink to="/" className={this.state.Headeractive ? this.navactive : this.navclasses}>Home</NavLink>
-                    <NavLink to="/Signin" className={this.state.Headeractive ? this.navactive : this.navclasses}>Sign in</NavLink>
-                    <NavLink to="/Signup" className={this.state.Headeractive ? this.navactive : this.navclasses}>Sign up</NavLink>
-                    <NavLink to="/Shop" className={this.state.Headeractive ? this.navactive : this.navclasses}>Shop</NavLink>
-                    <NavLink to="/Featured" className={this.state.Headeractive ? this.navactive : this.navclasses}>Featured</NavLink>
-                    <NavLink to="/Recommended" className={this.state.Headeractive ? this.navactive : this.navclasses}>Recommended</NavLink>
+                    <NavLink onClick={this.onClickBar} to="/" className={this.state.Headeractive ? this.navactive : this.navclasses}>Home</NavLink>
+                    <NavLink onClick={this.onClickBar} to="/Signin" className={this.state.Headeractive ? this.navactive : this.navclasses}>Sign in</NavLink>
+                    <NavLink onClick={this.onClickBar} to="/Signup" className={this.state.Headeractive ? this.navactive : this.navclasses}>Sign up</NavLink>
+                    <NavLink onClick={this.onClickBar} to="/Shop" className={this.state.Headeractive ? this.navactive : this.navclasses}>Shop</NavLink>
+                    <NavLink onClick={this.onClickBar} to="/Featured" className={this.state.Headeractive ? this.navactive : this.navclasses}>Featured</NavLink>
+                    <NavLink onClick={this.onClickBar} to="/Recommended" className={this.state.Headeractive ? this.navactive : this.navclasses}>Recommended</NavLink>
                 </div>
             </div>
 

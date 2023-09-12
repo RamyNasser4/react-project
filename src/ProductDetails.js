@@ -72,7 +72,7 @@ function ProductDetails() {
     }
     return (
         <div ref={refProduct} className="flex flex-col justify-center items-center pt-16 sm:px-24">
-            <div className="flex flex-col w-full px-14 py-10">
+            <div className="flex flex-col w-full px-5 md:px-14 py-10">
                 <Link to="/Shop" className="self-start p-5">
                     <FontAwesomeIcon icon={faArrowLeft} />
                     <span className="font-[AwanZaman] text-2xl pl-2">Back to Shop</span>
@@ -83,12 +83,12 @@ function ProductDetails() {
                             return <ProductModel imgsrc={item}></ProductModel>
                         })}
                     </div>
-                        <div className="relative flex justify-center min-w-[450px] min-h-[570px] max-w-[500px] max-h-[600px] items-center w-full lg:w-auto bg-[#F8F8F8]">
+                        <div className="relative flex justify-center lg:min-w-[540px] xl:min-w-[810px] 2xl:min-w-[450px] min-h-[300px] lg:min-h-[570px] max-w-[500px] max-h-[600px] items-center w-full lg:w-auto bg-[#F8F8F8]">
                             {Color !== "" ? <input type="color" value={`${ColorHex}`} className="absolute top-0 left-0 w-full h-full mix-blend-hue" disabled></input> : null}
                             {isPicLoaded ? null : <FontAwesomeIcon className="text-3xl" icon={faSpinner} spin />}
-                            <img onLoad={HandleLoad} className="box-content" src={Image}></img>
+                            <img onLoad={HandleLoad} className="box-content xl:scale-125 2xl:scale-100" src={Image}></img>
                         </div>
-                        <div className="flex  flex-col py-5 px-8 items-start w-full lg:w-2/5">
+                        <div className="flex  flex-col py-5 px-3 md:px-8 items-start w-full 2xl:w-2/5">
                             <br></br>
                             <h6 className="font-[AwanZaman] font-semibold text-base text-[#818181]">{product.collection_name}</h6>
                             <h1 className="font-[MaiseeMedium] text-4xl mb-4">{product.name}</h1>
@@ -98,13 +98,13 @@ function ProductDetails() {
                                 <label htmlFor="lens" className="font-[AwanZaman] font-semibold text-sm text-[#818181] tracking-wider mb-4">Lens Width and Frame Size</label>
                                 <Dropdown></Dropdown>
                                 {productColors.length !== 0 ? <label htmlFor="color" className="font-[AwanZaman] font-semibold text-sm text-[#818181] tracking-wider">Choose Color</label> : null}
-                                <div className="flex w-3/4 my-4 relative">
+                                <div className="flex w-full justify-between md:justify-normal md:w-3/4 my-4 relative">
                                     {productColors.map((item, pos) => {
                                         return <ColorOption key={pos} pos={pos} isClicked={Color === pos ? true : false} color={item.color_hex}></ColorOption>
                                     })}
                                 </div>
                                 <h1 className="font-[MaiseeMedium] text-4xl my-5">${product.price}</h1>
-                                <button onClick={HandleAdd} className="text-sm font-[FallingSkyRegular] text-white py-[0.7rem] px-4 bg-black border-2 border-black hover:bg-[#2A2A2A] duration-300 hidden lg:block mb-3">Add to Basket</button>
+                                <button onClick={HandleAdd} className="text-sm w-full md:w-auto font-[FallingSkyRegular] text-white py-[0.7rem] px-4 bg-black border-2 border-black hover:bg-[#2A2A2A] duration-300 mb-3">Add to Basket</button>
                             </div>
                         </div></> : <div className="flex min-h-[570px] w-full justify-center items-center"><FontAwesomeIcon className="text-4xl" icon={faSpinner} spin /></div>}
                 </div>

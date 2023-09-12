@@ -32,7 +32,8 @@ function CheckoutStep3() {
         'w-full': true,
         'overflow-y-hidden': true,
         'duration-700': true,
-        'h-96': true
+        'lg:h-96': true,
+        'h-[35rem]' : true
     });
     const [classes, setClasses] = useState(classNames({
         'flex': true,
@@ -113,11 +114,11 @@ function CheckoutStep3() {
     }
     return (
         <div className={classes}>
-            <div className="w-2/3 flex flex-col justify-center items-center">
+            <div className="w-[85%] lg:w-2/3 flex flex-col justify-center items-center">
                 <CheckoutBar step={3}></CheckoutBar>
             </div>
             <div className="font-[FallingSkyRegular] text-xl">Payment</div>
-            <div className="flex flex-col w-[55%] items-start">
+            <div className="flex flex-col w-[90%] lg:w-[55%] items-start">
                 <div className="p-4 font-[AwanZaman] font-semibold text-[#4A4A4A]">Payment option</div>
                 <div className="flex flex-col w-full items-start border-[0.1px] border-[#c5c5c5]">
                     <div onClick={() => {setIsClicked("CreditCard");setVisible(visibleClass);}} style={{opacity : isClicked=="CreditCard" ? 1 : null}} className="flex justify-between opacity-50 hover:opacity-100 duration-300 cursor-pointer px-4 py-8 w-full bg-[#F1F1F1] border-b-[0.1px] border-b-[#c5c5c5]">
@@ -141,7 +142,7 @@ function CheckoutStep3() {
                                 <img className="w-14 h-full grayscale" src="https://pohseng.com/shop/image/catalog/payment-method-visa-512.png"></img>
                             </div>
                         </div>
-                        <div className="grid grid-cols-2 gap-x-8 gap-y-4 p-8 w-full">
+                        <div className="flex flex-col lg:grid grid-cols-2 gap-x-8 gap-y-4 p-8 w-full">
                             <div className="flex flex-col items-start">
                                 <label style={{ color: invalidName ? 'red' : '#7C7F7F' }} htmlFor="name" className="font-[AwanZaman] font-semibold pl-2 pb-2">*{invalidName ? "Name on card is required" : "Name on Card"}</label>
                                 <input placeholder="Enter name on card" style={{ borderColor: invalidName ? 'red' : null }} value={name} onChange={checkName} type="text" id="name" className="font-[AwanZaman] font-semibold border-[1px] border-solid border-[#c5c5c5] text-xl w-full py-2 px-4 placeholder:font-semibold placeholder:text-[#9D9D9D]"></input>
@@ -172,13 +173,13 @@ function CheckoutStep3() {
                     </div>
                 </div>
             </div>
-            <div className="flex flex-col w-1/2">
+            <div className="flex flex-col w-[90%] lg:w-1/2">
                 <div className="flex items-center self-end">
                     <span className="font-[AwanZaman] font-semibold text-[#4A4A4A] pr-4">Total:</span>
                     <div className="text-3xl font-[FallingSkyRegular] my-4">${Math.floor(total) == total ? total + ".00" : total.toFixed(2)}</div>
                 </div>
             </div>
-            <div className="flex justify-between w-[52%] my-4">
+            <div className="flex justify-between w-[90%] lg:w-[52%] my-4">
                 <Link to="/checkout/step2" className="text-lg font-[FallingSkyRegular] text-[#909190] py-4 px-4 bg-[#F2F2F2] border-[0.1px] border-[#c5c5c5] hover:bg-white duration-300 mb-3"><FontAwesomeIcon className="pr-2" icon={faArrowLeft} />Go Back</Link>
                 <button className="text-lg flex items-center font-[FallingSkyRegular] text-white py-4 px-4 bg-black border-[0.1px] border-black hover:bg-[#2A2A2A] hover:border-[#2A2A2A] duration-300 mb-3"><FontAwesomeIcon className="pr-2" icon={faCheck}></FontAwesomeIcon>Confirm</button>
             </div>
