@@ -2,7 +2,7 @@ import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRightFromBracket, faUser } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRightFromBracket, faTableColumns, faUser } from '@fortawesome/free-solid-svg-icons'
 import Cookies from 'js-cookie'
 import { useAuthUser, useSignOut } from 'react-auth-kit'
 import axios from './axios'
@@ -77,6 +77,19 @@ export default function Example() {
                                 </Link>
                             )}
                         </Menu.Item>
+                        {auth() && auth().role=="admin" ? <Menu.Item>
+                            {({ active }) => (
+                                <Link
+                                    /* to="/" */
+                                    className={classNames(
+                                        active ? 'bg-gray-100 text-gray-900 flex justify-between items-center w-full font-[FallingSkyRegular]' : 'text-gray-700',
+                                        'px-4 py-2 text-sm flex justify-between items-center w-full font-[FallingSkyRegular]'
+                                    )}
+                                >
+                                    Admin panel <FontAwesomeIcon icon={faTableColumns} />
+                                </Link>
+                            )}
+                        </Menu.Item> : null}
                         <form method="POST" onSubmit={onSubmit}>
                             <Menu.Item>
                                 {({ active }) => (
