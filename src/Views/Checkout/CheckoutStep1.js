@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import CheckoutBar from "./CheckoutBar";
+import CheckoutBar from "../../Components/Checkout/CheckoutBar";
 import { useDispatch, useSelector } from "react-redux";
-import CartCard from "./CartCard";
+import CartCard from "../../Components/Basket/CartCard";
 import { faArrowRight, faStore } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useNavigate, useNavigationType } from "react-router-dom";
 import { useEffect } from "react";
 import classNames from "classnames";
-import { closeBasket, updateClickable } from "./Redux/BasketSlice";
+import { closeBasket, updateClickable } from "../../Redux/BasketSlice";
 function CheckoutStep1(){
     const dispatch = useDispatch();
     dispatch(updateClickable(false));

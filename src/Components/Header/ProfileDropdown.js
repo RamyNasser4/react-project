@@ -5,10 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRightFromBracket, faTableColumns, faUser } from '@fortawesome/free-solid-svg-icons'
 import Cookies from 'js-cookie'
 import { useAuthUser, useSignOut } from 'react-auth-kit'
-import axios from './axios'
+import axios from '../../axios'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { updateAuth } from './Redux/AuthSlice'
+import { updateAuth } from '../../Redux/AuthSlice'
 import { Link } from 'react-router-dom'
 
 function classNames(...classes) {

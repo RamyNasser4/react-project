@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { connect, useSelector } from 'react-redux';
-import { addtoBasket } from "./Redux/BasketSlice";
-import { toggleAlert, updateContent } from "./Redux/AlertSlice";
+import { addtoBasket } from "../../Redux/BasketSlice";
+import { toggleAlert, updateContent } from "../../Redux/AlertSlice";
 const mapStateToProps = state => ({
     Basket: state.Basket.products
 });

@@ -4,7 +4,7 @@ import { faBagShopping, faBars } from "@fortawesome/free-solid-svg-icons";
 import classNames from "classnames";
 import { Link, NavLink } from "react-router-dom";
 import { connect } from 'react-redux';
-import { controlBasket } from "./Redux/BasketSlice";
+import { controlBasket } from "../../Redux/BasketSlice";
 import ProfileDropdown from "./ProfileDropdown";
 const mapStateToProps = state => ({
     Auth: state.Auth.authenticated,

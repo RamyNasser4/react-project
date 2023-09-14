@@ -1,8 +1,8 @@
 import React from "react";
-import HomePreview from "./HomePreview";
-import ProductsView from "./ProductsView";
+import HomePreview from "../../Components/Previews/HomePreview";
+import ProductsView from "../../Components/Previews/ProductsView";
 import { useDispatch } from "react-redux";
-import { closeBasket, updateClickable } from "./Redux/BasketSlice";
+import { closeBasket, updateClickable } from "../../Redux/BasketSlice";
 import Cookies from "js-cookie";
 function Home() {
     const dispatch = useDispatch();

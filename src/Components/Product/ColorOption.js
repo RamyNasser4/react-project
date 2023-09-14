@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
-import { updateColor } from "./Redux/ColorSlice";
+import { updateColor } from "../../Redux/ColorSlice";
 function ColorOption(props) {
     const dispatch = useDispatch();
     const handleClick = () =>{

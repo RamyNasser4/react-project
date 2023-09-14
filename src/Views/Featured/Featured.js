@@ -1,8 +1,8 @@
 import React from "react";
-import ShopPreview from "./ShopPreview";
-import ProductsView from "./ProductsView";
 import { useDispatch } from "react-redux";
-import { closeBasket, updateClickable } from "./Redux/BasketSlice";
+import ShopPreview from "../../Components/Previews/ShopPreview";
+import ProductsView from "../../Components/Previews/ProductsView";
+import { closeBasket, updateClickable } from "../../Redux/BasketSlice";
 function Featured() {
     const dispatch = useDispatch();
     dispatch(closeBasket(false));

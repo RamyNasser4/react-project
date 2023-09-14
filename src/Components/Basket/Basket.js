@@ -2,10 +2,10 @@ import React from "react";
 import CartCard from "./CartCard";
 import classNames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
-import { controlBasket,clearBasket } from "./Redux/BasketSlice";
+import { controlBasket,clearBasket } from "../../Redux/BasketSlice";
 import { Link } from "react-router-dom";
 import { useAuthUser, useIsAuthenticated } from "react-auth-kit";
-import { togglePopup } from "./Redux/PopupSlice";
+import { togglePopup } from "../../Redux/PopupSlice";
 function Basket() {
     const dispatch = useDispatch();
     const basketState = useSelector(state => state.Basket.visible);

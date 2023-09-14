@@ -1,17 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
-import ProductsView from "./ProductsView";
+import ProductsView from "../../Components/Previews/ProductsView";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { Link, useParams } from "react-router-dom";
-import ProductModel from "./ProductModel";
-import ColorOption from "./ColorOption";
+import ProductModel from "../../Components/Product/ProductModel";
+import ColorOption from "../../Components/Product/ColorOption";
 import { useDispatch, useSelector } from 'react-redux';
-import { updateImage } from "./Redux/ImageSlice";
+import { updateImage } from "../../Redux/ImageSlice";
 import axios from "axios";
-import { updateColor } from "./Redux/ColorSlice";
-import Dropdown from "./Dropdown";
-import { addtoBasket } from "./Redux/BasketSlice";
-import { toggleAlert, updateContent } from "./Redux/AlertSlice";
+import { updateColor } from "../../Redux/ColorSlice";
+import Dropdown from "../../Components/Product/Dropdown";
+import { addtoBasket } from "../../Redux/BasketSlice";
+import { toggleAlert, updateContent } from "../../Redux/AlertSlice";
 function ProductDetails() {
     const refProduct = useRef();
     const [product, setProduct] = useState([]);

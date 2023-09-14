@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {useDispatch} from 'react-redux';
-import { updateImage } from "./Redux/ImageSlice";
+import { updateImage } from "../../Redux/ImageSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 function ProductModel(props){

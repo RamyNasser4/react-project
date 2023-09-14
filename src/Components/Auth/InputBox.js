@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { updateEmail, updateName, updatePassword, updateValid } from "./Redux/SignupSlice";
+import { updateEmail, updateName, updatePassword, updateValid } from "../../Redux/SignupSlice";
 import { useDispatch } from "react-redux";
-import { IupdateEmail, IupdatePassword, IupdateValid } from "./Redux/SigninSlice";
+import { IupdateEmail, IupdatePassword, IupdateValid } from "../../Redux/SigninSlice";
 function InputBox(props) {
     const dispatch = useDispatch();
     const [invalid, setInvalid] = useState(false);

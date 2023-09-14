@@ -2,8 +2,8 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { togglePopup } from "./Redux/PopupSlice";
-import { closeBasket } from "./Redux/BasketSlice";
+import { togglePopup } from "../../Redux/PopupSlice";
+import { closeBasket } from "../../Redux/BasketSlice";
 function Popup() {
     const visible = useSelector(state => state.Popup.visible);
     const dispatch = useDispatch();

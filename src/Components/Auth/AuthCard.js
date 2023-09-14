@@ -8,7 +8,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import Cookies from "js-cookie";
 import { useSignIn } from "react-auth-kit";
-import { updateAuth } from "./Redux/AuthSlice";
+import { updateAuth } from "../../Redux/AuthSlice";
 function AuthCard(props) {
     const navigate = useNavigate();
     const dispatch = useDispatch();

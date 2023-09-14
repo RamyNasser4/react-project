@@ -1,10 +1,10 @@
 import React, { Component, useEffect, useState } from "react";
-import ShopCard from "./ShopCard";
+import ShopCard from "../../Components/Shop/ShopCard";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
-import { closeBasket, updateClickable } from "./Redux/BasketSlice";
+import { closeBasket, updateClickable } from "../../Redux/BasketSlice";
 function Shop() {
     const [Loaded, setLoaded] = useState(false);
     const [products, setProducts] = useState([]);

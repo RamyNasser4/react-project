@@ -2,7 +2,7 @@ import { faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { DecQuantity, IncQuantity, RemoveFromBasket } from "./Redux/BasketSlice";
+import { DecQuantity, IncQuantity, RemoveFromBasket } from "../../Redux/BasketSlice";
 import classNames from "classnames";
 function CartCard(props) {
     const dispatch = useDispatch();

@@ -2,7 +2,7 @@ import { Fragment, useEffect, useRef, useState } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { useDispatch } from 'react-redux';
-import { updateSize } from './Redux/SizeSlice';
+import { updateSize } from '../../Redux/SizeSlice';
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')

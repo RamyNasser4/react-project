@@ -2,12 +2,12 @@ import classNames from "classnames";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import CheckoutBar from "./CheckoutBar";
+import CheckoutBar from "../../Components/Checkout/CheckoutBar";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useNavigationType } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faCheck } from "@fortawesome/free-solid-svg-icons";
-import { updateClickable } from "./Redux/BasketSlice";
+import { updateClickable } from "../../Redux/BasketSlice";
 function CheckoutStep3() {
     const navigate = useNavigate();
     const type = useNavigationType();

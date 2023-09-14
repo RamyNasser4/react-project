@@ -3,13 +3,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "./axios";
+import axios from "../../axios";
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css'
 import { Link } from "react-router-dom";
 import { useAuthUser } from "react-auth-kit";
 import { useDispatch } from "react-redux";
-import { toggleAlert, updateContent } from "./Redux/AlertSlice";
+import { toggleAlert, updateContent } from "../../Redux/AlertSlice";
 var InitialName, Initialemail, Initialaddress, Initialphone;
 function EditProfile() {
     const navigate = useNavigate();

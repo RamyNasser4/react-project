@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import React, { useState } from "react";
 import { useAuthUser } from "react-auth-kit";
-import CheckoutBar from "./CheckoutBar";
+import CheckoutBar from "../../Components/Checkout/CheckoutBar";
 import PhoneInput from "react-phone-input-2";
 import { useEffect } from "react";
 import { Link, useNavigate, useNavigationType } from "react-router-dom";
@@ -9,8 +9,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import Cookies from "js-cookie";
-import axios from "./axios";
-import { updateClickable } from "./Redux/BasketSlice";
+import axios from "../../axios";
+import { updateClickable } from "../../Redux/BasketSlice";
 function CheckoutStep2() {
     const [name, setName] = useState("");
     const navigate = useNavigate();

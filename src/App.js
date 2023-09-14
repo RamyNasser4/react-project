@@ -1,25 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Header from './Header';
-import Home from './Home';
-import Footer from './Footer';
-import Signin from './Signin';
-import Signup from './Signup';
-import ForgetPassword from './ForgetPassword';
-import Shop from './Shop';
-import Featured from './Featured';
-import Recommended from './Recommended';
-import ProductDetails from './ProductDetails';
-import Basket from './Basket';
-import Added from './Added';
+import Header from './Components/Header/Header';
+import Home from './Views/Home/Home';
+import Footer from './Components/Footer/Footer';
+import Signin from './Views/Auth/Signin';
+import Signup from './Views/Auth/Signup';
+import ForgetPassword from './Views/Auth/ForgetPassword';
+import Shop from './Views/Shop/Shop';
+import Recommended from './Views/Recommended/Recommended';
+import ProductDetails from './Views/Product/ProductDetails';
+import Basket from './Components/Basket/Basket';
+import Added from './Components/Alerts/Added';
 import { AuthProvider, RequireAuth } from 'react-auth-kit';
-import Profile from './Profile';
-import EditProfile from './EditProfile';
-import CheckoutStep1 from './CheckoutStep1';
-import CheckoutStep2 from './CheckoutStep2';
-import CheckoutStep3 from './CheckoutStep3';
-import Popup from './Popup';
+import Profile from './Views/Profile/Profile';
+import EditProfile from './Views/Profile/EditProfile';
+import CheckoutStep1 from './Views/Checkout/CheckoutStep1';
+import CheckoutStep2 from './Views/Checkout/CheckoutStep2';
+import CheckoutStep3 from './Views/Checkout/CheckoutStep3';
+import Popup from './Components/Alerts/Popup';
+import Featured from './Views/Featured/Featured';
 export default function App() {
   return (
     <AuthProvider

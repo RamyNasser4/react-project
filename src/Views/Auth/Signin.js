@@ -1,7 +1,7 @@
 import React from "react";
-import AuthCard from "./AuthCard";
+import AuthCard from "../../Components/Auth/AuthCard";
 import { useDispatch } from "react-redux";
-import { updateClickable } from "./Redux/BasketSlice";
+import { updateClickable } from "../../Redux/BasketSlice";
 function Signin() {
     const dispatch = useDispatch();
     dispatch(updateClickable(false));
