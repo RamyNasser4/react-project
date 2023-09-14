@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import Header from './Components/Header/Header';
 import Home from './Views/Home/Home';
 import Footer from './Components/Footer/Footer';
@@ -12,7 +12,7 @@ import Recommended from './Views/Recommended/Recommended';
 import ProductDetails from './Views/Product/ProductDetails';
 import Basket from './Components/Basket/Basket';
 import Added from './Components/Alerts/Added';
-import { AuthProvider, RequireAuth } from 'react-auth-kit';
+import { AuthProvider, RequireAuth, useAuthUser } from 'react-auth-kit';
 import Profile from './Views/Profile/Profile';
 import EditProfile from './Views/Profile/EditProfile';
 import CheckoutStep1 from './Views/Checkout/CheckoutStep1';
@@ -20,6 +20,8 @@ import CheckoutStep2 from './Views/Checkout/CheckoutStep2';
 import CheckoutStep3 from './Views/Checkout/CheckoutStep3';
 import Popup from './Components/Alerts/Popup';
 import Featured from './Views/Featured/Featured';
+import AdminPanel from './Views/Admin/AdminPanel';
+import AdminRoute from './AdminRoute';
 export default function App() {
   return (
     <AuthProvider
@@ -47,6 +49,9 @@ export default function App() {
             <Route path='/checkout/step1' element={<RequireAuth loginPath='/Signin'><CheckoutStep1></CheckoutStep1></RequireAuth>}></Route>
             <Route path='/checkout/step2' element={<RequireAuth loginPath='/Signin'><CheckoutStep2></CheckoutStep2></RequireAuth>}></Route>
             <Route path='/checkout/step3' element={<RequireAuth loginPath='/Signin'><CheckoutStep3></CheckoutStep3></RequireAuth>}></Route>
+            <Route element={<RequireAuth><AdminRoute></AdminRoute></RequireAuth>}>
+              <Route path='/admin' element={<AdminPanel></AdminPanel>}></Route>
+            </Route>
           </Routes>
           <Footer></Footer>
         </div>
