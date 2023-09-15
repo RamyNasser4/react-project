@@ -1,9 +1,21 @@
 import React from "react";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import { useState } from "react";
-import AddForm from "../../Components/Forms/AddForm";
+import ProductComponent from "../../Components/Admin/ProductComponent";
+import { faPlus, faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 function AdminProducts() {
-    const [active,setActive] = useState("addProduct");
+    const [Loaded, setLoaded] = useState(false);
+    const [products, setProducts] = useState([]);
+    useEffect(() => {
+        axios.get("http://127.0.0.1:8000/api/products").then(res => {
+            setProducts(res.data.products);
+            setLoaded(true);
+        });
+    }, []);
     return (
         <>
             {/*  <!-- component -->
@@ -16,16 +28,21 @@ function AdminProducts() {
                         <main>
                             <div class="py-6 px-4">
                                 <div class="w-full ">
-                                    <div class="bg-white w-full h-[calc(100vh-78px-2rem)] shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
-                                        {true ? <> <div className="font-[MaiseeMedium] text-4xl text-left my-5">Products</div>
-                                            <div className="w-1/2 flex justify-between items-center my-5">
-                                                <div className="flex relative bottom-[-2px]">
-                                                    <div onClick={() => { setActive("addProduct") }} style={active == "addProduct" ? { color: "#F9F9F9", backgroundColor: "#2A2A2A"} : null} className="font-[AwanZaman] mx-3 font-semibold text-white border-b-transparent border-b-[1px] border-b-solid hover:bg-[#2A2A2A] bg-black duration-300 cursor-pointer text-xl px-3 py-4">Add product</div>
-                                                    <div onClick={() => { setActive("editProduct") }} style={active == "editProduct" ? { color: "#F9F9F9", backgroundColor: "#2A2A2A"} : null} className="font-[AwanZaman] mx-3 font-semibold text-white hover:bg-[#2A2A2A] bg-black duration-300 cursor-pointer text-xl px-3 py-4">Edit product</div>
-                                                    <div onClick={() => { setActive("deleteProduct") }} style={active == "deleteProduct" ? { color: "#F9F9F9", backgroundColor: "#2A2A2A"} : null} className="font-[AwanZaman] mx-3 font-semibold text-white hover:bg-[#2A2A2A] bg-black duration-300 cursor-pointer text-xl px-3 py-4">Delete product</div>
-                                                </div>
-                                            </div>
-                                            <AddForm style={active!="addProduct" ? {display : "none"} : null}></AddForm></> : <div className="flex justify-center items-center w-full h-full">{/* <FontAwesomeIcon className="text-4xl" icon={faSpinner} spin></FontAwesomeIcon> */}</div>}
+                                    <div class="bg-white w-full shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
+                                        {Loaded ? <> <div className="font-[MaiseeMedium] text-4xl text-left my-5">Products</div>
+                                            <Link to="/admin/newproduct" className="flex justify-end items-center px-4 py-2">
+                                                <div className="cursor-pointer font-[AwanZaman] font-semibold text-xl flex items-center"><FontAwesomeIcon className="pr-2" icon={faPlus} />Add new product</div>
+                                            </Link>
+                                            <div className="w-full grid grid-cols-5">
+                                                <div className="text-left border-[0.1px] px-2 py-3">ID</div>
+                                                <div className="text-left border-[0.1px] px-2 py-3">Name</div>
+                                                <div className="text-left border-[0.1px] px-2 py-3">Price</div>
+                                                <div className="text-left border-[0.1px] px-2 py-3">Collection name</div>
+                                                <div className="text-left border-[0.1px] px-2 py-3">Actions</div>
+                                                {products.map((item) => {
+                                                    return <ProductComponent name={item.name} collection={item.collection_name} price={item.price} key={item.id} id={item.id}></ProductComponent>
+                                                })}
+                                            </div> </> : <div className="flex justify-center items-center w-full h-[calc(100vh-78px-2rem)]"><FontAwesomeIcon className="text-4xl" icon={faSpinner} spin></FontAwesomeIcon></div>}
                                     </div>
                                 </div>
                             </div>

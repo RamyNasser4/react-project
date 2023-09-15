@@ -1,6 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter, Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import Header from './Components/Header/Header';
 import Home from './Views/Home/Home';
 import Footer from './Components/Footer/Footer';
@@ -12,7 +11,7 @@ import Recommended from './Views/Recommended/Recommended';
 import ProductDetails from './Views/Product/ProductDetails';
 import Basket from './Components/Basket/Basket';
 import Added from './Components/Alerts/Added';
-import { AuthProvider, RequireAuth, useAuthUser } from 'react-auth-kit';
+import { AuthProvider, RequireAuth} from 'react-auth-kit';
 import Profile from './Views/Profile/Profile';
 import EditProfile from './Views/Profile/EditProfile';
 import CheckoutStep1 from './Views/Checkout/CheckoutStep1';
@@ -23,6 +22,7 @@ import Featured from './Views/Featured/Featured';
 import AdminPanel from './Views/Admin/AdminPanel';
 import AdminRoute from './AdminRoute';
 import AdminProducts from './Views/Admin/AdminProducts';
+import NewProduct from './Views/Admin/NewProduct';
 export default function App() {
   return (
     <AuthProvider
@@ -53,6 +53,7 @@ export default function App() {
             <Route element={<RequireAuth><AdminRoute></AdminRoute></RequireAuth>}>
               <Route path='/admin/dashboard' element={<AdminPanel></AdminPanel>}></Route>
               <Route path='/admin/products' element={<AdminProducts></AdminProducts>}></Route>
+              <Route path='/admin/newproduct' element={<NewProduct></NewProduct>}></Route>
             </Route>
           </Routes>
           <Footer></Footer>
