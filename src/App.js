@@ -22,6 +22,7 @@ import Popup from './Components/Alerts/Popup';
 import Featured from './Views/Featured/Featured';
 import AdminPanel from './Views/Admin/AdminPanel';
 import AdminRoute from './AdminRoute';
+import AdminProducts from './Views/Admin/AdminProducts';
 export default function App() {
   return (
     <AuthProvider
@@ -50,7 +51,8 @@ export default function App() {
             <Route path='/checkout/step2' element={<RequireAuth loginPath='/Signin'><CheckoutStep2></CheckoutStep2></RequireAuth>}></Route>
             <Route path='/checkout/step3' element={<RequireAuth loginPath='/Signin'><CheckoutStep3></CheckoutStep3></RequireAuth>}></Route>
             <Route element={<RequireAuth><AdminRoute></AdminRoute></RequireAuth>}>
-              <Route path='/admin' element={<AdminPanel></AdminPanel>}></Route>
+              <Route path='/admin/dashboard' element={<AdminPanel></AdminPanel>}></Route>
+              <Route path='/admin/products' element={<AdminProducts></AdminProducts>}></Route>
             </Route>
           </Routes>
           <Footer></Footer>

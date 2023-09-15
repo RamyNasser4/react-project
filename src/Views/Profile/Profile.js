@@ -5,7 +5,6 @@ import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react"
 import { useAuthUser } from "react-auth-kit";
 import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
 function Profile() {
     const auth = useAuthUser();
     const [Loaded, setLoaded] = useState(false);

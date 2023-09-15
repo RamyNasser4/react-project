@@ -73,7 +73,7 @@ class Header extends Component {
                         <NavLink to="/Featured" className="text-lg py-2 px-3 hover:bg-[#F5F5F5] text-[#848484] duration-300 font-[AwanZaman] font-semibold hidden sm:block">Featured</NavLink>
                         <NavLink to="/Recommended" className="text-lg py-2 px-3 hover:bg-[#F5F5F5] text-[#848484] duration-300 font-[AwanZaman] font-semibold hidden sm:block">Recommended</NavLink>
                     </div>
-                    <div className=" lg:w-[23%] xl:w-[18%] 2xl:w-[13%] flex justify-between items-center">
+                    <div className=" lg:w-[23%] xl:w-[18%] 2xl:w-[15%] flex justify-between items-center">
                         <FontAwesomeIcon style={!this.props.Clickable ? { cursor: "not-allowed" } : { cursor: "pointer" }} icon={faBagShopping} onClick={this.onClickBag} className="text-2xl py-2 px-3 duration-300 hover:bg-[#F5F5F5]" />
                         <FontAwesomeIcon icon={faBars} className="text-2xl lg:hidden px-4" onClick={this.onClickBar} />
                         {this.props.Auth ? <ProfileDropdown></ProfileDropdown> : <><Link className="text-lg font-[AwanZaman] text-white py-1 px-4 bg-black border-2 border-black hidden lg:block hover:bg-[#2A2A2A] duration-300 cursor-pointer" to="/Signup">Sign up</Link>

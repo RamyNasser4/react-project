@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import ProductCard from "./ProductCard";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 function ProductsView(props) {
     const ViewRef = useRef();
