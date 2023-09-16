@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/RamyNasser4.github.io/react-project,/static/css/main.c3c10a21.css",
+    "main.js": "/RamyNasser4.github.io/react-project,/static/js/main.6c317556.js",
+    "static/js/651.c3bf17ec.chunk.js": "/RamyNasser4.github.io/react-project,/static/js/651.c3bf17ec.chunk.js",
+    "static/media/AwanZamanMedium.ttf": "/RamyNasser4.github.io/react-project,/static/media/AwanZamanMedium.aa28900c3d7fcbffb613.ttf",
+    "static/media/FallingSkyMed.woff": "/RamyNasser4.github.io/react-project,/static/media/FallingSkyMed.dfc4f24c60f4d638b7c4.woff",
+    "static/media/FallingSky.woff": "/RamyNasser4.github.io/react-project,/static/media/FallingSky.137f45574effe6d0a812.woff",
+    "static/media/GlasgowItalic.ttf": "/RamyNasser4.github.io/react-project,/static/media/GlasgowItalic.8678cbc6d86b15f54303.ttf",
+    "static/media/BrieMediumRegular.ttf": "/RamyNasser4.github.io/react-project,/static/media/BrieMediumRegular.2db5cd2e49d248f45314.ttf",
+    "index.html": "/RamyNasser4.github.io/react-project,/index.html",
+    "main.c3c10a21.css.map": "/RamyNasser4.github.io/react-project,/static/css/main.c3c10a21.css.map",
+    "main.6c317556.js.map": "/RamyNasser4.github.io/react-project,/static/js/main.6c317556.js.map",
+    "651.c3bf17ec.chunk.js.map": "/RamyNasser4.github.io/react-project,/static/js/651.c3bf17ec.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c3c10a21.css",
+    "static/js/main.6c317556.js"
+  ]
+}
