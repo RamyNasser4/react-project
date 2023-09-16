@@ -39,7 +39,7 @@ function ProductDetails() {
                     setProductImages(res.data.product.image);
                     console.log(res.data.colors);
                     setProductColors(res.data.colors);
-                    dispatch(updateImage(Array.isArray(res.data.product.image) ? res.data.product.image[0] : res.data.product.image));
+                    dispatch(updateImage(res.data.product.image[0]));
                     dispatch(updateColor({ color: "", hex: "" }));
                     setLoaded(true);
                 })

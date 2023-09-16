@@ -23,6 +23,7 @@ import AdminPanel from './Views/Admin/AdminPanel';
 import AdminRoute from './AdminRoute';
 import AdminProducts from './Views/Admin/AdminProducts';
 import NewProduct from './Views/Admin/NewProduct';
+import EditProduct from './Views/Admin/EditProduct';
 export default function App() {
   return (
     <AuthProvider
@@ -54,6 +55,7 @@ export default function App() {
               <Route path='/admin/dashboard' element={<AdminPanel></AdminPanel>}></Route>
               <Route path='/admin/products' element={<AdminProducts></AdminProducts>}></Route>
               <Route path='/admin/newproduct' element={<NewProduct></NewProduct>}></Route>
+              <Route path='/admin/product/edit/:id' element={<EditProduct></EditProduct>}></Route>
             </Route>
           </Routes>
           <Footer></Footer>

@@ -14,7 +14,6 @@ export default function MultipleSelect(props) {
       typeof value === 'string' ? value.split(',') : value,
     );
   };
-
   return (
     <div>
       <FormControl sx={{ m: 1, width: 300 }}>
@@ -25,7 +24,7 @@ export default function MultipleSelect(props) {
           multiple
           value={props.color}
           onChange={handleChange}
-          input={<OutlinedInput style={{textAlign : "left"}} label="Name" />}
+          input={<OutlinedInput value={props.color.toString()} style={{textAlign : "left"}} label="Name" />}
         >
           {props.colors.map((item) => (
             <MenuItem
