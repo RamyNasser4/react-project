@@ -6,7 +6,6 @@ import { faFacebookF, faGithub, faGoogle } from "@fortawesome/free-brands-svg-ic
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import Cookies from "js-cookie";
 import { useSignIn } from "react-auth-kit";
 import { updateAuth } from "../../Redux/AuthSlice";
 function AuthCard(props) {

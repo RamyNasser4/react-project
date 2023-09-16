@@ -68,7 +68,7 @@ class Header extends Component {
                 <div className="w-[100%] px-8 py-2 flex justify-between bg-white ">
                     <div className="w-[30%] flex justify-between items-center align-middle">
                         <a className="text-4xl mt- py-2 px-3 font-[AwanZaman]">Logo</a>
-                        <NavLink exact to="/" className="text-lg py-2 px-3 hover:bg-[#F5F5F5] text-[#848484] duration-300 font-[AwanZaman] font-semibold hidden sm:block">Home</NavLink>
+                        <NavLink exact="true" to="/" className="text-lg py-2 px-3 hover:bg-[#F5F5F5] text-[#848484] duration-300 font-[AwanZaman] font-semibold hidden sm:block">Home</NavLink>
                         <NavLink to="/Shop" className="text-lg py-2 px-3 hover:bg-[#F5F5F5] text-[#848484] duration-300 font-[AwanZaman] font-semibold hidden sm:block">Shop</NavLink>
                         <NavLink to="/Featured" className="text-lg py-2 px-3 hover:bg-[#F5F5F5] text-[#848484] duration-300 font-[AwanZaman] font-semibold hidden sm:block">Featured</NavLink>
                         <NavLink to="/Recommended" className="text-lg py-2 px-3 hover:bg-[#F5F5F5] text-[#848484] duration-300 font-[AwanZaman] font-semibold hidden sm:block">Recommended</NavLink>

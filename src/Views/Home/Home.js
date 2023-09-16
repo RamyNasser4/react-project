@@ -3,7 +3,6 @@ import HomePreview from "../../Components/Previews/HomePreview";
 import ProductsView from "../../Components/Previews/ProductsView";
 import { useDispatch } from "react-redux";
 import { closeBasket, updateClickable } from "../../Redux/BasketSlice";
-import Cookies from "js-cookie";
 function Home() {
     const dispatch = useDispatch();
     dispatch(closeBasket(false));

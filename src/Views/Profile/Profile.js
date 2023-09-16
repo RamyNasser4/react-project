@@ -36,7 +36,7 @@ function Profile() {
                             }
                         }).then(response => {
                             console.log(response);
-                            setProfileImgUrl("data:image/png;base64," + response.data);
+                            setProfileImgUrl(response.data);
                         })
                     } catch (err) {
                         console.log(err);
@@ -50,7 +50,7 @@ function Profile() {
                             }
                         }).then(response => {
                             console.log(response);
-                            setCoverImgUrl("data:image/png;base64," + response.data);
+                            setCoverImgUrl(response.data);
                         })
                     } catch (err) {
                         console.log(err);
@@ -65,7 +65,7 @@ function Profile() {
         getData();
     }, [id]);
     const HandleLoad = () => {
-        /* setIsPicLoaded(true); */
+        setIsPicLoaded(true);
     }
     return (
         <div className="flex flex-col justify-center items-center py-40 lg:px-24">
@@ -78,7 +78,7 @@ function Profile() {
             </div>
                 {active == "Account" ? <div className="flex border-[0.1px] border-[#c5c5c5] flex-col p-4 bg-white w-[85%] lg:w-3/5 2xl:w-1/2 items-start pb-20">
                     <img style={{opacity: isPicLoaded ? null : 0}} onLoad={HandleLoad} className="h-40 w-full" src={coverImgUrl}></img>
-                    {isPicLoaded ? null : <div className="h-40 w-[calc(85vw-2rem)] lg:w-[calc(((100vw-12rem)*0.85)-2.8rem)] xl:w-[calc(((100vw-12rem)*0.6)-2.8rem)] 2xl:w-[calc(((100vw-12rem)*0.5)-2.5rem)] absolute top-[calc(14.75rem+4px)] flex justify-center items-center bg-[#F2F2F2]"><FontAwesomeIcon className="text-3xl" icon={faSpinner} spin></FontAwesomeIcon></div>}
+                    {isPicLoaded ? null : <div className="h-40 w-[calc(85vw-2rem)] lg:w-[calc(((100vw-12rem)*0.6)-2.8rem)] xl:w-[calc(((100vw-12rem)*0.6)-2.8rem)] 2xl:w-[calc(((100vw-12rem)*0.5)-2.5rem)] absolute top-[calc(14.75rem+4px)] flex justify-center items-center bg-[#F2F2F2]"><FontAwesomeIcon className="text-3xl" icon={faSpinner} spin></FontAwesomeIcon></div>}
                     <div className="flex justify-between items-center px-2 relative bottom-12 w-full">
                         <img style={{opacity: isPicLoaded ? null : 0}} onLoad={HandleLoad} className="box-content object-cover w-[100px] h-[100px] rounded-full border-2 border-white" src={profileImgUrl}></img>
                         {isPicLoaded ? null : <div className="w-[100px] h-[100px] absolute rounded-full border-2 border-white flex justify-center items-center bg-[#F2F2F2]"><FontAwesomeIcon className="text-2xl" icon={faSpinner} spin></FontAwesomeIcon></div>}

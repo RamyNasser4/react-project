@@ -59,7 +59,7 @@ function EditProfile() {
                             }
                         }).then(response => {
                             console.log(response);
-                            setProfileImgUrl("data:image/png;base64," + response.data);
+                            setProfileImgUrl(response.data);
                         })
                     } catch (err) {
                         console.log(err);
@@ -73,7 +73,7 @@ function EditProfile() {
                             }
                         }).then(response => {
                             console.log(response);
-                            setCoverImgUrl("data:image/png;base64," + response.data);
+                            setCoverImgUrl(response.data);
                         })
                     } catch (err) {
                         console.log(err);
@@ -128,7 +128,7 @@ function EditProfile() {
         }
     }
     const HandleLoad = () => {
-        /* setIsPicLoaded(true); */
+        setIsPicLoaded(true);
     }
     return (
         <div className="flex flex-col justify-center items-center w-full py-40 lg:px-24">
