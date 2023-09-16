@@ -2,17 +2,18 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import axios from "../../axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { useAuthHeader } from "react-auth-kit";
+import { Link } from "react-router-dom";
 function AdminPanel() {
     const authheader = useAuthHeader();
     const [Loaded, setLoaded] = useState(false);
-    const [userCount,setUserCount] = useState(0);
-    const [productCount,setProductCount] = useState(0);
+    const [userCount, setUserCount] = useState(0);
+    const [productCount, setProductCount] = useState(0);
     useEffect(() => {
         const token = authheader();
         try {
-            axios.get("http://127.0.0.1:8000/api/usercount",{
+            axios.get("http://127.0.0.1:8000/api/usercount", {
                 headers: {
                     "Access-Control-Allow-Origin": "*",
                     "Content-type": "Application/json",
@@ -26,7 +27,7 @@ function AdminPanel() {
             console.log(err);
         }
         try {
-            axios.get("http://127.0.0.1:8000/api/productcount",{
+            axios.get("http://127.0.0.1:8000/api/productcount", {
                 headers: {
                     "Access-Control-Allow-Origin": "*",
                     "Content-type": "Application/json",
@@ -40,7 +41,7 @@ function AdminPanel() {
         } catch (err) {
             console.log(err);
         }
-    },[])
+    }, [])
     return (
         <>
             {/*  <!-- component -->
@@ -54,17 +55,22 @@ function AdminPanel() {
                             <div class="py-6 px-4">
                                 <div class="w-full ">
                                     <div class="bg-white w-full h-[calc(100vh-78px-2rem)] shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
-                                        {Loaded ?<> <div className="font-[MaiseeMedium] text-4xl text-left my-5 font-black">Website Dashboard</div>
-                                        <div className="flex flex-col justify-between items-start w-1/2">
-                                            <div className="flex flex-col items-start my-5">
-                                                <div className="font-[FallingSkyRegular] text-3xl font-semibold ">Number of Products</div>
-                                                <div className="font-[FallingSkyRegular] text-3xl mt-5 ">{productCount}</div>
-                                            </div>
-                                            <div className="flex flex-col items-start my-5">
-                                                <div className="font-[FallingSkyRegular] text-3xl font-semibold ">Number of Users</div>
-                                                <div className="font-[FallingSkyRegular] text-3xl mt-5 ">{userCount}</div>
-                                            </div>
-                                        </div></> : <div className="flex justify-center items-center w-full h-full"><FontAwesomeIcon className="text-4xl" icon={faSpinner} spin></FontAwesomeIcon></div>}
+                                        {Loaded ? <> <div className="w-full flex justify-start"><Link to="/admin/products" className="self-start lg:hidden p-5 text-left">
+                                            <FontAwesomeIcon icon={faArrowRight} />
+                                            <span className="font-[AwanZaman] text-2xl pl-2">Go to Products</span>
+                                        </Link>
+                                        </div>
+                                            <div className="font-[MaiseeMedium] text-4xl text-left my-5 font-black">Website Dashboard</div>
+                                            <div className="flex flex-col justify-between items-start w-1/2">
+                                                <div className="flex flex-col items-start my-5">
+                                                    <div className="font-[FallingSkyRegular] text-3xl font-semibold ">Number of Products</div>
+                                                    <div className="font-[FallingSkyRegular] text-3xl mt-5 ">{productCount}</div>
+                                                </div>
+                                                <div className="flex flex-col items-start my-5">
+                                                    <div className="font-[FallingSkyRegular] text-3xl font-semibold ">Number of Users</div>
+                                                    <div className="font-[FallingSkyRegular] text-3xl mt-5 ">{userCount}</div>
+                                                </div>
+                                            </div></> : <div className="flex justify-center items-center w-full h-full"><FontAwesomeIcon className="text-4xl" icon={faSpinner} spin></FontAwesomeIcon></div>}
                                     </div>
                                 </div>
                             </div>

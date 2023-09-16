@@ -24,6 +24,7 @@ import AdminRoute from './AdminRoute';
 import AdminProducts from './Views/Admin/AdminProducts';
 import NewProduct from './Views/Admin/NewProduct';
 import EditProduct from './Views/Admin/EditProduct';
+import DeletePopup from './Components/Alerts/DeletePopup';
 export default function App() {
   return (
     <AuthProvider
@@ -37,6 +38,7 @@ export default function App() {
           <Basket></Basket>
           <Added></Added>
           <Popup></Popup>
+          <DeletePopup></DeletePopup>
           <Routes>
             <Route exact path='/' Component={Home}></Route>
             <Route path='/Signin' Component={Signin}></Route>

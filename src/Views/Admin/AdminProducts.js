@@ -2,7 +2,7 @@ import React from "react";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import { useState } from "react";
 import ProductComponent from "../../Components/Admin/ProductComponent";
-import { faPlus, faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faPlus, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect } from "react";
 import axios from "axios";
@@ -29,7 +29,10 @@ function AdminProducts() {
                             <div class="py-6 px-4">
                                 <div class="w-full ">
                                     <div class="bg-white w-full shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
-                                        {Loaded ? <> <div className="font-[MaiseeMedium] text-4xl text-left my-5">Products</div>
+                                        {Loaded ? <><div className="w-full flex justify-between items-center"><div className="font-[MaiseeMedium] text-4xl text-left my-5">Products</div><Link to="/admin/dashboard" className="lg:hidden text-left">
+                                            <FontAwesomeIcon icon={faArrowLeft} />
+                                            <span className="font-[AwanZaman] text-2xl pl-2">Back to Dashboard</span>
+                                        </Link></div>
                                             <Link to="/admin/newproduct" className="flex justify-end items-center px-4 py-2">
                                                 <div className="cursor-pointer font-[AwanZaman] font-semibold text-xl flex items-center"><FontAwesomeIcon className="pr-2" icon={faPlus} />Add new product</div>
                                             </Link>
