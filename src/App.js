@@ -50,7 +50,7 @@ export default function App() {
             <Route path='/checkout/step1' element={<RequireAuth loginPath='/Signin'><CheckoutStep1></CheckoutStep1></RequireAuth>}></Route>
             <Route path='/checkout/step2' element={<RequireAuth loginPath='/Signin'><CheckoutStep2></CheckoutStep2></RequireAuth>}></Route>
             <Route path='/checkout/step3' element={<RequireAuth loginPath='/Signin'><CheckoutStep3></CheckoutStep3></RequireAuth>}></Route>
-            <Route element={<RequireAuth><AdminRoute></AdminRoute></RequireAuth>}>
+            <Route element={<RequireAuth loginPath='/Signin'><AdminRoute></AdminRoute></RequireAuth>}>
               <Route path='/admin/dashboard' element={<AdminPanel></AdminPanel>}></Route>
               <Route path='/admin/products' element={<AdminProducts></AdminProducts>}></Route>
               <Route path='/admin/newproduct' element={<NewProduct></NewProduct>}></Route>

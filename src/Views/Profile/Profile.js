@@ -1,22 +1,20 @@
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
-import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react"
-import { useAuthUser } from "react-auth-kit";
+import { useAuthHeader, useAuthUser } from "react-auth-kit";
 import { Link } from "react-router-dom";
 function Profile() {
     const auth = useAuthUser();
+    const authheader = useAuthHeader();
     const [Loaded, setLoaded] = useState(false);
     const [isPicLoaded, setIsPicLoaded] = useState(false);
-    const [profileImgUrl, setProfileImgUrl] = useState("");
-    const [coverImgUrl, setCoverImgUrl] = useState("");
     const [user, setUser] = useState("");
     let id  = auth().id;
     const [active, setActive] = useState("Account");
     useEffect(() => {
         const getData = async () => {
-            const token = Cookies.get("_auth");
+            const token = authheader();
             try {
                 await axios.get(`http://127.0.0.1:8000/api/user/${id}`, {
                     headers: {
@@ -27,35 +25,6 @@ function Profile() {
                     }
                 }).then(res => {
                     setUser(res.data);
-                    try {
-                        axios.get(`http://127.0.0.1:8000/api/user/profile_img/${res.data.profile_img}`, {
-                            headers: {
-                                "Access-Control-Allow-Origin": "*",
-                                Authorization: `Bearer ${token}`,
-                                'Accept': "image/png,image/jpeg"
-                            }
-                        }).then(response => {
-                            console.log(response);
-                            setProfileImgUrl(response.data);
-                        })
-                    } catch (err) {
-                        console.log(err);
-                    }
-                    try {
-                        axios.get(`http://127.0.0.1:8000/api/user/cover_img/${res.data.cover_img}`, {
-                            headers: {
-                                "Access-Control-Allow-Origin": "*",
-                                Authorization: `Bearer ${token}`,
-                                'Accept': "image/png,image/jpeg"
-                            }
-                        }).then(response => {
-                            console.log(response);
-                            setCoverImgUrl(response.data);
-                        })
-                    } catch (err) {
-                        console.log(err);
-                    }
-                    console.log(res.data);
                     setLoaded(true);
                 })
             } catch (err) {
@@ -77,10 +46,10 @@ function Profile() {
                 </div>
             </div>
                 {active == "Account" ? <div className="flex border-[0.1px] border-[#c5c5c5] flex-col p-4 bg-white w-[85%] lg:w-3/5 2xl:w-1/2 items-start pb-20">
-                    <img style={{opacity: isPicLoaded ? null : 0}} onLoad={HandleLoad} className="h-40 w-full" src={coverImgUrl}></img>
+                    <img style={{opacity: isPicLoaded ? null : 0}} onLoad={HandleLoad} className="h-40 w-full" src={user.cover_img}></img>
                     {isPicLoaded ? null : <div className="h-40 w-[calc(85vw-2rem)] lg:w-[calc(((100vw-12rem)*0.6)-2.8rem)] xl:w-[calc(((100vw-12rem)*0.6)-2.8rem)] 2xl:w-[calc(((100vw-12rem)*0.5)-2.5rem)] absolute top-[calc(14.75rem+4px)] flex justify-center items-center bg-[#F2F2F2]"><FontAwesomeIcon className="text-3xl" icon={faSpinner} spin></FontAwesomeIcon></div>}
                     <div className="flex justify-between items-center px-2 relative bottom-12 w-full">
-                        <img style={{opacity: isPicLoaded ? null : 0}} onLoad={HandleLoad} className="box-content object-cover w-[100px] h-[100px] rounded-full border-2 border-white" src={profileImgUrl}></img>
+                        <img style={{opacity: isPicLoaded ? null : 0}} onLoad={HandleLoad} className="box-content object-cover w-[100px] h-[100px] rounded-full border-2 border-white" src={user.profile_img}></img>
                         {isPicLoaded ? null : <div className="w-[100px] h-[100px] absolute rounded-full border-2 border-white flex justify-center items-center bg-[#F2F2F2]"><FontAwesomeIcon className="text-2xl" icon={faSpinner} spin></FontAwesomeIcon></div>}
                         <Link to={`/user/edit`} className="text-sm font-[FallingSkyRegular] text-white py-[0.7rem] px-4 bg-black border-2 border-black mb-3 hover:bg-[#2A2A2A] hover:border-[#2A2A2A] duration-300">Edit Account</Link>
                     </div>

@@ -36,10 +36,10 @@ function ProductDetails() {
             try {
                 await axios.get(`http://127.0.0.1:8000/api/products/${id}`).then(res => {
                     setProduct(res.data.product);
-                    setProductImages(res.data.product.image.split(","));
+                    setProductImages(res.data.product.image);
                     console.log(res.data.colors);
                     setProductColors(res.data.colors);
-                    dispatch(updateImage(res.data.product.image.split(",")[0]));
+                    dispatch(updateImage(Array.isArray(res.data.product.image) ? res.data.product.image[0] : res.data.product.image));
                     dispatch(updateColor({ color: "", hex: "" }));
                     setLoaded(true);
                 })

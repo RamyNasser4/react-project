@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import axios from "../../axios";
-import Cookies from "js-cookie";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { useAuthHeader } from "react-auth-kit";
 function AdminPanel() {
+    const authheader = useAuthHeader();
     const [Loaded, setLoaded] = useState(false);
     const [userCount,setUserCount] = useState(0);
     const [productCount,setProductCount] = useState(0);
     useEffect(() => {
-        const token = Cookies.get("_auth");
+        const token = authheader();
         try {
             axios.get("http://127.0.0.1:8000/api/usercount",{
                 headers: {

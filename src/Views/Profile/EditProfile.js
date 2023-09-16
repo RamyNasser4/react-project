@@ -1,19 +1,19 @@
 import { faArrowLeft, faCheck, faPenToSquare, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../../axios";
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css'
 import { Link } from "react-router-dom";
-import { useAuthUser } from "react-auth-kit";
+import { useAuthHeader, useAuthUser } from "react-auth-kit";
 import { useDispatch } from "react-redux";
 import { toggleAlert, updateContent } from "../../Redux/AlertSlice";
 var InitialName, Initialemail, Initialaddress, Initialphone;
 function EditProfile() {
     const navigate = useNavigate();
     const auth = useAuthUser();
+    const authheader = useAuthHeader();
     const dispatch = useDispatch();
     const [Loaded, setLoaded] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -31,7 +31,7 @@ function EditProfile() {
     let id = auth().id;
     useEffect(() => {
         const getData = async () => {
-            const token = Cookies.get("_auth");
+            const token = authheader();
             try {
                 await axios.get(`http://127.0.0.1:8000/api/user/${id}`, {
                     headers: {
@@ -41,7 +41,6 @@ function EditProfile() {
                         'Accept': "application/json"
                     }
                 }).then(res => {
-                    /* setUser(res.data); */
                     setName(res.data.name);
                     InitialName = res.data.name;
                     setEmail(res.data.email);
@@ -50,34 +49,8 @@ function EditProfile() {
                     Initialaddress = res.data.address;
                     setPhone(res.data.phone_number.split("+")[1]);
                     Initialphone = res.data.phone_number.split("+")[1];
-                    try {
-                        axios.get(`http://127.0.0.1:8000/api/user/profile_img/${res.data.profile_img}`, {
-                            headers: {
-                                "Access-Control-Allow-Origin": "*",
-                                Authorization: `Bearer ${token}`,
-                                'Accept': "image/png,image/jpeg"
-                            }
-                        }).then(response => {
-                            console.log(response);
-                            setProfileImgUrl(response.data);
-                        })
-                    } catch (err) {
-                        console.log(err);
-                    }
-                    try {
-                        axios.get(`http://127.0.0.1:8000/api/user/cover_img/${res.data.cover_img}`, {
-                            headers: {
-                                "Access-Control-Allow-Origin": "*",
-                                Authorization: `Bearer ${token}`,
-                                'Accept': "image/png,image/jpeg"
-                            }
-                        }).then(response => {
-                            console.log(response);
-                            setCoverImgUrl(response.data);
-                        })
-                    } catch (err) {
-                        console.log(err);
-                    }
+                    setProfileImgUrl(res.data.profile_img);
+                    setCoverImgUrl(res.data.cover_img);
                     setLoaded(true);
                 })
             } catch (err) {
@@ -106,7 +79,7 @@ function EditProfile() {
     const onSubmit = async () => {
         if (name != InitialName || email != Initialemail || address != Initialaddress || phone != Initialphone || profileImgFile || coverImgFile || !invalidName || !invalidEmail) {
             setIsSubmitting(true);
-            const token = Cookies.get("_auth");
+            const token = authheader();
             try {
                 axios.post(`http://127.0.0.1:8000/api/user/${id}/edit`, { name: name, email: email, address: address, phone_number: phone, profile_img: profileImgFile, cover_img: coverImgFile }, {
                     headers: {

@@ -13,20 +13,21 @@ function Shop() {
     dispatch(updateClickable(true));
     useEffect(() => {
         axios.get("http://127.0.0.1:8000/api/products").then(res => {
-            res.data.products.forEach(async (element)=>{
+            /* res.data.products.forEach(async (element)=>{
                 if(element.image.substring(0,4)!="http"){
                     try{
                         await axios.get(`http://127.0.0.1:8000/api/product/${element.image}`).then(response => {
                             element.image = response.data;
                             setProducts(res.data.products);
-                            setLoaded(true);
+                            
                         })
                     }catch(err){
                         console.log(err);
                     }
                 }
-            })
+            }) */
             setProducts(res.data.products);
+            setLoaded(true);
         });
     }, []);
     return (
