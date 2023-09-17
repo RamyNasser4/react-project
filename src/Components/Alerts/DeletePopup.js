@@ -29,7 +29,7 @@ function DeletePopup() {
                 navigate('/admin/products');
             });
         } catch (err) {
-            console.log(err);
+            /* console.log(err); */
         }
     }
     return (

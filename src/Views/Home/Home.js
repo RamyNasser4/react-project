@@ -7,7 +7,6 @@ function Home() {
     const dispatch = useDispatch();
     dispatch(closeBasket(false));
     dispatch(updateClickable(true));
-    console.log("refresh");
     return (
         <div className="flex flex-col justify-center items-center pt-16 sm:px-24">
             <HomePreview></HomePreview>

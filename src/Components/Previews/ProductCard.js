@@ -37,7 +37,7 @@ class ProductCard extends Component{
         return(
             <>
             <Link to={`/Product/${this.props.id}`} className="w-full border-2" onMouseEnter={this.HandleHoverin} onMouseLeave={this.HandleHoverout}>
-                <div className="bg-[#F1F1F1] flex justify-center items-center w-full min-h-[247px]">
+                <div className="bg-[#F1F1F1] flex justify-center items-center w-full min-h-[247px] max-h-[260px] 2xl:max-h-[247px]">
                     {this.state.isPicLoaded ? null : <FontAwesomeIcon className="text-3xl" icon={faSpinner} spin />}
                     <img onLoad={this.HandleLoad} src={this.props.imgsrc} className={this.state.classes}></img>
                 </div>

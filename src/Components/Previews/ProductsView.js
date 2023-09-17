@@ -21,7 +21,6 @@ function ProductsView(props) {
             window.location.href.lastIndexOf('#') + 1,
         );
         if (window.location.href.lastIndexOf('#') > 0) {
-            console.log(ViewRef.current.offsetTop);
             window.scrollTo({
                 top: ViewRef.current.offsetTop-50,
                 behavior : "smooth"
@@ -37,10 +36,10 @@ function ProductsView(props) {
             <div className="grid grid-cols-[repeat(auto-fit,minmax(20rem,1fr))] gap-8 w-full">
                 {props.Featured || props.Recommended ? products.map((item) => {
                     const imgs = item.image.split(',');
-                    return <ProductCard Name={item.name} desc={item.collection_name} price={`$${item.price}`} imgsrc={imgs[0]} key={item.id} id={item.id}></ProductCard>
+                    return <ProductCard Name={item.name} desc={item.collection_name} price={`$${item.price}`} imgsrc={item.image.substring(0,4)!="http" ? item.image : imgs[0]} key={item.id} id={item.id}></ProductCard>
                 }) : products.slice(0, 6).map((item) => {
                     const imgs = item.image.split(',');
-                    return <ProductCard Name={item.name} desc={item.collection_name} price={`$${item.price}`} imgsrc={imgs[0]} key={item.id} id={item.id}></ProductCard>
+                    return <ProductCard Name={item.name} desc={item.collection_name} price={`$${item.price}`} imgsrc={item.image.substring(0,4)!="http" ? item.image : imgs[0]} key={item.id} id={item.id}></ProductCard>
                 })}
             </div>
         </div>

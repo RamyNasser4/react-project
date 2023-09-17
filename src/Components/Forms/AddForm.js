@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 function AddForm(props){
     const [colors,setColors] = useState([]);
     const [color, setColorName] = React.useState([]);
+    const [categories,setCategories] = useState([]);
+    const [category,setCategory] = useState([]);
     const [name,setName] = useState("");
     const [invalidName,setInvalidName] = useState(false);
     const [imageFile,setImageFile] = useState(null);
@@ -32,7 +34,21 @@ function AddForm(props){
                 setColors(res.data.colors);
             })
         }catch(err){
-            console.log(err);
+            /* console.log(err); */
+        }
+        try{
+            axios.get("http://127.0.0.1:8000/api/categories",{
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "Content-type": "Application/json",
+                    Authorization: `Bearer ${authheader()}`,
+                    'Accept': "application/json"
+                }
+            }).then(res => {
+                setCategories(res.data.categories);
+            })
+        }catch(err){
+            /* console.log(err); */
         }
     },[])
     const checkName = (e) => {
@@ -76,10 +92,9 @@ function AddForm(props){
         }
     }
     const handleSubmit = () =>{
-        console.log(imageFile);
         if(name!="" && imageFile && collection!="" && price!="" && details!=""){
             try{
-                axios.post("http://127.0.0.1:8000/api/newproduct",{name : name,image : imageFile,collection_name : collection,price : price,details : details,colors : color},{
+                axios.post("http://127.0.0.1:8000/api/newproduct",{name : name,image : imageFile,collection_name : collection,price : price,details : details,colors : color,categories : category},{
                     headers: {
                         "Access-Control-Allow-Origin": "*",
                         "Content-type": "multipart/form-data",
@@ -87,11 +102,10 @@ function AddForm(props){
                         'Accept': "application/json"
                     }
                 }).then(res => {
-                    console.log(res);
                     navigate("/admin/products");
                 })
             }catch(err){
-                console.log(err);
+               /*  console.log(err); */
             }
         }
     }
@@ -108,8 +122,10 @@ function AddForm(props){
             <input style={{borderColor : invalidPrice ? 'red' : null}} onChange={checkPrice} id="price" type="number" placeholder="Enter your product price" className="font-[AwanZaman] text-xl font-semibold border-[1px] border-solid border-[#c5c5c5] w-full py-[0.40rem] px-4 mb-5 placeholder:font-semibold placeholder:text-[#9D9D9D]"></input>
             <label style={{ color: invalidDetails ? 'red' : '#7C7F7F' }} htmlFor="details" className="font-[AwanZaman] text-xl font-semibold pl-2 pb-2">{invalidDetails ? "Product details are required" : "Product Details"}</label>
             <textarea style={{borderColor : invalidDetails ? 'red' : null}} onChange={checkDetails} id="details" maxLength={255} type="text" placeholder="Enter your product details" className="font-[AwanZaman] text-xl font-semibold border-[1px] min-h-[3rem] max-h-[7rem] border-solid border-[#c5c5c5] w-full py-[0.40rem] px-4 mb-5 placeholder:font-semibold placeholder:text-[#9D9D9D]"></textarea>
-            <label htmlFor="colors" className="font-[AwanZaman] text-xl font-semibold pl-2 pb-2">Product Colors</label>
-            <MultipleSelect colors={colors} color={color} setColorName={setColorName}></MultipleSelect>
+            <label htmlFor="colors" className="font-[AwanZaman] text-xl font-semibold pl-2 pb-2 text-[#7C7F7F]">Product Colors</label>
+            <MultipleSelect label={"Color"} colors={colors} color={color} setColorName={setColorName}></MultipleSelect>
+            <label htmlFor="categories" className="font-[AwanZaman] text-xl font-semibold pl-2 pb-2 text-[#7C7F7F]">Product Categories</label>
+            <MultipleSelect label={"Category"} colors={categories} color={category} setColorName={setCategory}></MultipleSelect>
             <button onClick={handleSubmit} className="py-4 px-6 text-white bg-black hover:bg-[#1E1E1E] duration-300 font-medium font-[FallingSkyRegular] text-base my-5">Add Product</button>
         </div>
     );

@@ -37,7 +37,6 @@ function ProductDetails() {
                 await axios.get(`http://127.0.0.1:8000/api/products/${id}`).then(res => {
                     setProduct(res.data.product);
                     setProductImages(res.data.product.image);
-                    console.log(res.data.colors);
                     setProductColors(res.data.colors);
                     dispatch(updateImage(res.data.product.image[0]));
                     dispatch(updateColor({ color: "", hex: "" }));
@@ -50,7 +49,6 @@ function ProductDetails() {
     }, [id]);
     const HandleLoad = () => {
         setIsPicLoaded(true);
-        console.log(isPicLoaded);
     }
     const HandleAdd = () => {
         var Exists = false;
@@ -79,8 +77,8 @@ function ProductDetails() {
                 </Link>
                 <div className="flex border-[0.1px] border-solid border-[#c5c5c5] flex-wrap">
                     {Loaded ? <><div className="flex w-full lg:flex-col lg:w-[160px] xl:w-[150px] border-b-[0.1px] lg:border-r-[0.1px] border-solid border-[#c5c5c5] p-[0.6rem]">
-                        {productImages.map((item) => {
-                            return <ProductModel imgsrc={item}></ProductModel>
+                        {productImages.map((item,pos) => {
+                            return <ProductModel key={pos} imgsrc={item}></ProductModel>
                         })}
                     </div>
                         <div className="relative flex justify-center lg:min-w-[540px] xl:min-w-[380px] 2xl:min-w-[500px] xl:max-w-[380px] 2xl:max-w-[550px] min-h-[300px] lg:min-h-[570px] max-h-[600px] items-center w-full lg:w-auto bg-[#F8F8F8]">

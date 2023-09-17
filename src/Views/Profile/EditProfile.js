@@ -89,14 +89,13 @@ function EditProfile() {
                         'Accept': "application/json"
                     }
                 }).then(res => {
-                    console.log(res);
                     navigate("/user");
                     dispatch(updateContent("Profile updated successfully"));
                     dispatch(toggleAlert());
                     setTimeout(() => { dispatch(toggleAlert()) }, 2000);
                 })
             } catch (err) {
-                console.log(err);
+                /* console.log(err); */
             }
         }
     }

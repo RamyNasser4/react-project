@@ -90,7 +90,6 @@ function CheckoutStep3() {
     const [invalidDate, setInvalidDate] = useState(false);
     const checkDate = (e) => {
         setDate(e.target.value);
-        console.log(e.target.value);
         if (e.target.value == "") {
             setInvalidDate(true);
         } else {

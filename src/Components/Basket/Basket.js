@@ -49,7 +49,6 @@ function Basket() {
         dispatch(controlBasket());
     }
     const emptyBasket = () =>{
-        console.log("emsaaa7");
         dispatch(clearBasket());
     }
     return (
@@ -66,7 +65,7 @@ function Basket() {
             </div>
             {products[0] ? <div className="flex overflow-y-scroll no-scrollbar flex-col h-5/6 w-full">
                 {products.map((item,pos) =>{
-                    return <CartCard id={pos} name={item.name} quantity={item.quantity} size={item.size} color={item.color} price={item.price} image={item.image}></CartCard>
+                    return <CartCard id={pos} key={pos} name={item.name} quantity={item.quantity} size={item.size} color={item.color} price={item.price} image={item.image}></CartCard>
                 })}
             </div> : <div className="flex justify-center items-center h-5/6 w-full font-[FallingSkyRegular] text-[#818181]">Your basket is empty</div>}
             <div className="flex py-6 grow justify-between items-center border-t-[0.1px] ">

@@ -52,7 +52,7 @@ function CheckoutStep1(){
             <div className="font-[AwanZaman] font-semibold text-[#4A4A4A] my-4">Review items in your basekt.</div>
             <div className="flex flex-col w-[95%] lg:w-[82%] 2xl:w-3/5 my-2">
             {products.map((item,pos) =>{
-                    return <CartCard id={pos} name={item.name} quantity={item.quantity} size={item.size} color={item.color} price={item.price} image={item.image}></CartCard>
+                    return <CartCard key={pos} id={pos} name={item.name} quantity={item.quantity} size={item.size} color={item.color} price={item.price} image={item.image}></CartCard>
                 })}
             </div>
             <div className="flex flex-col w-[90%] lg:w-[82%] 2xl:w-[62%]">

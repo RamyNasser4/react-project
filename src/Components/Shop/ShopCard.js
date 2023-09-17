@@ -46,7 +46,6 @@ class ShopCard extends Component {
             'hover:bg-[#2A2A2A]' : true,
             'duration-300' : true
         }),
-        /* buttoncontent: null, */
         isPicLoaded: false
     }
     HandleHoverin = () => {
@@ -84,11 +83,6 @@ class ShopCard extends Component {
                 'duration-300' : true
             }),
         });
-        /* setTimeout(() => {
-            this.setState({
-                buttoncontent: "Add to basket"
-            })
-        }, 300); */
     }
     HandleHoverout = () => {
         this.setState({
@@ -125,19 +119,9 @@ class ShopCard extends Component {
                 'duration-300' : true
             }),
         });
-        /* setTimeout(() => {
-            this.setState({
-                buttoncontent: null
-            })
-        }, 50); */
     }
     HandleLoad = () => {
         this.setState({ isPicLoaded: true });
-    }
-    HandleEvery = (element) =>{
-        if(element.name==this.props.Name){
-            
-        }
     }
     HandleAdd = () => {
         const { dispatch } = this.props;

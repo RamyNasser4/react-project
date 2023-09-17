@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import React, { useState } from "react";
-import { useAuthUser } from "react-auth-kit";
+import { useAuthHeader, useAuthUser } from "react-auth-kit";
 import CheckoutBar from "../../Components/Checkout/CheckoutBar";
 import PhoneInput from "react-phone-input-2";
 import { useEffect } from "react";
@@ -29,10 +29,11 @@ function CheckoutStep2() {
     const [invalidPhone, setInvalidPhone] = useState(false);
     const total = useSelector(state => state.Basket.total);
     const auth = useAuthUser();
+    const authheader = useAuthHeader();
     let id = auth().id;
     useEffect(() => {
         const getData = async () => {
-            const token = Cookies.get("_auth");
+            const token = authheader();
             try {
                 await axios.get(`http://127.0.0.1:8000/api/user/${id}`, {
                     headers: {
@@ -45,12 +46,10 @@ function CheckoutStep2() {
                     setName(res.data.name);
                     setEmail(res.data.email);
                     setAddress(res.data.address);
-                    /* Initialaddress = res.data.address; */
                     setPhone(res.data.phone_number.split("+")[1]);
-                    /* Initialphone = res.data.phone_number.split("+")[1]; */
                 })
             } catch (err) {
-                console.log(err);
+                /* console.log(err); */
             }
         }
         getData();

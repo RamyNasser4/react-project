@@ -24,7 +24,7 @@ function AdminPanel() {
                 setUserCount(res.data);
             })
         } catch (err) {
-            console.log(err);
+            /* console.log(err); */
         }
         try {
             axios.get("http://127.0.0.1:8000/api/productcount", {
@@ -39,7 +39,7 @@ function AdminPanel() {
                 setLoaded(true);
             })
         } catch (err) {
-            console.log(err);
+           /*  console.log(err); */
         }
     }, [])
     return (

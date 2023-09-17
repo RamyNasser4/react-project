@@ -4,7 +4,7 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRightFromBracket, faTableColumns, faUser } from '@fortawesome/free-solid-svg-icons'
 import Cookies from 'js-cookie'
-import { useAuthUser, useSignOut } from 'react-auth-kit'
+import { useAuthHeader, useAuthUser, useSignOut } from 'react-auth-kit'
 import axios from '../../axios'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
@@ -18,12 +18,12 @@ function classNames(...classes) {
 export default function Example() {
     const dispatch = useDispatch();
     const auth = useAuthUser();
+    const authheader = useAuthHeader();
     const signOut = useSignOut();
     const navigate = useNavigate();
     const onSubmit = async (e) => {
         e.preventDefault();
-        const token = Cookies.get("_auth");
-        console.log(token);
+        const token = authheader();
         try {
             await axios.post("http://127.0.0.1:8000/api/signout", null, {
                 withCredentials : true,
@@ -34,13 +34,12 @@ export default function Example() {
                     'Accept': "application/json"
                 }
             }).then(res => {
-                console.log(res.data);
                 signOut();
                 dispatch(updateAuth());
                 navigate('/Signin');
             });
         } catch (error) {
-            console.log(error);
+            /* console.log(error); */
         }
     }
     return (

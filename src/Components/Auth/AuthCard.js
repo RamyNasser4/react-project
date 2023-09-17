@@ -37,12 +37,11 @@ function AuthCard(props) {
                     navigate('/');
                 });
             } catch (err) {
-                console.log(err);
+                /* console.log(err); */
             }
         }else if(Ivalid){
             try {
                 await axios.post("http://127.0.0.1:8000/api/signin", {email: Iemail, password: Ipassword }).then(res => {
-                    console.log(res);
                     if(res.data.message!= "Bad Credentials"){
                         signIn({
                             token : res.data.token,
@@ -57,7 +56,7 @@ function AuthCard(props) {
                     }
                 });
             } catch (err) {
-                console.log(err);
+                /* console.log(err); */
             }
         }
     }

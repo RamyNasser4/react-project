@@ -17,7 +17,7 @@ export default function MultipleSelect(props) {
   return (
     <div>
       <FormControl sx={{ m: 1, width: 300 }}>
-        <InputLabel id="demo-multiple-name-label">Colors</InputLabel>
+        <InputLabel id="demo-multiple-name-label">{props.label}</InputLabel>
         <Select
           labelId="demo-multiple-name-label"
           id="demo-multiple-name"
@@ -32,7 +32,7 @@ export default function MultipleSelect(props) {
               value={item.id}
               style={{textAlign : "left"}}
             >
-              {item.color}
+              {item.color ? item.color : item.category_name}
             </MenuItem>
           ))}
         </Select>

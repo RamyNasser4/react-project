@@ -8,7 +8,7 @@ try {
         cookie = false;
     }
 } catch (err) {
-    console.log(err);
+    /* console.log(err); */
 }
 export const AuthSlice = createSlice({
     name: 'Auth',
