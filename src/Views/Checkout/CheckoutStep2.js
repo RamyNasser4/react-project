@@ -8,7 +8,6 @@ import { Link, useNavigate, useNavigationType } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
-import Cookies from "js-cookie";
 import axios from "../../axios";
 import { updateClickable } from "../../Redux/BasketSlice";
 function CheckoutStep2() {
