@@ -81,7 +81,7 @@ function ProductDetails() {
                             return <ProductModel key={pos} imgsrc={item}></ProductModel>
                         })}
                     </div>
-                        <div className="relative flex justify-center lg:min-w-[540px] xl:min-w-[380px] 2xl:min-w-[500px] xl:max-w-[380px] 2xl:max-w-[550px] min-h-[300px] lg:min-h-[570px] max-h-[600px] items-center w-full lg:w-auto bg-[#F8F8F8]">
+                        <div className="relative flex justify-center lg:min-w-[540px] xl:min-w-[380px] 2xl:min-w-[500px] xl:max-w-[380px] 2xl:max-w-[550px] min-h-[300px] lg:min-h-[570px] max-h-[600px] items-center w-full grow lg:w-auto bg-[#F8F8F8]">
                             {Color !== "" ? <input type="color" value={`${ColorHex}`} className="absolute top-0 left-0 w-full h-full mix-blend-hue z-10" disabled></input> : null}
                             {isPicLoaded ? null : <FontAwesomeIcon className="text-3xl" icon={faSpinner} spin />}
                             <img onLoad={HandleLoad} className=" xl:scale-90 2xl:scale-95" src={Image}></img>
