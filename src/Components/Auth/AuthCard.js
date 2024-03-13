@@ -31,7 +31,7 @@ function AuthCard(props) {
                         token : res.data.token,
                         expiresIn : 1440,
                         tokenType : "Bearer",
-                        authState : {name : res.data.user.name,email : res.data.user.email,id : res.data.user.id,role:res.data.role}
+                        authState : {name : res.data.user.name,role:res.data.role}
                     });
                     dispatch(updateAuth());
                     navigate('/');
@@ -47,7 +47,7 @@ function AuthCard(props) {
                             token : res.data.token,
                             expiresIn : 1440,
                             tokenType : "Bearer",
-                            authState : {name : res.data.user.name,email : res.data.user.email,id : res.data.user.id,role:res.data.role}
+                            authState : {name : res.data.user.name,role:res.data.role}
                         });
                         dispatch(updateAuth());
                         navigate('/');

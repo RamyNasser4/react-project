@@ -12,7 +12,6 @@ import { toggleAlert, updateContent } from "../../Redux/AlertSlice";
 var InitialName, Initialemail, Initialaddress, Initialphone;
 function EditProfile() {
     const navigate = useNavigate();
-    const auth = useAuthUser();
     const authheader = useAuthHeader();
     const dispatch = useDispatch();
     const [Loaded, setLoaded] = useState(false);
@@ -28,12 +27,11 @@ function EditProfile() {
     const [invalidName, setInvalidName] = useState(false);
     const [invalidEmail, setInvalidEmail] = useState(false);
     const [isPicLoaded, setIsPicLoaded] = useState(false);
-    let id = auth().id;
     useEffect(() => {
         const getData = async () => {
             const token = authheader();
             try {
-                await axios.get(`http://127.0.0.1:8000/api/user/${id}`, {
+                await axios.get(`http://127.0.0.1:8000/api/user`, {
                     headers: {
                         "Access-Control-Allow-Origin": "*",
                         "Content-type": "Application/json",
@@ -47,18 +45,23 @@ function EditProfile() {
                     Initialemail = res.data.email;
                     setAddress(res.data.address);
                     Initialaddress = res.data.address;
-                    setPhone(res.data.phone_number.split("+")[1]);
-                    Initialphone = res.data.phone_number.split("+")[1];
+                    if(res.data.phone_number){
+                        setPhone(res.data.phone_number.split("+")[1]);
+                        Initialphone = res.data.phone_number.split("+")[1];
+                    }else{
+                        setPhone(res.data.phone_number);
+                        Initialphone = res.data.phone_number;
+                    }
                     setProfileImgUrl(res.data.profile_img);
                     setCoverImgUrl(res.data.cover_img);
                     setLoaded(true);
                 })
             } catch (err) {
-
+                console.log(err);
             }
         }
         getData();
-    }, [id]);
+    }, []);
     const checkName = (e) => {
         setName(e.target.value);
         if (e.target.value == "") {
@@ -81,7 +84,7 @@ function EditProfile() {
             setIsSubmitting(true);
             const token = authheader();
             try {
-                axios.post(`http://127.0.0.1:8000/api/user/${id}/edit`, { name: name, email: email, address: address, phone_number: phone, profile_img: profileImgFile, cover_img: coverImgFile }, {
+                axios.post(`http://127.0.0.1:8000/api/user/edit`, { name: name, email: email, address: address, phone_number: phone, profile_img: profileImgFile, cover_img: coverImgFile }, {
                     headers: {
                         "Access-Control-Allow-Origin": "*",
                         "Content-type": "multipart/form-data",

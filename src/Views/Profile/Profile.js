@@ -5,18 +5,16 @@ import React, { useEffect, useState } from "react"
 import { useAuthHeader, useAuthUser } from "react-auth-kit";
 import { Link } from "react-router-dom";
 function Profile() {
-    const auth = useAuthUser();
     const authheader = useAuthHeader();
     const [Loaded, setLoaded] = useState(false);
     const [isPicLoaded, setIsPicLoaded] = useState(false);
     const [user, setUser] = useState("");
-    let id  = auth().id;
     const [active, setActive] = useState("Account");
     useEffect(() => {
         const getData = async () => {
             const token = authheader();
             try {
-                await axios.get(`http://127.0.0.1:8000/api/user/${id}`, {
+                await axios.get(`http://127.0.0.1:8000/api/user`, {
                     headers: {
                         "Access-Control-Allow-Origin": "*",
                         "Content-type": "Application/json",
@@ -32,7 +30,7 @@ function Profile() {
             }
         }
         getData();
-    }, [id]);
+    }, []);
     const HandleLoad = () => {
         setIsPicLoaded(true);
     }
